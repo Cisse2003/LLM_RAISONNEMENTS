@@ -1,0 +1,61 @@
+@startuml
+
+class Main
+
+class World{
+    + initWorld()
+    + run()
+    
+}
+
+interface View {
+    + update()
+}
+
+class Model {
+    - Views: List<View>
+    + addView(o: View)
+    + removeView(o: View)
+    + notifyViews()
+    +appliquerEffet(Bouton)
+    +save()
+}
+
+class Controller {
+    - model: Model
+    + handleEvent(event: Event)
+}
+
+class ViewButton implements View {
+    - controller: Controller
+}
+class ViewWorld implements View {
+    - controller: Controller
+    - model: Model
+    - screen: Object
+
+}
+
+class Button {
+    - id : int
+    - state: boolean
+    - rect: Rect
+    + changeState()
+}
+class Rule{
+    + apply(button: Button)
+}
+
+Model   -- "1" Rule
+Model  "1" -- "*" View
+Button "*" -   Model
+
+Model "1" -  Controller
+View "1" -  Controller
+
+World "1" -  Main
+Model "1" -  World
+ViewWorld "1" -  World
+Controller "1" -  World
+@enduml
+
