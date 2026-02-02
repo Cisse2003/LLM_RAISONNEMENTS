@@ -1,0 +1,12 @@
+{
+  "name": "lampes-recherche",
+  "version": "1.0.0",
+  "description": "Expérience de raisonnement - découverte de règles cachées",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

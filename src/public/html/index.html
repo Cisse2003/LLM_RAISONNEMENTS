@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Expérience de Raisonnement - Règle Cachée</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="container">
+    <aside class="sidebar">
+        <div class="header">
+            <div class="icon">🧪</div>
+            <h2>Tests</h2>
+        </div>
+        <ul>
+            <li class="active">Test 1</li>
+            <li>Test 2</li>
+            <li>Test 3</li>
+            <li>Test 4</li>
+        </ul>
+    </aside>
+
+    <main>
+        <h1>Expérience de raisonnement</h1>
+        <p>Découvrez la règle cachée reliant les boutons</p>
+
+        <div class="grid">
+            <button data-id="1">1</button>
+            <button data-id="2">2</button>
+            <button data-id="3">3</button>
+            <button data-id="4">4</button>
+            <button data-id="5">5</button>
+            <button data-id="6">6</button>
+            <button data-id="7">7</button>
+            <button data-id="8">8</button>
+            <button data-id="9">9</button>
+        </div>
+
+        <div class="controls">
+            <button id="reset">RESET</button>
+            <button id="next">NEXT</button>
+            <button id="clean">CLEAN</button>
+        </div>
+    </main>
+
+    <aside class="history">
+        <div class="header">
+            <div class="icon">📜</div>
+            <h3>Historique des actions</h3>
+        </div>
+        <div id="actions-list"></div>
+    </aside>
+
+</div>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>
