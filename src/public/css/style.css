@@ -106,3 +106,19 @@ button:hover {
 }
 
 .icon { font-size: 1.8rem; }
+
+.edit-rules-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #8b5cf6;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.2s;
+  margin-top: 10px;
+}
+
+.edit-rules-btn:hover {
+  background: #7c3aed;
+}

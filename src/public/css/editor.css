@@ -1,0 +1,213 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 30px 20px;
+}
+
+.editor-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.editor-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.editor-header h1 {
+  font-size: 2.5rem;
+  color: #60a5fa;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(96, 165, 250, 0.2);
+}
+
+.editor-header p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+#rule-editor {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border: 1px solid #334155;
+}
+
+.test-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 35px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #334155;
+}
+
+.test-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.test-info label {
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+#test-id {
+  width: 80px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+#test-name {
+  flex: 1;
+  min-width: 300px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.rules-container {
+  margin: 30px 0;
+}
+
+.rule-block {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.rule-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.rule-block h4 {
+  color: #93c5fd;
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+}
+
+.rule-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 8px;
+}
+
+.rule-row label {
+  min-width: 90px;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.rule-row input[type="text"],
+.rule-row select {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 14px;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  background: #1e293b;
+  color: white;
+  font-size: 1rem;
+}
+
+.rule-row select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  appearance: none;
+}
+
+.editor-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 40px 0 30px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary   { background: #3b82f6; color: white; }
+.btn-primary:hover   { background: #2563eb; }
+.btn-success   { background: #10b981; color: white; }
+.btn-success:hover   { background: #059669; }
+.btn-info      { background: #8b5cf6; color: white; }
+.btn-info:hover      { background: #7c3aed; }
+.btn-back      { background: #6b7280; color: white; text-decoration: none; }
+.btn-back:hover      { background: #4b5563; }
+
+.preview-section {
+  margin-top: 40px;
+}
+
+.preview-section h3 {
+  color: #60a5fa;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+
+#json-preview {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 24px;
+  white-space: pre-wrap;
+  font-family: 'Consolas', 'Courier New', monospace;
+  color: #c4b5fd;
+  max-height: 500px;
+  overflow-y: auto;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
+}
+
+@media (max-width: 768px) {
+  .test-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .editor-controls {
+    flex-direction: column;
+  }
+  .rule-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

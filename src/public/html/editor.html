@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Éditeur de Règles – Expérience de Raisonnement</title>
+    <link rel="stylesheet" href="css/editor.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="editor-page">
+    <header class="editor-header">
+        <h1>Éditeur de Règles</h1>
+        <p>Créez et personnalisez les règles cachées pour chaque test</p>
+    </header>
+
+    <div id="rule-editor" class="card">
+        <div class="test-header">
+            <div class="test-info">
+                <label for="test-id">Test n°</label>
+                <input type="number" id="test-id" min="1" max="10" value="1">
+            </div>
+            <input type="text" id="test-name" placeholder="Nom du test (ex: Test effet centre)" class="test-name-input">
+        </div>
+
+        <div id="rules-list" class="rules-container"></div>
+
+        <div class="editor-controls">
+            <button id="add-rule-btn" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Ajouter
+            </button>
+            <button id="generate-json-btn" class="btn btn-success">
+                <i class="fas fa-download"></i> JSON
+            </button>
+            <button id="load-example-btn" class="btn btn-info">
+                <i class="fas fa-file-import"></i> Charger
+            </button>
+            <a href="index.html" class="btn btn-back">
+                <i class="fas fa-arrow-left"></i> Retour
+            </a>
+        </div>
+
+        <div class="preview-section">
+            <h3>Aperçu JSON généré</h3>
+            <pre id="json-preview"></pre>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="js/editor.js"></script>
+</body>
+</html>
