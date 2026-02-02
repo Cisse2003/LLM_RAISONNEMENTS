@@ -1,5 +1,5 @@
 {
-  "name": "lampes-recherche",
+  "name": "LLM RAISONNEMENTS",
   "version": "1.0.0",
   "description": "Expérience de raisonnement - découverte de règles cachées",
   "main": "server.js",
