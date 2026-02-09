@@ -106,3 +106,117 @@ button:hover {
 }
 
 .icon { font-size: 1.8rem; }
+
+.grid-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.objective {
+  width: 220px;
+  padding: 20px;
+  background: #0f172a;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.5;
+  margin-left : -150px;
+  margin-right : -170px;
+}
+
+#current-test-num {
+  color: #60a5fa;
+  font-weight: bold;
+}
+
+#objective-desc {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.modal:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: #1e293b;
+  border: 2px solid #fbbf24;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+  animation: popIn 0.4s ease-out;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-content h2 {
+  color: #fbbf24;
+  margin-bottom: 16px;
+  font-size: 2rem;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+  color: #e2e8f0;
+}
+
+#close-victory {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#close-victory:hover {
+  background: #2563eb;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.sidebar li {
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sidebar li.active {
+  background: #3b82f6;
+  color: white;
+  font-weight: bold;
+}
+
+.sidebar li:hover {
+  background: #475569;
+}

@@ -13,11 +13,9 @@
             <div class="icon">🧪</div>
             <h2>Tests</h2>
         </div>
-        <ul>
-            <li class="active">Test 1</li>
-            <li>Test 2</li>
-            <li>Test 3</li>
-            <li>Test 4</li>
+        <ul id="test-list">
+            <li data-test="1" class="active">Test 1</li>
+            <!-- Les autres seront ajoutés dynamiquement -->
         </ul>
     </aside>
 
@@ -25,16 +23,22 @@
         <h1>Expérience de raisonnement</h1>
         <p>Découvrez la règle cachée reliant les boutons</p>
 
-        <div class="grid">
-            <button data-id="1">1</button>
-            <button data-id="2">2</button>
-            <button data-id="3">3</button>
-            <button data-id="4">4</button>
-            <button data-id="5">5</button>
-            <button data-id="6">6</button>
-            <button data-id="7">7</button>
-            <button data-id="8">8</button>
-            <button data-id="9">9</button>
+        <div class="grid-container">
+            <div class="objective" id="objective-text">
+                Objectif du Test <span id="current-test-num">1</span> : <span id="objective-desc">Allumer uniquement le bouton 9</span>
+            </div>
+
+            <div class="grid">
+                <button data-id="1">1</button>
+                <button data-id="2">2</button>
+                <button data-id="3">3</button>
+                <button data-id="4">4</button>
+                <button data-id="5">5</button>
+                <button data-id="6">6</button>
+                <button data-id="7">7</button>
+                <button data-id="8">8</button>
+                <button data-id="9">9</button>
+            </div>
         </div>
 
         <div class="controls">
@@ -52,6 +56,14 @@
         <div id="actions-list"></div>
     </aside>
 
+</div>
+
+<div id="victory-modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Bravo !</h2>
+        <p>L'objectif est atteint, vous avez gagné !!</p>
+        <button id="close-victory">Continuer</button>
+    </div>
 </div>
 
 <script type="module" src="../js/main.js"></script>
