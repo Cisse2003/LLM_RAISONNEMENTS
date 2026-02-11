@@ -28,4 +28,19 @@ export function setupController() {
     view.render(data.buttons);
     await historyView.update();   // ✅ AJOUTÉ
   });
+
+  document.getElementById('rule-select').addEventListener('change', async (e) => {
+
+    const ruleId = e.target.value;
+
+    const response = await fetch(`/api/rule/${ruleId}`, {
+      method: 'POST'
+    });
+
+    const data = await response.json();
+
+    view.render(data.buttons);
+    await historyView.update();
+  });
+
 }

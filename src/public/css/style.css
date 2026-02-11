@@ -106,3 +106,19 @@ button:hover {
 }
 
 .icon { font-size: 1.8rem; }
+
+.top-bar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+#rule-select {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #334155;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
