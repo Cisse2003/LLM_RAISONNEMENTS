@@ -1,5 +1,3 @@
-import { model } from './model.js';
-
 export const view = {
   gridButtons: null,
 
@@ -7,9 +5,9 @@ export const view = {
     this.gridButtons = document.querySelectorAll('.grid button');
   },
 
-  render() {
+  render(buttons) {
     this.gridButtons.forEach((btn, i) => {
-      if (model.buttons[i]) {
+      if (buttons[i]) {
         btn.classList.add('on');
       } else {
         btn.classList.remove('on');

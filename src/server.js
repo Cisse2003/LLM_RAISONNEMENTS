@@ -3,17 +3,17 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+const gameRoutes = require('./api/routes');
+
+app.use(express.json());
 app.use(express.static("public"));
 
-
-app.get('/api/reset', (req, res) => {
-  res.json({ message: 'Reset OK' });
-});
+app.use('/api', gameRoutes);
 
 app.get('/', (req, res) => {
-   res.sendFile(__dirname + "/public/html/index.html");
+    res.sendFile(path.join(__dirname, "public/html/index.html"));
 });
 
 app.listen(port, () => {
-  console.log(`Serveur démarré sur http://localhost:${port}`);
+    console.log(`Serveur démarré sur http://localhost:${port}`);
 });

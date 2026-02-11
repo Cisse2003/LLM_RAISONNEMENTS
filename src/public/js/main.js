@@ -1,14 +1,17 @@
-import { model } from './model.js';
 import { view } from './view.js';
 import { historyView } from './historyView.js';
 import { setupController } from './controller.js';
 
-// Initialisation
 view.init();
-historyView.init();
-model.initRule();
+historyView.init();      // ✅ Initialisation de l'historique
 setupController();
 
-// Premier rendu
-view.render();
-historyView.update();
+// Charger état initial des boutons
+fetch('/api/state')
+    .then(res => res.json())
+    .then(data => {
+        view.render(data.buttons);
+    });
+
+// Charger état initial de l'historique
+historyView.update();    // ✅ Affiche l'historique au chargement

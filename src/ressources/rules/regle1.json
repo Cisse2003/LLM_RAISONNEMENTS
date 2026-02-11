@@ -1,0 +1,4 @@
+{
+  "rule": ["buttons[index] = !buttons[index]" ]
+
+}

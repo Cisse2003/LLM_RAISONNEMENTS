@@ -1,37 +1,31 @@
-// Gestion des événements
-
-import { model } from './model.js';
-import { view } from './view.js';
-import { historyView } from './historyView.js';
+import { view } from "./view.js";
+import { historyView } from "./historyView.js";
 
 export function setupController() {
-  // Clics sur les boutons de la grille
+
   document.querySelectorAll('.grid button').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const id = parseInt(btn.dataset.id) - 1;
-      model.toggle(id);
-      view.render();
-      historyView.update();
+
+      const response = await fetch(`/api/toggle/${id}`, {
+        method: 'POST'
+      });
+
+      const data = await response.json();
+
+      view.render(data.buttons);
+      await historyView.update();   // ✅ AJOUTÉ
     });
   });
 
-  // Bouton reset
-  document.getElementById('reset').addEventListener('click', () => {
-    model.reset();
-    view.render();
-    historyView.update();
-  });
+  document.getElementById('reset').addEventListener('click', async () => {
+    const response = await fetch('/api/reset', {
+      method: 'POST'
+    });
 
-  // Bouton Clean (efface historique seulement)
-  document.getElementById('clean').addEventListener('click', () => {
-    historyView.clear();
-  });
+    const data = await response.json();
 
-  // Bouton next
-  document.getElementById('next').addEventListener('click', () => {
-    model.nextTest();
-    view.render();
-    historyView.update();
-    alert(`Passage au Test ${model.currentTest} – Nouvelle règle cachée active !`);
+    view.render(data.buttons);
+    await historyView.update();   // ✅ AJOUTÉ
   });
 }
