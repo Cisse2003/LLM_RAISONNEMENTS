@@ -32,4 +32,10 @@ router.get('/history', (req, res) => {
     });
 });
 
+router.get('/current-objective', (req, res) => {
+  res.json({
+    targetState: model.rule?.targetState || Array(9).fill(0)
+  });
+});
+
 module.exports = router;

@@ -38,10 +38,10 @@ app.get('/api/rules', (req, res) => {
 
     try {
         const files = readdirSync(rulesDir);
-        // On garde seulement les fichiers regleX.json et on trie par numéro
+        // On garde seulement les fichiers testX.json et on trie par numéro
         rulesList = files
-            .filter(f => f.match(/^regle\d+\.json$/))
-            .map(f => parseInt(f.match(/^regle(\d+)\.json$/)[1]))
+            .filter(f => f.match(/^test\d+\.json$/))
+            .map(f => parseInt(f.match(/^test(\d+)\.json$/)[1]))
             .sort((a, b) => a - b);
 
         res.json({ rules: rulesList });

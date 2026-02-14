@@ -3,18 +3,16 @@ import { historyView } from './historyView.js';
 import { setupController } from './controller.js';
 
 view.init();
-historyView.init();      // ✅ Initialisation de l'historique
+historyView.init();
 setupController();
 
-// Charger état initial des boutons
 fetch('/api/state')
     .then(res => res.json())
     .then(data => {
         view.render(data.buttons);
     });
 
-// Charger état initial de l'historique
-historyView.update();    // ✅ Affiche l'historique au chargement
+historyView.update();
 
 // Sélecteur de règles
 const ruleSelect = document.getElementById('rule-select');
@@ -25,29 +23,65 @@ async function loadRules() {
     const response = await fetch('/api/rules');
     const data = await response.json();
 
-    ruleSelect.innerHTML = ''; // vider la liste
-    data.rules.forEach(num => {
-      const option = document.createElement('option');
-      option.value = num;
-      option.textContent = `Règle ${num}`;
-      ruleSelect.appendChild(option);
+    ruleSelect.innerHTML = '';
+
+    data.rules.forEach((num, index) => {
+      const li = document.createElement('li');
+      li.textContent = `Test ${num}`;
+      li.dataset.value = num;
+
+      li.addEventListener('click', async () => {
+
+        document.querySelectorAll('#rule-select li')
+          .forEach(el => el.classList.remove('active'));
+
+        li.classList.add('active');
+
+        const response = await fetch(`/api/rule/${num}`, { method: 'POST' });
+        const data = await response.json();
+
+        view.render(data.buttons);
+        await historyView.update();
+      });
+
+      ruleSelect.appendChild(li);
+
+      // On active automatiquement Test 1
+      if (index === 0) {
+        li.classList.add('active');
+        li.click();
+      }
     });
+
   } catch (err) {
     console.error("Impossible de charger les règles", err);
   }
 }
 
-// Quand l'utilisateur change de règle
-ruleSelect.addEventListener('change', async (e) => {
-  const ruleId = e.target.value;
-  if (!ruleId) return;
-
-  const response = await fetch(`/api/rule/${ruleId}`, { method: 'POST' });
-  const data = await response.json();
-
-  view.render(data.buttons);
-  await historyView.update();
-});
-
 // Initialiser la liste des règles
 loadRules();
+
+// Fermeture modale
+document.getElementById('close-victory')?.addEventListener('click', () => {
+  document.getElementById('victory-modal')?.classList.add('hidden');
+});
+
+
+const nextBtn = document.getElementById('next');
+
+nextBtn.addEventListener('click', () => {
+  const items = document.querySelectorAll('#rule-select li');
+  const current = document.querySelector('#rule-select li.active');
+
+  if (!items.length) return;
+
+  let currentIndex = Array.from(items).indexOf(current);
+
+  // Si aucun actif → sélectionner le premier
+  if (currentIndex === -1) {
+    items[0].click();
+    return;
+  }
+  const nextIndex = (currentIndex + 1) % items.length;
+  items[nextIndex].click();
+});
