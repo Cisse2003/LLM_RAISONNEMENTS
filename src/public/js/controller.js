@@ -1,37 +1,58 @@
-// Gestion des événements
-
-import { model } from './model.js';
-import { view } from './view.js';
-import { historyView } from './historyView.js';
+import { view } from "./view.js";
+import { historyView } from "./historyView.js";
 
 export function setupController() {
-  // Clics sur les boutons de la grille
+  // Fonction rafraîchissement + vérification victoire
+  async function refreshAndCheckVictory() {
+    try {
+
+      // Récupère l'état actuel
+      const stateRes = await fetch('/api/state');
+      const stateData = await stateRes.json();
+      view.render(stateData.buttons);
+
+      // Met à jour historique
+      await historyView.update();
+
+      // Récupère l'objectif du test courant
+      const objRes = await fetch('/api/current-objective');
+      const objData = await objRes.json();
+
+      const current = stateData.buttons.map(b => b ? 1 : 0);
+
+      // Vérifie si objectif atteint → affiche la fenêtre
+     if (JSON.stringify(current) === JSON.stringify(objData.targetState)) {
+       const modal = document.getElementById('victory-modal');
+       if (modal) {
+         modal.classList.remove('hidden');
+       } else {
+         console.error("Modale introuvable dans le DOM");
+       }
+     }
+    } catch (err) {
+      console.error("Erreur refresh/victoire :", err);
+    }
+  }
+
+  // Clic sur boutons grille
   document.querySelectorAll('.grid button').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const id = parseInt(btn.dataset.id) - 1;
-      model.toggle(id);
-      view.render();
-      historyView.update();
+      await fetch(`/api/toggle/${id}`, { method: 'POST' });
+      await refreshAndCheckVictory();
     });
   });
 
-  // Bouton reset
-  document.getElementById('reset').addEventListener('click', () => {
-    model.reset();
-    view.render();
-    historyView.update();
+  // Bouton RESET
+  document.getElementById('reset')?.addEventListener('click', async () => {
+    await fetch('/api/reset', { method: 'POST' });
+    await refreshAndCheckVictory();
   });
 
-  // Bouton Clean (efface historique seulement)
-  document.getElementById('clean').addEventListener('click', () => {
-    historyView.clear();
-  });
-
-  // Bouton next
-  document.getElementById('next').addEventListener('click', () => {
-    model.nextTest();
-    view.render();
-    historyView.update();
-    alert(`Passage au Test ${model.currentTest} – Nouvelle règle cachée active !`);
+  // Sélecteur règle
+  document.getElementById('rule-select')?.addEventListener('change', async (e) => {
+    const ruleId = e.target.value;
+    await fetch(`/api/rule/${ruleId}`, { method: 'POST' });
+    await refreshAndCheckVictory();
   });
 }
