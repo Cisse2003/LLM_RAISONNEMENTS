@@ -1,5 +1,3 @@
-import { model } from './model.js';
-
 export const historyView = {
   list: null,
 
@@ -7,13 +5,17 @@ export const historyView = {
     this.list = document.getElementById('actions-list');
   },
 
-  update() {
-    if (model.actions.length === 0) {
+  async update() {
+    const response = await fetch('/api/history');
+    const data = await response.json();
+    const actions = data.actions;
+
+    if (!actions || actions.length === 0) {
       this.list.innerHTML = '<p>Aucune action pour l’instant</p>';
       return;
     }
 
-    this.list.innerHTML = model.actions.map((a, idx) => `
+    this.list.innerHTML = actions.map((a, idx) => `
       <div>
         <strong>Action ${idx + 1} :</strong> Bouton ${a.button} cliqué à ${a.timestamp}<br>
         État après : ${a.stateAfter.map(s => s ? '■' : '□').join(' ')}
@@ -21,8 +23,8 @@ export const historyView = {
     `).join('');
   },
 
-  clear() {
-    model.actions = [];
-    this.update();
+  async clear() {
+    await fetch('/api/reset', { method: 'POST' });
+    await this.update();
   }
 };

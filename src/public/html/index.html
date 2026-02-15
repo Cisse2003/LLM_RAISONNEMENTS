@@ -13,15 +13,13 @@
             <div class="icon">🧪</div>
             <h2>Tests</h2>
         </div>
-        <ul>
-            <li class="active">Test 1</li>
-            <li>Test 2</li>
-            <li>Test 3</li>
-            <li>Test 4</li>
+        <ul id="rule-select">
+            <!-- les li seront générés dynamiquement -->
         </ul>
     </aside>
 
     <main>
+
         <h1>Expérience de raisonnement</h1>
         <p>Découvrez la règle cachée reliant les boutons</p>
 
@@ -43,6 +41,14 @@
             <button id="clean">CLEAN</button>
         </div>
     </main>
+
+    <div id="victory-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Bravo !</h2>
+            <p>L'objectif est atteint, vous avez gagné !!</p>
+            <button id="close-victory">Continuer</button>
+        </div>
+    </div>
 
     <aside class="history">
         <div class="header">
