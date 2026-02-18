@@ -33,9 +33,16 @@ router.get('/history', (req, res) => {
 });
 
 router.get('/current-objective', (req, res) => {
-  res.json({
-    targetState: model.rule?.targetState || Array(9).fill(0)
-  });
+    res.json({
+        description: model.rule?.description || "",
+        targetState: model.rule?.targetState || Array(9).fill(0)
+    });
 });
+
+router.post('/clean', (req, res) => {
+    model.actions = [];   // vide le tableau
+    res.json({ success: true });
+});
+
 
 module.exports = router;

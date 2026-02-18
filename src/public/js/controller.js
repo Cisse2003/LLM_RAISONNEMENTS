@@ -13,7 +13,6 @@ export function setupController() {
 
       // Met à jour historique
       await historyView.update();
-
       // Récupère l'objectif du test courant
       const objRes = await fetch('/api/current-objective');
       const objData = await objRes.json();
@@ -55,4 +54,16 @@ export function setupController() {
     await fetch(`/api/rule/${ruleId}`, { method: 'POST' });
     await refreshAndCheckVictory();
   });
+
+  // Bouton CLEAN
+  document.getElementById('clean')?.addEventListener('click', async () => {
+    try {
+      await fetch('/api/clean', { method: 'POST' });
+
+      await historyView.update();
+    } catch (err) {
+      console.error("Erreur nettoyage historique :", err);
+    }
+  });
+
 }
