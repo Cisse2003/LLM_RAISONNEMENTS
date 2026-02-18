@@ -39,4 +39,10 @@ router.get('/current-objective', (req, res) => {
     });
 });
 
+router.post('/clean', (req, res) => {
+    model.actions = [];   // vide le tableau
+    res.json({ success: true });
+});
+
+
 module.exports = router;

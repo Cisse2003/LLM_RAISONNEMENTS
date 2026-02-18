@@ -54,4 +54,16 @@ export function setupController() {
     await fetch(`/api/rule/${ruleId}`, { method: 'POST' });
     await refreshAndCheckVictory();
   });
+
+  // Bouton CLEAN
+  document.getElementById('clean')?.addEventListener('click', async () => {
+    try {
+      await fetch('/api/clean', { method: 'POST' });
+
+      await historyView.update();
+    } catch (err) {
+      console.error("Erreur nettoyage historique :", err);
+    }
+  });
+
 }
