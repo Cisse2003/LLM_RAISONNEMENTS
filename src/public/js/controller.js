@@ -13,7 +13,6 @@ export function setupController() {
 
       // Met à jour historique
       await historyView.update();
-
       // Récupère l'objectif du test courant
       const objRes = await fetch('/api/current-objective');
       const objData = await objRes.json();
