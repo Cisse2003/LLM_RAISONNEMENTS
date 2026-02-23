@@ -1,4 +1,4 @@
-const { Rule } = require('./rules.js');
+import { Rule } from './rules.js';
 
 class Model {
   constructor() {
@@ -13,7 +13,7 @@ class Model {
       button: index + 1,
       timestamp: new Date().toLocaleTimeString(),
       stateBefore: [...this.buttons],
-      stateAfter: null
+      stateAfter: null,
     };
 
     // Appliquer la règle
@@ -36,11 +36,13 @@ class Model {
     return this.actions;
   }
 
-  setTest(testNumber) {
+  // Maintenant async !
+  async setTest(testNumber) {
     this.currentTest = testNumber;
     this.rule = new Rule(this.currentTest);
+    await this.rule.load();   // on attend le chargement
     this.reset();
   }
 }
 
-module.exports = new Model();
+export const model = new Model();
