@@ -14,23 +14,6 @@
 
 ---
 
-## 📌 Description du projet 
-
----
-
-## 🏗️ Architecture
-- **Serveur** : Node.js + Express
-- **Client** : HTML, CSS, JS
-- **Port d’écoute** : `http://localhost:3000`  
-
----
-
-## 🔑 Installation & Lancement
-### 1. Cloner le dépôt
+##   Lien du site
 ```bash
-git clone https://github.com/Cisse2003/LLM_RAISONNEMENTS.git
-cd LLM_RAISONNEMENTS
-cd src
-npm install
-npm start
-http://localhost:3000
+https://cisse2003.github.io/LLM_RAISONNEMENTS/
