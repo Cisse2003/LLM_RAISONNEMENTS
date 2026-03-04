@@ -1,0 +1,8 @@
+{
+    "description": "Si on vient de cliquer sur le bouton 1, puis sur le bouton 2, alors on allume le bouton 3",
+    "targetState": [0,0,1,0,0,0,0,0,0],
+    "rule": [
+        "const dernierButton = actions.length > 0 ? actions[actions.length - 1].button : null; \n if (dernierButton === 1 && index === 1) { buttons[2] = true; } else { buttons[index] = !buttons[index]; }"
+        
+    ]
+}

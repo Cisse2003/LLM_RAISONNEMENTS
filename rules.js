@@ -29,8 +29,8 @@ export class Rule {
   apply(clickedIndex, model) {
     this.ruleCode.forEach(code => {
       try {
-        const fn = new Function('index', 'buttons', code);
-        fn(clickedIndex, model.buttons);
+        const fn = new Function('index', 'buttons', 'actions', code);
+        fn(clickedIndex, model.buttons, model.actions);
       } catch (e) {
         console.error(`Erreur dans la règle du test ${this.testNumber}:`, e);
       }
