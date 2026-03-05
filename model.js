@@ -6,6 +6,7 @@ class Model {
     this.actions = [];
     this.currentTest = 1;
     this.rule = new Rule(this.currentTest);
+    this.historiques = [];
   }
 
   toggle(index) {
@@ -21,11 +22,13 @@ class Model {
 
     action.stateAfter = [...this.buttons];
     this.actions.push(action);
+    this.historiques.push(action);
+    console.log(this.buttons)
   }
 
   reset() {
+    this.historiques = [];
     this.buttons.fill(false);
-    this.actions = [];
   }
 
   getState() {
@@ -35,7 +38,9 @@ class Model {
   getActions() {
     return this.actions;
   }
-
+  getHistoriques  () {
+    return this.historiques;
+  }
   // Maintenant async !
   async setTest(testNumber) {
     this.currentTest = testNumber;
