@@ -1,0 +1,12 @@
+{
+    "description": "Allumer uniquement le bouton 3",
+    "targetState": [0,0,1,0,0,0,0,0,0],
+    "rule": [
+        "const dernierButton = historiques.length > 0 ? historiques[historiques.length - 1].button : null;",
+        "if (dernierButton === 1 && index === 1) {",
+        "  buttons[2] = true;",
+        "} else {",
+        "  buttons[index] = !buttons[index];",
+        "}"
+    ]
+}

@@ -46,12 +46,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ───────────────────────────────────────────────
   async function loadRules() {
     const possibleTests = [];
-    for (let i = 1; i <= 20; i++) {
+    let i = 1;
+
+    while (true) {
       try {
         const response = await fetch(`ressources/rules/test${i}.json`);
-        if (response.ok) possibleTests.push(i);
+
+        if (!response.ok) break;
+
+        possibleTests.push(i);
+        i++;
       } catch {
-        // silencieux
+        break;
       }
     }
 

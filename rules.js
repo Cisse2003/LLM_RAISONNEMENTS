@@ -27,13 +27,13 @@ export class Rule {
   }
 
   apply(clickedIndex, model) {
-    this.ruleCode.forEach(code => {
-      try {
-        const fn = new Function('index', 'buttons', code);
-        fn(clickedIndex, model.buttons);
+
+    try {
+        const code = this.ruleCode.join("\n");
+        const fn = new Function('index', 'buttons', 'historiques', code);
+        fn(clickedIndex, model.buttons, model.historiques);
       } catch (e) {
         console.error(`Erreur dans la règle du test ${this.testNumber}:`, e);
       }
-    });
-  }
+    }
 }
