@@ -1,0 +1,24 @@
+{
+  "description": "Allumer uniquement le bouton 9",
+  "targetState": [0,0,0,0,0,0,0,0,1],
+  "rule": [
+    "let bouton = index + 1;",
+    "let allumé = null;",
+    "",
+    "for (let i = 0; i < buttons.length; i++) {",
+    "  if (buttons[i]) allumé = i + 1;",
+    "}",
+    "",
+    "let somme = 0;",
+    "if (allumé) {",
+    "  somme = allumé + bouton;",
+    "} else {",
+    "  somme = bouton;",
+    "}",
+    "",
+    "buttons.fill(false);",
+    "if (somme > 0 && somme <= 9) {",
+    "  buttons[somme - 1] = true;",
+    "}"
+  ]
+}

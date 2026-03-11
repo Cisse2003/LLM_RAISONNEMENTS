@@ -1,0 +1,17 @@
+{
+  "description": "Allumer uniquement le bouton 5",
+  "targetState": [0,0,0,0,1,0,0,0,0],
+  "rule": [
+    "let count = 0;",
+    "for (let i = 0; i < historiques.length; i++) {",
+    "  if (historiques[i].button == index + 1) {",
+    "    count++;",
+    "  }",
+    "}",
+    "",
+    "buttons.fill(false);",
+    "if (count >= 2) {",
+    "  buttons[index] = true;",
+    "}"
+  ]
+}
