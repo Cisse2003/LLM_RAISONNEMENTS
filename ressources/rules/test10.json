@@ -1,0 +1,16 @@
+{
+  "description": "Allume tous les boutons",
+  "targetState": [1,1,1,1,1,1,1,1,1],
+  "rule": [
+    "function xorVoisins(buttons, i) {",
+    "  let voisins = [i];",
+    "  if (i - 1 >= 0) voisins.push(i - 1);",
+    "  if (i + 1 <= 8) voisins.push(i + 1);",
+    "  for (let v of voisins) {",
+    "    buttons[v] = !buttons[v];",
+    "  }",
+    "}",
+    "",
+    "xorVoisins(buttons, index);"
+  ]
+}
