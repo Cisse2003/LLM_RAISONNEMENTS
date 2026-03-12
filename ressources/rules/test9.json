@@ -1,0 +1,17 @@
+{
+  "description": "Allumer uniquement le bouton 3.",
+  "targetState": [0,0,1,0,0,0,0,0,0],
+  "rule": [
+    "buttons.fill(false);",
+    "if (historiques.length === 0) {",
+    "  buttons[index] = true;",
+    "} else {",
+    "  let dernierBouton = historiques[historiques.length - 1].button;",
+    "  let boutonActuel = index + 1;",
+    "  let ecart = Math.abs(boutonActuel - dernierBouton);",
+    "  if (ecart >= 1 && ecart <= 9) {",
+    "    buttons[ecart - 1] = true;",
+    "  }",
+    "}"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "description": "Allumer uniquement le bouton 6",
+  "targetState": [0,0,0,0,0,1,0,0,0],
+  "rule": [
+    "buttons.fill(false);",
+    "let numero = index + 1;",
+    "if (numero % 2 === 0) {",
+    "  let suivant = (index + 1) % 9;",
+    "  buttons[suivant] = true;",
+    "} else {",
+    "  let precedent = (index - 1 + 9) % 9;",
+    "  buttons[precedent] = true;",
+    "}"
+  ]
+}
