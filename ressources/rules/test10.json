@@ -1,6 +1,6 @@
 {
-  "description": "Allume tous les boutons",
-  "targetState": [1,1,1,1,1,1,1,1,1],
+  "description": "Allumer uniquement le bouton 2, 4, 5, 6 et 8",
+  "targetState": [0,1,0,1,1,1,0,1,0],
   "rule": [
     "function xorVoisins(buttons, i) {",
     "  let voisins = [i];",

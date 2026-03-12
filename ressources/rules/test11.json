@@ -1,0 +1,33 @@
+{
+  "description": "Allumer uniquement le bouton 2, 4, 6 et 8",
+  "targetState": [0,1,0,1,0,1,0,1,0],
+  "rule": [
+    "function propager(buttons) {",
+    "  let nouvelEtat = new Array(9).fill(false);",
+    "  for (let i = 0; i < 9; i++) {",
+    "    let row = Math.floor(i / 3);",
+    "    let col = i % 3;",
+    "    let haut   = row > 0 ? buttons[i - 3] : false;",
+    "    let bas    = row < 2 ? buttons[i + 3] : false;",
+    "    let gauche = col > 0 ? buttons[i - 1] : false;",
+    "    let droite = col < 2 ? buttons[i + 1] : false;",
+    "    nouvelEtat[i] = haut ^ bas ^ gauche ^ droite;",
+    "  }",
+    "  return nouvelEtat;",
+    "}",
+    "",
+    "function initialise(buttons) {",
+    "  for (let i = 0; i < 9; i++) buttons[i] = false;",
+    "}",
+    "",
+    "initialise(buttons);",
+    "for (let h of historiques) {",
+    "  buttons[h.button - 1] = !buttons[h.button - 1];",
+    "  let nouvel = propager(buttons);",
+    "  for (let i = 0; i < 9; i++) buttons[i] = nouvel[i];",
+    "}",
+    "buttons[index] = !buttons[index];",
+    "let nouvel = propager(buttons);",
+    "for (let i = 0; i < 9; i++) buttons[i] = nouvel[i];"
+  ]
+}
