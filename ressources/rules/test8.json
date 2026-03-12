@@ -1,6 +1,6 @@
 {
   "description": "Allumer uniquement le bouton 6",
-  "targetState": [0,0,1,0,0,0,0,0,0],
+  "targetState": [0,0,0,0,0,1,0,0,0],
   "rule": [
     "buttons.fill(false);",
     "let miroir = 8 - index;",
