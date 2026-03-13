@@ -6,7 +6,14 @@ export const historyView = {
   init() {
     this.list = document.getElementById('actions-list');
   },
+  updateClear() {
 
+    this.list.innerHTML = `
+      <div>
+        <strong>Action CLEAR :</strong> 
+      </div>
+    `
+  },
   update() {
     const actions = model.getActions();
     if (!actions || actions.length === 0) {

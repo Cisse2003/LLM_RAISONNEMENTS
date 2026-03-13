@@ -42,8 +42,9 @@ export function setupController() {
 
   // Bouton RESET
   document.getElementById('reset')?.addEventListener('click', () => {
-    model.reset();                     // ← appel direct
-    refreshAndCheckVictory();
+    model.reset();
+    historyView.updateClear();// ← appel direct
+    //refreshAndCheckVictory();
   });
 
    // Bouton CLEAN

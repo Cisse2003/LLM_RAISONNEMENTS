@@ -44,6 +44,7 @@ class Model {
   // Maintenant async !
   async setTest(testNumber) {
     this.currentTest = testNumber;
+    this.actions = [];
     this.rule = new Rule(this.currentTest);
     await this.rule.load();   // on attend le chargement
     this.reset();
