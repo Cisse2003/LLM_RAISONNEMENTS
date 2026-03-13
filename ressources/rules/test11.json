@@ -1,6 +1,6 @@
 {
-  "description": "Allumer uniquement le bouton 2, 4, 6 et 8",
-  "targetState": [0,1,0,1,0,1,0,1,0],
+  "description": "Allumer uniquement le bouton 1, 2, 3, 7, 8 et 9",
+  "targetState": [1,1,1,0,0,0,1,1,1],
   "rule": [
     "function propager(buttons) {",
     "  let nouvelEtat = new Array(9).fill(false);",
