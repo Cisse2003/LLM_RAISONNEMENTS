@@ -1,6 +1,7 @@
 {
   "description": "Allumer uniquement le bouton 3.",
   "targetState": [0,0,1,0,0,0,0,0,0],
+  "difficulty": "difficile",
   "rule": [
     "buttons.fill(false);",
     "if (historiques.length === 0) {",

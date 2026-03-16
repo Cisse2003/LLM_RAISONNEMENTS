@@ -1,6 +1,7 @@
 {
   "description": "Allumer uniquement le bouton 8",
   "targetState": [0,0,0,0,0,0,0,1,0],
+  "difficulty": "intermédiaire",
   "rule": [
     "buttons[(index * 2) % 9] = !buttons[(index * 2) % 9]"
   ]

@@ -1,6 +1,7 @@
 {
   "description": "Allumer uniquement le bouton 5",
   "targetState": [0,0,0,0,1,0,0,0,0],
+  "difficulty": "difficile",
   "rule": [
     "let count = 0;",
     "for (let i = 0; i < historiques.length; i++) {",

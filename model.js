@@ -27,6 +27,13 @@ class Model {
   }
 
   reset() {
+    this.actions.push({
+        type: 'clear',
+        button: null,
+        timestamp: new Date().toLocaleTimeString(),
+        stateBefore: [...this.buttons],
+        stateAfter: Array(9).fill(false)
+    });
     this.historiques = [];
     this.buttons.fill(false);
   }

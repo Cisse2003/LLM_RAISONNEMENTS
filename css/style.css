@@ -219,3 +219,56 @@ button:hover {
   background: #fbbf24;
   box-shadow: 0 0 10px #fbbf24;
 }
+
+.difficulty-header {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 14px 8px 4px 8px;
+  margin-top: 8px;
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.filter-btn {
+  width: 100%;
+  height: auto;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-radius: 6px;
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background: #334155;
+  color: white;
+  transform: none;
+}
+
+.filter-btn.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.action-clear {
+  color: #ef4444;
+  border-left: 3px solid #ef4444;
+  padding-left: 8px;
+  margin: 4px 0;
+}

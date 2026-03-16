@@ -1,6 +1,7 @@
 {
   "description": "Allumer uniquement le bouton 9",
   "targetState": [0,0,0,0,0,0,0,0,1],
+  "difficulty": "facile",
   "rule": [
     "buttons[index] = !buttons[index]"
   ]

@@ -51,33 +51,55 @@ document.addEventListener("DOMContentLoaded", async () => {
     while (true) {
       try {
         const response = await fetch(`ressources/rules/test${i}.json`);
-
         if (!response.ok) break;
-
-        possibleTests.push(i);
+        const data = await response.json();
+        possibleTests.push({ num: i, difficulty: data.difficulty || 'facile' });
         i++;
       } catch {
         break;
       }
     }
 
-    ruleSelect.innerHTML = '';
-    for (let index = 0; index < possibleTests.length; index++) {
-      const num = possibleTests[index];
-      const li = document.createElement('li');
-      li.textContent = `Test ${num}`;
-      li.dataset.value = num;
-      li.addEventListener('click', async () => {
-        document.querySelectorAll('#rule-select li').forEach(el => el.classList.remove('active'));
-        li.classList.add('active');
-        await loadAndApplyRule(num);
-      });
-      ruleSelect.appendChild(li);
+    const difficultyOrder = ['facile', 'intermédiaire', 'difficile'];
+    const difficultyLabels = {
+      'facile': { label: '🟢 Facile', color: '#22c55e' },
+      'intermédiaire': { label: '🟡 Intermédiaire', color: '#f59e0b' },
+      'difficile': { label: '🔴 Difficile', color: '#ef4444' },
+    };
 
-      if (index === 0) {
-        li.classList.add('active');
-        await loadAndApplyRule(num);   // premier test chargé
+    // Grouper par difficulté
+    ruleSelect.innerHTML = '';
+
+    for (const diff of difficultyOrder) {
+      const group = possibleTests.filter(t => t.difficulty === diff);
+      if (group.length === 0) continue;
+
+      // En-tête de groupe
+      const header = document.createElement('li');
+      header.classList.add('difficulty-header');
+      header.textContent = difficultyLabels[diff]?.label || diff;
+      header.style.color = difficultyLabels[diff]?.color || 'white';
+      ruleSelect.appendChild(header);
+
+      for (const test of group) {
+        const li = document.createElement('li');
+        li.textContent = `Test ${test.num}`;
+        li.dataset.value = test.num;
+        li.dataset.difficulty = test.difficulty; // ← ajouter cette ligne
+        li.addEventListener('click', async () => {
+          document.querySelectorAll('#rule-select li:not(.difficulty-header)').forEach(el => el.classList.remove('active'));
+          li.classList.add('active');
+          await loadAndApplyRule(test.num);
+        });
+        ruleSelect.appendChild(li);
       }
+    }
+
+    // Charger le premier test automatiquement
+    const first = ruleSelect.querySelector('li:not(.difficulty-header)');
+    if (first) {
+      first.classList.add('active');
+      await loadAndApplyRule(parseInt(first.dataset.value));
     }
   }
 
@@ -93,6 +115,40 @@ document.addEventListener("DOMContentLoaded", async () => {
       view.render(model.getState());
       historyView.update();
       checkVictory();
+    });
+  });
+
+  // ───────────────────────────────────────────────
+  // Filtrage par difficulté
+  // ───────────────────────────────────────────────
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Mettre à jour le bouton actif
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      const items = document.querySelectorAll('#rule-select li:not(.difficulty-header)');
+      const headers = document.querySelectorAll('#rule-select li.difficulty-header');
+
+      items.forEach(li => {
+        if (filter === 'all' || li.dataset.difficulty === filter) {
+          li.style.display = '';
+        } else {
+          li.style.display = 'none';
+        }
+      });
+
+      // Cacher les en-têtes de groupe si tous leurs tests sont cachés
+      headers.forEach(header => {
+        let next = header.nextElementSibling;
+        let allHidden = true;
+        while (next && !next.classList.contains('difficulty-header')) {
+          if (next.style.display !== 'none') allHidden = false;
+          next = next.nextElementSibling;
+        }
+        header.style.display = allHidden ? 'none' : '';
+      });
     });
   });
 
