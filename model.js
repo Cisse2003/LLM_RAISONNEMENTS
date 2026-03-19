@@ -49,10 +49,11 @@ class Model {
     return this.historiques;
   }
   // Maintenant async !
-  async setTest(testNumber) {
+  async setTest(testNumber, difficulty = 'facile') {
     this.currentTest = testNumber;
+    this.currentDifficulty = difficulty;
     this.actions = [];
-    this.rule = new Rule(this.currentTest);
+    this.rule = new Rule(this.currentTest, this.currentDifficulty);
     await this.rule.load();   // on attend le chargement
     this.reset();
   }

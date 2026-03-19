@@ -1,14 +1,15 @@
 export class Rule {
-  constructor(testNumber = 1) {
+  constructor(testNumber = 1, difficulty = 'facile') {
     this.testNumber = testNumber;
     this.description = "Objectif non défini";
+    this.difficulty = difficulty;
     this.targetState = Array(9).fill(0);
     this.ruleCode = [];
   }
 
   // Méthode async pour charger les données
   async load() {
-    const jsonPath = `ressources/rules/test${this.testNumber}.json`;
+    const jsonPath = `ressources/rules/${this.difficulty}/test${this.testNumber}.json`;
     try {
       const response = await fetch(jsonPath);
       if (!response.ok) {

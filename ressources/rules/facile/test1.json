@@ -3,6 +3,6 @@
   "targetState": [0,0,0,0,0,0,0,0,1],
   "difficulty": "facile",
   "rule": [
-    "buttons[index] = !buttons[index]"
+    "buttons[index%9] = !buttons[index%9]"
   ]
 }

@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  async function loadAndApplyRule(testNumber) {
-    await model.setTest(testNumber);           // attend le fetch
+  async function loadAndApplyRule(testNumber, difficulty = 'facile') {
+    await model.setTest(testNumber, difficulty);           // attend le fetch
     view.render(model.getState());
     historyView.update();
     renderObjective(model.rule.description, model.rule.targetState);
@@ -45,25 +45,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Chargement liste des tests
   // ───────────────────────────────────────────────
   async function loadRules() {
+    const difficultyFolders = ['facile', 'moyen', 'difficile'];
     const possibleTests = [];
-    let i = 1;
 
-    while (true) {
-      try {
-        const response = await fetch(`ressources/rules/test${i}.json`);
-        if (!response.ok) break;
-        const data = await response.json();
-        possibleTests.push({ num: i, difficulty: data.difficulty || 'facile' });
-        i++;
-      } catch {
-        break;
+    for (const diff of difficultyFolders) {
+      let i = 1;
+
+      while (true) {
+        try {
+          const response = await fetch(`ressources/rules/${diff}/test${i}.json`);
+          if (!response.ok) break;
+          possibleTests.push({num: i, difficulty: diff });
+          i++;
+        } catch {
+          break;
+        }
       }
     }
-
-    const difficultyOrder = ['facile', 'intermédiaire', 'difficile'];
+    const difficultyOrder = ['facile', 'moyen', 'difficile'];
     const difficultyLabels = {
       'facile': { label: '🟢 Facile', color: '#22c55e' },
-      'intermédiaire': { label: '🟡 Intermédiaire', color: '#f59e0b' },
+      'moyen': { label: '🟡 Intermédiaire', color: '#f59e0b' },
       'difficile': { label: '🔴 Difficile', color: '#ef4444' },
     };
 
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         li.addEventListener('click', async () => {
           document.querySelectorAll('#rule-select li:not(.difficulty-header)').forEach(el => el.classList.remove('active'));
           li.classList.add('active');
-          await loadAndApplyRule(test.num);
+          await loadAndApplyRule(test.num, test.difficulty);
         });
         ruleSelect.appendChild(li);
       }
@@ -99,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const first = ruleSelect.querySelector('li:not(.difficulty-header)');
     if (first) {
       first.classList.add('active');
-      await loadAndApplyRule(parseInt(first.dataset.value));
+      await loadAndApplyRule(parseInt(first.dataset.value, first.dataset.difficulty));
     }
   }
 
