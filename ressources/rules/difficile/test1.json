@@ -3,11 +3,21 @@
     "targetState": [0,0,1,0,0,0,0,0,0],
     "difficulty": "difficile",
     "rule": [
-        "const dernierButton = historiques.length > 0 ? historiques[historiques.length - 1].button : null;",
-        "if (dernierButton === 1 && index === 1) {",
-        "  buttons[2] = true;",
-        "} else {",
-        "  buttons[index] = !buttons[index];",
+        "let tousLesClics = historiques.map(h => h.button);",
+        "tousLesClics.push(index + 1);",
+        "",
+        "buttons.fill(false);",
+        "",
+        "// Il faut au moins 3 clics pour qu'un bouton s'allume",
+        "if (tousLesClics.length >= 3) {",
+        "  let troisDerniers = tousLesClics.slice(-3);",
+        "",
+        "  let produit = troisDerniers[0] * troisDerniers[1] * troisDerniers[2];",
+        "",
+        "  let numeroBouton = produit % 9;",
+        "  if (numeroBouton === 0) numeroBouton = 9;",
+        "",
+        "  buttons[numeroBouton - 1] = true;",
         "}"
     ]
 }
