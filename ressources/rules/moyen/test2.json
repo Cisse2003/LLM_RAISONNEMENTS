@@ -1,14 +1,14 @@
 {
-  "description": "Allumer uniquement le bouton 9",
+  "description": "Allumer uniquement le bouton 4",
   "targetState": [0,0,0,0,0,0,0,0,1],
   "difficulty": "intermédiaire",
   "rule": [
-   "let carre = (index + 1) * (index + 1);",
+    "let carre = (index + 1) * (index + 1);",
     "buttons.fill(false);",
     "if (carre <= 9) {",
     "  buttons[carre - 1] = true;",
     "} else {",
-    "  buttons[index] = true;",
+    "  buttons[(index * 2) % 9] = true;",
     "}"
   ]
 }

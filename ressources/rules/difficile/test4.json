@@ -1,17 +1,14 @@
 {
-  "description": "Allumer uniquement le bouton 3.",
-  "targetState": [0,0,1,0,0,0,0,0,0],
+  "description": "Allumer uniquement les boutons 2, 4 et 8",
+  "targetState": [0,1,0,1,0,0,0,1,0],
   "difficulty": "difficile",
   "rule": [
-    "buttons.fill(false);",
-    "if (historiques.length === 0) {",
-    "  buttons[index] = true;",
-    "} else {",
-    "  let dernierBouton = historiques[historiques.length - 1].button;",
-    "  let boutonActuel = index + 1;",
-    "  let ecart = Math.abs(boutonActuel - dernierBouton);",
-    "  if (ecart >= 1 && ecart <= 9) {",
-    "    buttons[ecart - 1] = true;",
+    "function pgcd(a, b) { return b === 0 ? a : pgcd(b, a % b); }",
+    "",
+    "let numeroBouton = index + 1;",
+    "for (let i = 1; i <= 9; i++) {",
+    "  if (pgcd(numeroBouton, i) > 1) {",
+    "    buttons[i - 1] = !buttons[i - 1];",
     "  }",
     "}"
   ]

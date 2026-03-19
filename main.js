@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const difficultyOrder = ['facile', 'moyen', 'difficile'];
     const difficultyLabels = {
       'facile': { label: '🟢 Facile', color: '#22c55e' },
-      'moyen': { label: '🟡 Intermédiaire', color: '#f59e0b' },
+      'moyen': { label: '🟡 Moyen', color: '#f59e0b' },
       'difficile': { label: '🔴 Difficile', color: '#ef4444' },
     };
 
