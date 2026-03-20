@@ -1,0 +1,15 @@
+{
+  "description": "Obtenir le motif cibler",
+  "targetState": [0,0,0,0,0,1,1,1,0],
+  "difficulty": "moyen",
+  "rule": [
+    "let anciens = [...buttons];",
+    "buttons.fill(false);",
+    "for (let i = 0; i < 9; i++) {",
+    "  if (anciens[i]) {",
+    "    buttons[(i + 1) % 9] = true;",
+    "  }",
+    "}",
+    "buttons[index] = true;"
+  ]
+}
