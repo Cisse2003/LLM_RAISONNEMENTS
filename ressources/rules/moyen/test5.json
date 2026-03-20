@@ -1,0 +1,10 @@
+{
+  "description": "Allumer uniquement les boutons 6 et 7",
+  "targetState": [0,0,0,0,0,1,1,0,0],
+  "difficulty": "intermédiaire",
+  "rule": [
+    "buttons[index] = !buttons[index];",
+    "let lié = (index * 3) % 9;",
+    "if (lié !== index) buttons[lié] = !buttons[lié];"
+  ]
+}
