@@ -3,11 +3,17 @@
     "targetState": [0,0,1,0,0,0,0,0,0],
     "difficulty": "difficile",
     "rule": [
-        "const dernierButton = historiques.length > 0 ? historiques[historiques.length - 1].button : null;",
-        "if (dernierButton === 1 && index === 1) {",
-        "  buttons[2] = true;",
-        "} else {",
-        "  buttons[index] = !buttons[index];",
-        "}"
-    ]
+    "let pairs = 0, impairs = 0;",
+    "for (let h of historiques) {",
+    "  if (h.button % 2 === 0) pairs++;",
+    "  else impairs++;",
+    "}",
+    "let bouton = index + 1;",
+    "if (bouton % 2 === 0) pairs++;",
+    "else impairs++;",
+    "buttons.fill(false);",
+    "if (pairs === impairs && pairs > 0) {",
+    "  buttons[index] = true;",
+    "}"
+  ]
 }
