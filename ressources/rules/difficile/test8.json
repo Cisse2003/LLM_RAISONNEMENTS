@@ -1,0 +1,28 @@
+{
+  "description": "Allumer uniquement le bouton 7",
+  "targetState": [0,0,0,0,0,0,1,0,0],
+  "difficulty": "difficile",
+  "rule": [
+    "buttons[index] = !buttons[index];",
+    "",
+    "let pairs = 0;",
+    "let impairs = 0;",
+    "",
+    "for (let i = 0; i < 9; i++) {",
+    "  if (i === 6) continue;",
+    "  if (buttons[i]) {",
+    "    let numero = i + 1;",
+    "    if (numero % 2 === 0) {",
+    "      pairs++;",
+    "    } else {",
+    "      impairs++;",
+    "    }",
+    "  }",
+    "}",
+    "",
+    "buttons[6] = false;",
+    "if (pairs === 3 && impairs === 3) {",
+    "  buttons[6] = true;",
+    "}"
+  ]
+}

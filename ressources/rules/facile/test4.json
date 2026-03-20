@@ -1,0 +1,10 @@
+{
+  "description": "Allumer uniquement le bouton 2",
+  "targetState": [0,1,0,0,0,0,0,0,0],
+  "difficulty": "facile",
+  "rule": [
+    "let cible = (index + 3) % 9;",
+    "buttons.fill(false);",
+    "buttons[cible] = true;"
+  ]
+}
