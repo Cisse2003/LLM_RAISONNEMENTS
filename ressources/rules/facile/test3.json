@@ -1,0 +1,11 @@
+{
+  "description": "Allumer uniquement les boutons 1, 2, 3, 4, 5 et 6",
+  "targetState": [1, 1, 1, 0, 0, 0, 1, 1, 1],
+  "rule": [
+    "let bas = index + 3;",
+    "let cible = bas <= 8 ? bas : index - 3;",
+    "buttons[index] = !buttons[index];",
+    "buttons[cible]  = !buttons[cible];",
+    "//sol : 1,4,2,5,3,6"
+  ]
+}
