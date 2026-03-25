@@ -1,5 +1,7 @@
 import { Rule } from './rules.js';
 
+
+
 class Model {
     constructor() {
         this.buttons = Array(9).fill(false);
@@ -94,13 +96,41 @@ class Model {
     };
   }
 
-  async setValidation  () {
-    this.isValidation = true;
-    this.actions = [];
-    this.rule = new Rule(this.currentTest, this.currentDifficulty, true);
-    await this.rule.load();
-    this.reset();
-  }
+    async setValidation() {
+        this.isValidation = true;
+        this.actions = [];
+        this.validationResults = [];
+        this.validationAllCorrect = true;
+        this.rule = new Rule(this.currentTest, this.currentDifficulty, true);
+        await this.rule.load();
+        this.reset();
+    }
+    addValidationQuestionResult(questionIndex, isCorrect) {
+        const action = {
+            type: 'validation-question',
+            questionIndex: questionIndex + 1,
+            status: isCorrect ? 'correcte' : 'incorrecte',
+            timestamp: new Date().toLocaleTimeString(),
+        };
+
+        this.validationResults.push(isCorrect);
+        if (!isCorrect) {
+            this.validationAllCorrect = false;
+        }
+
+        this.actions.push(action);
+        this.globalActions.push(action);
+    }
+
+    addValidationFailure() {
+        const action = {
+            type: 'validation-failure',
+            timestamp: new Date().toLocaleTimeString(),
+        };
+
+        this.actions.push(action);
+        this.globalActions.push(action);
+    }
 }
 
 export const model = new Model();

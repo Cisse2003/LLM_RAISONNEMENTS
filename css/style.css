@@ -432,3 +432,7 @@ button:hover {
   background: #2563eb;
   transform: scale(1.03);
 }
+.action-validation-failure {
+  color: #ef4444;
+  font-weight: 600;
+}

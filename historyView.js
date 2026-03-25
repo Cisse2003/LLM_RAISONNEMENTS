@@ -51,6 +51,22 @@ export const historyView = {
           </div>
         `;
       }
+      if (a.type === 'validation-question') {
+          return `
+      <div class="action-validation-question">
+        <strong>Phase de validation — Question ${a.questionIndex}</strong> :
+        ${a.status} à ${a.timestamp}
+      </div>
+    `;
+      }
+
+        if (a.type === 'validation-failure') {
+          return `
+      <div class="action-validation-failure">
+        <strong>Validation échouée</strong> à ${a.timestamp}
+      </div>
+    `;
+      }
       return `
         <div>
           <strong>Action ${idx + 1} :</strong> Bouton ${a.button} cliqué à ${a.timestamp}<br>

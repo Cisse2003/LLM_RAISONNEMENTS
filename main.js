@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const validationCloseBtn = document.getElementById('validation-close');
   const validationFeedback = document.getElementById('validation-feedback');
   const validationSuccessModal = document.getElementById('validation-success-modal');
+  const validationFailureModal = document.getElementById('validation-failure-modal');
 
   let validationIndex = 0;
   let validationUserAnswer = Array(9).fill(0);
@@ -95,7 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     validationUserAnswer = Array(9).fill(0);
     validationFeedback.textContent = "";
     validationCheckBtn.classList.remove("hidden");
-    validationNextBtn.classList.add("hidden");
+
     validationCloseBtn.classList.add("hidden");
 
     validationQuestionText.textContent = question.description;
@@ -114,24 +115,37 @@ document.addEventListener("DOMContentLoaded", async () => {
     const question = questions[validationIndex];
     if (!question) return;
 
-    if (arraysEqual(validationUserAnswer, question.expectedState)) {
-      validationFeedback.textContent = "Bonne réponse.";
-      validationFeedback.style.color = "green";
-      validationCheckBtn.classList.add("hidden");
+    const isCorrect = arraysEqual(validationUserAnswer, question.expectedState);
 
+    // Afficher le retour utilisateur
+    validationFeedback.textContent = isCorrect
+        ? "Bonne réponse."
+        : "Ce n'est pas la bonne réponse.";
+    validationFeedback.style.color = isCorrect ? "green" : "red";
+
+    // Enregistrer dans l'historique
+    model.addValidationQuestionResult(validationIndex, isCorrect);
+    historyView.update();
+
+    // Passer automatiquement à la suite après un court délai
+    setTimeout(() => {
       if (validationIndex < questions.length - 1) {
-        validationNextBtn.classList.remove("hidden");
+        validationIndex++;
+        openValidationQuestion();
       } else {
-        model.addValidationSuccess();
-        historyView.update();
-
         validationPanel.classList.add('hidden');
-        validationSuccessModal?.classList.remove('hidden');
+
+        if (model.validationAllCorrect) {
+          model.addValidationSuccess();
+          historyView.update();
+          validationSuccessModal?.classList.remove('hidden');
+        } else {
+          model.addValidationFailure();
+          historyView.update();
+          validationFailureModal?.classList.remove('hidden');
+        }
       }
-    } else {
-      validationFeedback.textContent = "Ce n'est pas la bonne réponse.";
-      validationFeedback.style.color = "red";
-    }
+    }, 700);
   }
 
   // ───────────────────────────────────────────────
@@ -303,21 +317,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById('start-validation')?.addEventListener('click', async () => {
     victoryModal?.classList.add('hidden');
     validationIndex = 0;
+    await model.setValidation();
+    historyView.update();
     openValidationQuestion();
   });
   validationCheckBtn?.addEventListener('click', () => {
     checkValidationAnswer();
   });
 
-  validationNextBtn?.addEventListener('click', () => {
-    validationIndex++;
-    openValidationQuestion();
-  });
+
 
   validationCloseBtn?.addEventListener('click', () => {
     validationPanel.classList.add('hidden');
   });
   document.getElementById('close-validation-success')?.addEventListener('click', () => {
     validationSuccessModal?.classList.add('hidden');
+  });
+  document.getElementById('close-validation-failure')?.addEventListener('click', () => {
+    validationFailureModal?.classList.add('hidden');
   });
 });
