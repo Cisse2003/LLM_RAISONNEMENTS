@@ -187,6 +187,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById('close-victory')?.addEventListener('click', () => {
     victoryModal?.classList.add('hidden');
   });
+
+  // ───────────────────────────────────────────────
+  // Téléchargement résultats JSON
+  // ───────────────────────────────────────────────
+  document.getElementById('export')?.addEventListener('click', () => {
+    const data = model.exportJSON();
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `resultats_session.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
   document.getElementById('start-validation')?.addEventListener('click', async () => {
     victoryModal?.classList.add('hidden');
     await model.setValidation();
