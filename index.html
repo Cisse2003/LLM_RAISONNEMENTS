@@ -65,6 +65,33 @@
             </div>
         </div>
     </div>
+    <div id="validation-panel" class="modal hidden">
+        <div class="modal-content">
+            <h2>Validation</h2>
+            <p id="validation-question-text"></p>
+
+            <div class="validation-grids-row">
+                <div class="validation-section">
+                    <h4>État initial</h4>
+                    <div id="validation-initial-grid" class="mini-grid"></div>
+                </div>
+
+                <div class="validation-section">
+                    <h4>Ta réponse</h4>
+                    <p id="validation-click-info"></p>
+                    <div id="validation-answer-grid" class="mini-grid clickable"></div>
+                </div>
+            </div>
+
+            <div class="validation-actions">
+                <button id="validation-check">Vérifier</button>
+                <button id="validation-next" class="hidden">Question suivante</button>
+                <button id="validation-close" class="hidden">Fermer</button>
+            </div>
+
+            <p id="validation-feedback"></p>
+        </div>
+    </div>
 
     <aside class="history">
         <div class="header">

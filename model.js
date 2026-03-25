@@ -62,6 +62,12 @@ class Model {
             timestamp: new Date().toLocaleTimeString(),
         });
     }
+    addValidationSuccess() {
+        this.actions.push({
+            type: 'validation-success',
+            timestamp: new Date().toLocaleTimeString(),
+        });
+    }
   // Maintenant async !
   async setTest(testNumber, difficulty = 'facile') {
     this.currentTest = testNumber;
@@ -72,13 +78,7 @@ class Model {
     await this.rule.load();   // on attend le chargement
     this.reset();
   }
-  async setValidation  () {
-    this.isValidation = true;
-    this.actions = [];
-    this.rule = new Rule(this.currentTest, this.currentDifficulty, true);
-    await this.rule.load();
-    this.reset();
-  }
+
 }
 
 export const model = new Model();
