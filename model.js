@@ -68,6 +68,12 @@ class Model {
         this.actions.push(victoryAction);
         this.globalActions.push(victoryAction); // ajout session globale
     }
+    addValidationSuccess() {
+        this.actions.push({
+            type: 'validation-success',
+            timestamp: new Date().toLocaleTimeString(),
+        });
+    }
   // Maintenant async !
   async setTest(testNumber, difficulty = 'facile') {
     this.currentTest = testNumber;

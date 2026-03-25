@@ -37,6 +37,13 @@ export const historyView = {
           </div>
         `;
       }
+      if (a.type === 'validation-success') {
+        return `
+        <div class="action-validation-success">
+          <strong>Validation réussie !</strong> à ${a.timestamp}
+        </div>
+      `;
+      }
       if (a.type === 'clear') {
         return `
           <div class="action-clear">

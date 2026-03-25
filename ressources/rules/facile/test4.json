@@ -2,6 +2,26 @@
   "description": "Allumer uniquement le bouton 2",
   "targetState": [0,1,0,0,0,0,0,0,0],
   "difficulty": "facile",
+  "validationQuestions": [
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 1, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 1,
+      "expectedState": [0,0,0,1,0,0,0,0,0]
+    },
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 8, quel sera l'état suivant ?",
+      "initialState": [1,0,1,0,1,0,1,0,1],
+      "clickButton": 8,
+      "expectedState": [0,1,0,0,0,0,0,0,0]
+    },
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 9, quel sera l'état suivant ?",
+      "initialState": [0,1,0,0,0,1,0,0,0],
+      "clickButton": 9,
+      "expectedState": [0,0,1,0,0,0,0,0,0]
+    }
+  ],
   "rule": [
     "let cible = (index + 3) % 9;",
     "buttons.fill(false);",

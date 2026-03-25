@@ -11,6 +11,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   const objectiveGrid = document.getElementById('objective-grid');
   const victoryModal = document.getElementById('victory-modal');
 
+
+  const validationPanel = document.getElementById('validation-panel');
+  const validationQuestionText = document.getElementById('validation-question-text');
+  const validationInitialGrid = document.getElementById('validation-initial-grid');
+  const validationAnswerGrid = document.getElementById('validation-answer-grid');
+  const validationClickInfo = document.getElementById('validation-click-info');
+  const validationCheckBtn = document.getElementById('validation-check');
+  const validationNextBtn = document.getElementById('validation-next');
+  const validationCloseBtn = document.getElementById('validation-close');
+  const validationFeedback = document.getElementById('validation-feedback');
+  const validationSuccessModal = document.getElementById('validation-success-modal');
+
+  let validationIndex = 0;
+  let validationUserAnswer = Array(9).fill(0);
+
   // ───────────────────────────────────────────────
   // Fonctions utilitaires
   // ───────────────────────────────────────────────
@@ -48,6 +63,75 @@ document.addEventListener("DOMContentLoaded", async () => {
     historyView.update();
     renderObjective(model.rule.description, model.rule.targetState);
     checkVictory();
+  }
+
+  function renderMiniGrid(container, state, clickable = false, onClick = null) {
+    container.innerHTML = "";
+
+    state.forEach((cell, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = i + 1;
+
+      if (cell) btn.classList.add("on");
+
+      if (clickable && onClick) {
+        btn.addEventListener("click", () => onClick(i));
+      }
+
+      container.appendChild(btn);
+    });
+  }
+  function renderAnswerGrid() {
+    renderMiniGrid(validationAnswerGrid, validationUserAnswer, true, (i) => {
+      validationUserAnswer[i] = validationUserAnswer[i] ? 0 : 1;
+      renderAnswerGrid();
+    });
+  }
+  function openValidationQuestion() {
+    const questions = model.rule.validationQuestions || [];
+    const question = questions[validationIndex];
+    if (!question) return;
+
+    validationUserAnswer = Array(9).fill(0);
+    validationFeedback.textContent = "";
+    validationCheckBtn.classList.remove("hidden");
+    validationNextBtn.classList.add("hidden");
+    validationCloseBtn.classList.add("hidden");
+
+    validationQuestionText.textContent = question.description;
+    validationClickInfo.textContent = `On clique sur le bouton ${question.clickButton}`;
+
+    renderMiniGrid(validationInitialGrid, question.initialState);
+    renderAnswerGrid();
+
+    validationPanel.classList.remove("hidden");
+  }
+  function arraysEqual(a, b) {
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+  function checkValidationAnswer() {
+    const questions = model.rule.validationQuestions || [];
+    const question = questions[validationIndex];
+    if (!question) return;
+
+    if (arraysEqual(validationUserAnswer, question.expectedState)) {
+      validationFeedback.textContent = "Bonne réponse.";
+      validationFeedback.style.color = "green";
+      validationCheckBtn.classList.add("hidden");
+
+      if (validationIndex < questions.length - 1) {
+        validationNextBtn.classList.remove("hidden");
+      } else {
+        model.addValidationSuccess();
+        historyView.update();
+
+        validationPanel.classList.add('hidden');
+        validationSuccessModal?.classList.remove('hidden');
+      }
+    } else {
+      validationFeedback.textContent = "Ce n'est pas la bonne réponse.";
+      validationFeedback.style.color = "red";
+    }
   }
 
   // ───────────────────────────────────────────────
@@ -218,9 +302,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   document.getElementById('start-validation')?.addEventListener('click', async () => {
     victoryModal?.classList.add('hidden');
-    await model.setValidation();
-    view.render(model.getState());
-    historyView.update();
-    renderObjective(model.rule.description, model.rule.targetState);
+    validationIndex = 0;
+    openValidationQuestion();
+  });
+  validationCheckBtn?.addEventListener('click', () => {
+    checkValidationAnswer();
+  });
+
+  validationNextBtn?.addEventListener('click', () => {
+    validationIndex++;
+    openValidationQuestion();
+  });
+
+  validationCloseBtn?.addEventListener('click', () => {
+    validationPanel.classList.add('hidden');
+  });
+  document.getElementById('close-validation-success')?.addEventListener('click', () => {
+    validationSuccessModal?.classList.add('hidden');
   });
 });
