@@ -209,7 +209,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const destinataire = "test@test.fr";
     const sujet = encodeURIComponent(`Résultats session du ${now.toLocaleDateString('fr-FR')} à ${now.toLocaleTimeString('fr-FR')}`);
 // → "Résultats session du 25/03/2026 à 13:33:01"
-    const corps = encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-dessous les résultats de la session :\n\n${json}`);
+    //const corps = encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-dessous les résultats de la session :\n\n${json}`);
+    const contenu = document.getElementById('actions-list').innerText;
+    const corps = encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-dessous les résultats de la session :\n\n${contenu}`);
 
     window.location.href = `mailto:${destinataire}?subject=${sujet}&body=${corps}`;
 
