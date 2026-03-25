@@ -4,6 +4,7 @@ class Model {
     constructor() {
         this.buttons = Array(9).fill(false);
         this.actions = [];
+        this.globalActions = []; // toute la session, jamais vidé
         this.currentTest = 1;
         this.currentDifficulty = 'facile';
         this.isValidation = false;
@@ -24,6 +25,7 @@ class Model {
 
     action.stateAfter = [...this.buttons];
     this.actions.push(action);
+    this.globalActions.push(action); // ajout session globale
     this.historiques.push(action);
     console.log(this.buttons)
   }
@@ -34,13 +36,15 @@ class Model {
         ? `Test${this.currentTest} Validation ${diffLabel}`
         : `Test${this.currentTest} ${diffLabel}`;
 
-    this.actions.push({
+    const loadAction = {
         type: 'load',
         testLabel,
         timestamp: new Date().toLocaleTimeString(),
         stateBefore: [...this.buttons],
         stateAfter: Array(9).fill(false)
-    });
+    };
+    this.actions.push(loadAction);
+    this.globalActions.push(loadAction); // ajout session globale
     this.historiques = [];
     this.buttons.fill(false);
   }
@@ -57,10 +61,12 @@ class Model {
   }
 
     addVictory() {
-        this.actions.push({
+        const victoryAction = {
             type: 'victory',
             timestamp: new Date().toLocaleTimeString(),
-        });
+        };
+        this.actions.push(victoryAction);
+        this.globalActions.push(victoryAction); // ajout session globale
     }
     addValidationSuccess() {
         this.actions.push({
@@ -78,7 +84,20 @@ class Model {
     await this.rule.load();   // on attend le chargement
     this.reset();
   }
+  exportJSON() {
+    return {
+      exportedAt: new Date().toLocaleString(),
+      actions: this.globalActions // toute la session
+    };
+  }
 
+  async setValidation  () {
+    this.isValidation = true;
+    this.actions = [];
+    this.rule = new Rule(this.currentTest, this.currentDifficulty, true);
+    await this.rule.load();
+    this.reset();
+  }
 }
 
 export const model = new Model();

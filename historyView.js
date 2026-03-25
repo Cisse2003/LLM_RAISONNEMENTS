@@ -16,7 +16,7 @@ export const historyView = {
   },
 
   update() {
-    const actions = model.getActions();
+    const actions = model.globalActions;
     if (!actions || actions.length === 0) {
       this.list.innerHTML = '<p>Aucune action pour l\'instant</p>';
       return;
