@@ -194,13 +194,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById('export')?.addEventListener('click', () => {
     const data = model.exportJSON();
     const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
+
+    /*const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `resultats_session.json`;
+
+    const now = new Date();
+    const timestamp = now.toISOString().replace(/[:.]/g, '-').slice(0, 19);
+    a.download = `resultats_session_${timestamp}.json`;
     a.click();
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(url);*/
+    const now = new Date();
+    const destinataire = "test@test.fr";
+    const sujet = encodeURIComponent(`Résultats session du ${now.toLocaleDateString('fr-FR')} à ${now.toLocaleTimeString('fr-FR')}`);
+// → "Résultats session du 25/03/2026 à 13:33:01"
+    const corps = encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-dessous les résultats de la session :\n\n${json}`);
+
+    window.location.href = `mailto:${destinataire}?subject=${sujet}&body=${corps}`;
+
   });
   document.getElementById('start-validation')?.addEventListener('click', async () => {
     victoryModal?.classList.add('hidden');
