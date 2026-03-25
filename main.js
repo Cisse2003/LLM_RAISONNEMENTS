@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const validationNextBtn = document.getElementById('validation-next');
   const validationCloseBtn = document.getElementById('validation-close');
   const validationFeedback = document.getElementById('validation-feedback');
+  const validationSuccessModal = document.getElementById('validation-success-modal');
 
   let validationIndex = 0;
   let validationUserAnswer = Array(9).fill(0);
@@ -125,8 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         historyView.update();
 
         validationPanel.classList.add('hidden');
-
-        alert("Bravo ! Vous avez réussi la validation.");
+        validationSuccessModal?.classList.remove('hidden');
       }
     } else {
       validationFeedback.textContent = "Ce n'est pas la bonne réponse.";
@@ -287,5 +287,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   validationCloseBtn?.addEventListener('click', () => {
     validationPanel.classList.add('hidden');
+  });
+  document.getElementById('close-validation-success')?.addEventListener('click', () => {
+    validationSuccessModal?.classList.add('hidden');
   });
 });
