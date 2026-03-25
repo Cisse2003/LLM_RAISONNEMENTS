@@ -69,10 +69,13 @@ class Model {
         this.globalActions.push(victoryAction); // ajout session globale
     }
     addValidationSuccess() {
-        this.actions.push({
+        const validationAction = {
             type: 'validation-success',
             timestamp: new Date().toLocaleTimeString(),
-        });
+        };
+
+        this.actions.push(validationAction);
+        this.globalActions.push(validationAction);
     }
   // Maintenant async !
   async setTest(testNumber, difficulty = 'facile') {
