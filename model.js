@@ -1,13 +1,15 @@
 import { Rule } from './rules.js';
 
 class Model {
-  constructor() {
-    this.buttons = Array(9).fill(false);
-    this.actions = [];
-    this.currentTest = 1;
-    this.rule = new Rule(this.currentTest);
-    this.historiques = [];
-  }
+    constructor() {
+        this.buttons = Array(9).fill(false);
+        this.actions = [];
+        this.currentTest = 1;
+        this.currentDifficulty = 'facile';
+        this.isValidation = false;
+        this.rule = new Rule(this.currentTest);
+        this.historiques = [];
+    }
 
   toggle(index) {
     const action = {
@@ -27,9 +29,14 @@ class Model {
   }
 
   reset() {
+    const diffLabel = this.currentDifficulty.charAt(0).toUpperCase() + this.currentDifficulty.slice(1);
+    const testLabel = this.isValidation
+        ? `Test${this.currentTest} Validation ${diffLabel}`
+        : `Test${this.currentTest} ${diffLabel}`;
+
     this.actions.push({
-        type: 'clear',
-        button: null,
+        type: 'load',
+        testLabel,
         timestamp: new Date().toLocaleTimeString(),
         stateBefore: [...this.buttons],
         stateAfter: Array(9).fill(false)
@@ -48,13 +55,28 @@ class Model {
   getHistoriques  () {
     return this.historiques;
   }
+
+    addVictory() {
+        this.actions.push({
+            type: 'victory',
+            timestamp: new Date().toLocaleTimeString(),
+        });
+    }
   // Maintenant async !
   async setTest(testNumber, difficulty = 'facile') {
     this.currentTest = testNumber;
     this.currentDifficulty = difficulty;
+    this.isValidation = false;
     this.actions = [];
-    this.rule = new Rule(this.currentTest, this.currentDifficulty);
+    this.rule = new Rule(this.currentTest, this.currentDifficulty,false);
     await this.rule.load();   // on attend le chargement
+    this.reset();
+  }
+  async setValidation  () {
+    this.isValidation = true;
+    this.actions = [];
+    this.rule = new Rule(this.currentTest, this.currentDifficulty, true);
+    await this.rule.load();
     this.reset();
   }
 }

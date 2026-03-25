@@ -29,6 +29,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     const current = model.getState().map(b => b ? 1 : 0);
     const target = model.rule.targetState;
     if (JSON.stringify(current) === JSON.stringify(target)) {
+      model.addVictory();
+      historyView.update();
+      // Afficher ou masquer le bouton de validation selon le JSON
+      const validationBtn = document.getElementById('start-validation');
+      if (model.rule.hasValidation && !model.isValidation) {
+        validationBtn?.classList.remove('hidden');
+      } else {
+        validationBtn?.classList.add('hidden');
+      }
       victoryModal?.classList.remove('hidden');
     }
   }
@@ -177,5 +186,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.getElementById('close-victory')?.addEventListener('click', () => {
     victoryModal?.classList.add('hidden');
+  });
+  document.getElementById('start-validation')?.addEventListener('click', async () => {
+    victoryModal?.classList.add('hidden');
+    await model.setValidation();
+    view.render(model.getState());
+    historyView.update();
+    renderObjective(model.rule.description, model.rule.targetState);
   });
 });

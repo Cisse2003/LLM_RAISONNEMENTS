@@ -162,19 +162,42 @@ button:hover {
   color: #e2e8f0;
 }
 
-#close-victory {
+#victory-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
 
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background 0.2s;
+#close-victory,
+#start-validation {
+    width: 100%;
+    height: auto;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#close-victory {
+    background: #3b82f6;
+    color: white;
 }
 
 #close-victory:hover {
   background: #2563eb;
+}
+
+#start-validation {
+    background: #f59e0b;
+    color: white;
+}
+
+#start-validation:hover {
+    background: #d97706;
 }
 
 .hidden {

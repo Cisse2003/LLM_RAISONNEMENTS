@@ -6,14 +6,15 @@ export const historyView = {
   init() {
     this.list = document.getElementById('actions-list');
   },
-  updateClear() {
 
+  updateClear() {
     this.list.innerHTML = `
       <div>
         <strong>Action CLEAR :</strong> 
       </div>
     `
   },
+
   update() {
     const actions = model.getActions();
     if (!actions || actions.length === 0) {
@@ -22,10 +23,24 @@ export const historyView = {
     }
 
     this.list.innerHTML = actions.map((a, idx) => {
+      if (a.type === 'load') {
+        return `
+          <div class="action-load">
+            <strong>📂 ${a.testLabel}</strong> — chargé à ${a.timestamp}
+          </div>
+        `;
+      }
+      if (a.type === 'victory') {
+        return `
+          <div class="action-victory">
+             <strong>Objectif atteint !</strong> à ${a.timestamp}
+          </div>
+        `;
+      }
       if (a.type === 'clear') {
         return `
           <div class="action-clear">
-            <strong>Action ${idx + 1} :</strong> 🗑️ CLEAR à ${a.timestamp}
+            <strong>Action ${idx + 1} :</strong>  CLEAR à ${a.timestamp}
           </div>
         `;
       }
