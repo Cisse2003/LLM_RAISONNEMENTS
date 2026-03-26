@@ -2,32 +2,6 @@
   "description": "Allumer uniquement le bouton 2, 4, 5, 6 et 8",
   "targetState": [0,1,0,1,1,1,0,1,0],
   "difficulty": "difficile",
-  "validationQuestions": [
-    {
-      "description": "Si l'état initial est vide et qu'on clique sur le bouton 1, quel sera l'état suivant ?",
-      "initialState": [0,0,0,0,0,0,0,0,0],
-      "clickButton": 1,
-      "expectedState": [1,1,0,0,0,0,0,0,0]
-    },
-    {
-      "description": "Si l'état initial est vide et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
-      "initialState": [0,0,0,0,0,0,0,0,0],
-      "clickButton": 5,
-      "expectedState": [0,0,0,1,1,1,0,0,0]
-    },
-    {
-      "description": "Si tous les boutons sont allumés et qu'on clique sur le bouton 3, quel sera l'état suivant ?",
-      "initialState": [1,1,1,1,1,1,1,1,1],
-      "clickButton": 3,
-      "expectedState": [1,0,0,0,1,1,1,1,1]
-    },
-    {
-      "description": "Si les boutons 2, 4, 6 et 8 sont allumés et qu'on clique sur le bouton 9, quel sera l'état suivant ?",
-      "initialState": [0,1,0,1,0,1,0,1,0],
-      "clickButton": 9,
-      "expectedState": [0,1,0,1,0,1,0,0,1]
-    }
-  ],
   "rule": [
     "function xorVoisins(buttons, i) {",
     "  let voisins = [i];",

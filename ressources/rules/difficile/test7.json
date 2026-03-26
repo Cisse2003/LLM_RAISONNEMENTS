@@ -2,32 +2,6 @@
   "description": "Allumer uniquement les boutons 2, 4, 5 et 6",
   "targetState": [0,1,0,1,1,1,0,0,0],
   "difficulty": "difficile",
-  "validationQuestions": [
-    {
-      "description": "Si l'état initial est vide et qu'on clique sur le bouton 5 (centre), quel sera l'état suivant ?",
-      "initialState": [0,0,0,0,0,0,0,0,0],
-      "clickButton": 5,
-      "expectedState": [1,0,1,0,1,0,1,0,1]
-    },
-    {
-      "description": "Si l'état initial est vide et qu'on clique sur le bouton 1, quel sera l'état suivant ?",
-      "initialState": [0,0,0,0,0,0,0,0,0],
-      "clickButton": 1,
-      "expectedState": [1,0,0,0,1,0,0,0,1]
-    },
-    {
-      "description": "Si l'état initial est vide et qu'on clique sur le bouton 9, quel sera l'état suivant ?",
-      "initialState": [0,0,0,0,0,0,0,0,0],
-      "clickButton": 9,
-      "expectedState": [1,0,0,0,1,0,0,0,1]
-    },
-    {
-      "description": "Si tous les boutons sont allumés et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
-      "initialState": [1,1,1,1,1,1,1,1,1],
-      "clickButton": 5,
-      "expectedState": [0,1,0,1,0,1,0,1,0]
-    }
-  ],
   "rule": [
     "let row = Math.floor(index / 3), col = index % 3;",
     "",

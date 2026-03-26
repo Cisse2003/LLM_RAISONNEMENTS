@@ -1,31 +1,38 @@
 {
-  "description": "Allumer uniquement le bouton 3",
-  "targetState": [0,0,1,0,0,0,0,0,0],
-  "difficulty": "difficile",
-  "validationQuestions": [
-    {
-      "description": "Si l'historique est [bouton 2] et qu'on clique sur le bouton 1, quel sera l'état suivant ?",
-      "initialState": [0,0,0,0,0,0,0,0,0],
-      "historique": [{"button": 2}],
-      "clickButton": 1,
-      "expectedState": [1,0,0,0,0,0,0,0,0]
-    },
-    {
-      "description": "Si l'historique est [bouton 1, bouton 3] et qu'on clique sur le bouton 2, quel sera l'état suivant ?",
-      "initialState": [1,0,1,0,0,0,0,0,0],
-      "historique": [{"button": 1}, {"button": 3}],
-      "clickButton": 2,
-      "expectedState": [0,0,0,0,0,0,0,0,0]
-    },
-    {
-      "description": "Si l'historique est [bouton 4, bouton 2] et qu'on clique sur le bouton 6, quel sera l'état suivant ?",
-      "initialState": [0,0,0,0,0,0,0,0,0],
-      "historique": [{"button": 4}, {"button": 2}],
-      "clickButton": 6,
-      "expectedState": [0,0,0,0,0,0,0,0,0]
-    }
-  ],
-  "rule": [
+    "description": "Allumer uniquement le bouton 3",
+    "targetState": [0,0,1,0,0,0,0,0,0],
+    "difficulty": "difficile",
+    "validationQuestions": [
+        {
+            "description": "L'historique est vide. On clique sur le bouton 1. Quel est l'état suivant ?",
+            "historique": [],
+            "initialState": [0,0,0,0,0,0,0,0,0],
+            "clickButton": 1,
+            "expectedState": [0,0,0,0,0,0,0,0,0]
+        },
+        {
+            "description": "On a déjà cliqué sur le bouton 1. On clique maintenant sur le bouton 4. Quel est l'état suivant ?",
+            "historique": [{"button": 1}],
+            "initialState": [0,0,0,0,0,0,0,0,0],
+            "clickButton": 4,
+            "expectedState": [0,0,0,1,0,0,0,0,0]
+        },
+        {
+            "description": "On a déjà cliqué sur les boutons 1, 4 et 2. On clique maintenant sur le bouton 7. Quel est l'état suivant ?",
+            "historique": [{"button": 1}, {"button": 4}, {"button": 2}],
+            "initialState": [0,0,0,1,0,0,0,0,0],
+            "clickButton": 7,
+            "expectedState": [0,0,0,0,0,0,1,0,0]
+        },
+        {
+            "description": "On a déjà cliqué sur les boutons 1, 4, 2 et 7. On clique maintenant sur le bouton 6. Quel est l'état suivant ?",
+            "historique": [{"button": 1}, {"button": 4}, {"button": 2}, {"button": 7}],
+            "initialState": [0,0,0,0,0,0,0,0,0],
+            "clickButton": 6,
+            "expectedState": [0,0,0,0,0,0,0,0,0]
+        }
+    ],
+    "rule": [
     "let pairs = 0, impairs = 0;",
     "for (let h of historiques) {",
     "  if (h.button % 2 === 0) pairs++;",
