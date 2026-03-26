@@ -5,7 +5,7 @@
   "validationQuestions": [
     {
       "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 1, quel sera l'état suivant ?",
-      "initialState": [0,0,0,0,0,0,0,0,0],
+      "initialState": [0,0,0,0,0,1,0,0,0],
       "clickButton": 1,
       "expectedState": [0,0,0,0,0,0,0,0,1]
     },
