@@ -11,21 +11,21 @@
       "expectedState": [0,0,0,0,0,0,0,0,0]
     },
     {
-      "description": "Si On a déjà cliqué sur 5 et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
+      "description": "On a déjà cliqué sur 5 et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
       "initialState": [0,0,0,0,0,0,0,0,0],
       "historique": [{"button": 5}],
       "clickButton": 5,
       "expectedState": [0,0,0,0,0,0,0,0,0]
     },
     {
-      "description": "Si On a déjà cliqué sur 5 puis encore 5 et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
+      "description": "On a déjà cliqué sur 5 puis encore 5 et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
       "initialState": [0,0,0,0,0,0,0,0,0],
       "historique": [{"button": 5}, {"button": 5}],
       "clickButton": 5,
       "expectedState": [0,0,0,0,1,0,0,0,0]
     },
     {
-      "description": "Si On a déjà cliqué sur 2 puis 2 puis 2 et qu'on clique sur le bouton 2, quel sera l'état suivant ?",
+      "description": "On a déjà cliqué sur 2 puis 2 puis 2 et qu'on clique sur le bouton 2, quel sera l'état suivant ?",
       "initialState": [0,0,0,0,0,0,0,0,0],
       "historique": [{"button": 2}, {"button": 2}, {"button": 2}],
       "clickButton": 2,
