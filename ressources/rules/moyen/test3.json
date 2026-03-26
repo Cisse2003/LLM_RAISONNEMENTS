@@ -1,36 +1,30 @@
 {
-  "description": "Allumer uniquement le bouton 6",
-  "targetState": [0,0,0,0,0,1,0,0,0],
+  "description": "Allumer uniquement les boutons 6 et 9",
+  "targetState": [0,0,0,0,0,1,0,0,1],
   "difficulty": "intermédiaire",
   "validationQuestions": [
     {
-      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 7, quel sera l'état suivant ?",
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 6, quel sera l'état suivant ?",
       "initialState": [0,0,0,0,0,0,0,0,0],
-      "clickButton": 7,
-      "expectedState": [0,0,0,0,0,1,0,0,0]
+      "clickButton": 6,
+      "expectedState": [0,0,0,0,0,1,1,0,0]
     },
     {
-      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 2, quel sera l'état suivant ?",
-      "initialState": [0,0,0,0,0,1,0,0,0],
-      "clickButton": 2,
-      "expectedState": [0,1,0,0,0,0,0,0,0]
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 3, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,0,1,1,0,0],
+      "clickButton": 3,
+      "expectedState": [0,0,1,0,0,1,0,0,0]
     },
     {
       "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 9, quel sera l'état suivant ?",
-      "initialState": [1,0,0,0,0,0,0,0,0],
+      "initialState": [0,0,0,0,0,1,1,0,0],
       "clickButton": 9,
-      "expectedState": [0,0,0,0,0,0,0,1,0]
+      "expectedState": [0,0,0,0,0,1,0,0,1]
     }
   ],
   "rule": [
-    "buttons.fill(false);",
-    "let numero = index + 1;",
-    "if (numero % 2 === 0) {",
-    "  let suivant = (index + 1) % 9;",
-    "  buttons[suivant] = true;",
-    "} else {",
-    "  let precedent = (index - 1 + 9) % 9;",
-    "  buttons[precedent] = true;",
-    "}"
+    "buttons[index] = !buttons[index];",
+    "let lie = ((index+1) * 3) % 9;",
+    "if (lie !== index) buttons[lie-1] = !buttons[lie];"
   ]
 }

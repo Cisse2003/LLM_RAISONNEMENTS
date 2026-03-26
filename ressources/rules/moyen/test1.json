@@ -23,6 +23,7 @@
     }
   ],
   "rule": [
-    "buttons[(index * 2) % 9] = !buttons[(index * 2) % 9]"
+    "index = index+1",
+    "buttons[(index * 2) % 9 - 1] = !buttons[(index * 2) % 9]"
   ]
 }
