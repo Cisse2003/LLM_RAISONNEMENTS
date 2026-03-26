@@ -2,6 +2,32 @@
   "description": "Allumer uniquement le bouton 7",
   "targetState": [0,0,0,0,0,0,1,0,0],
   "difficulty": "difficile",
+  "validationQuestions": [
+    {
+      "description": "Si l'état initial est vide et qu'on clique sur le bouton 1, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 1,
+      "expectedState": [1,0,0,0,0,0,0,0,0]
+    },
+    {
+      "description": "Si les boutons 1, 2, 3, 4 et 5 sont allumés et qu'on clique sur le bouton 8, quel sera l'état suivant ?",
+      "initialState": [1,1,1,1,1,0,0,0,0],
+      "clickButton": 8,
+      "expectedState": [1,1,1,1,1,0,1,1,0]
+    },
+    {
+      "description": "Si les boutons 1 à 6 sont allumés et qu'on clique sur le bouton 9, quel sera l'état suivant ?",
+      "initialState": [1,1,1,1,1,1,0,0,0],
+      "clickButton": 9,
+      "expectedState": [1,1,1,1,1,1,0,0,1]
+    },
+    {
+      "description": "Si les boutons 1 à 6 et 9 sont allumés et qu'on clique sur le bouton 9, quel sera l'état suivant ?",
+      "initialState": [1,1,1,1,1,1,0,0,1],
+      "clickButton": 9,
+      "expectedState": [1,1,1,1,1,1,1,0,0]
+    }
+  ],
   "rule": [
     "buttons[index] = !buttons[index];",
     "",
