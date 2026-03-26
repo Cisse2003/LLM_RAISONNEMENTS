@@ -6,28 +6,66 @@ export const historyView = {
   init() {
     this.list = document.getElementById('actions-list');
   },
-  updateClear() {
 
+  updateClear() {
     this.list.innerHTML = `
       <div>
         <strong>Action CLEAR :</strong> 
       </div>
     `
   },
+
   update() {
-    const actions = model.getActions();
+    const actions = model.globalActions;
     if (!actions || actions.length === 0) {
       this.list.innerHTML = '<p>Aucune action pour l\'instant</p>';
       return;
     }
 
     this.list.innerHTML = actions.map((a, idx) => {
+      if (a.type === 'load') {
+        return `
+          <div class="action-load">
+            <strong>📂 ${a.testLabel}</strong> — chargé à ${a.timestamp}
+          </div>
+        `;
+      }
+      if (a.type === 'victory') {
+        return `
+          <div class="action-victory">
+             <strong>Objectif atteint !</strong> à ${a.timestamp}
+          </div>
+        `;
+      }
+      if (a.type === 'validation-success') {
+        return `
+        <div class="action-validation-success">
+          <strong>Validation réussie !</strong> à ${a.timestamp}
+        </div>
+      `;
+      }
       if (a.type === 'clear') {
         return `
           <div class="action-clear">
-            <strong>Action ${idx + 1} :</strong> 🗑️ CLEAR à ${a.timestamp}
+            <strong>Action ${idx + 1} :</strong>  CLEAR à ${a.timestamp}
           </div>
         `;
+      }
+      if (a.type === 'validation-question') {
+          return `
+      <div class="action-validation-question">
+        <strong>Phase de validation — Question ${a.questionIndex}</strong> :
+        ${a.status} à ${a.timestamp}
+      </div>
+    `;
+      }
+
+        if (a.type === 'validation-failure') {
+          return `
+      <div class="action-validation-failure">
+        <strong>Validation échouée</strong> à ${a.timestamp}
+      </div>
+    `;
       }
       return `
         <div>

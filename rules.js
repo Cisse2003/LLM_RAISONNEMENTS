@@ -1,10 +1,13 @@
 export class Rule {
-  constructor(testNumber = 1, difficulty = 'facile') {
+  constructor(testNumber = 1, difficulty = 'facile', isValidation = false) {
     this.testNumber = testNumber;
     this.description = "Objectif non défini";
     this.difficulty = difficulty;
+    this.isValidation = isValidation;
     this.targetState = Array(9).fill(0);
     this.ruleCode = [];
+    this.hasValidation = false;
+    this.validationQuestions = [];
   }
 
   // Méthode async pour charger les données
@@ -17,11 +20,13 @@ export class Rule {
       }
       const data = await response.json();
 
-      this.description  = data.description  || this.description;
-      this.targetState  = data.targetState  || this.targetState;
-      this.ruleCode     = data.rule         || this.ruleCode;
+      this.ruleCode = data.rule || this.ruleCode;
+      this.description = data.description || this.description;
+      this.targetState = data.targetState || this.targetState;
+      this.validationQuestions = data.validationQuestions || [];
+      this.hasValidation = this.validationQuestions.length > 0;
 
-      console.log(`Règle test ${this.testNumber} chargée avec succès`);
+      console.log(`Règle test ${this.testNumber} (${this.isValidation ? 'validation' : 'normal'}) chargée avec succès`);
     } catch (err) {
       console.error(`Impossible de charger ${jsonPath}`, err);
     }

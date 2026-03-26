@@ -11,6 +11,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   const objectiveGrid = document.getElementById('objective-grid');
   const victoryModal = document.getElementById('victory-modal');
 
+
+  const validationPanel = document.getElementById('validation-panel');
+  const validationQuestionText = document.getElementById('validation-question-text');
+  const validationInitialGrid = document.getElementById('validation-initial-grid');
+  const validationAnswerGrid = document.getElementById('validation-answer-grid');
+  const validationClickInfo = document.getElementById('validation-click-info');
+  const validationCheckBtn = document.getElementById('validation-check');
+  const validationNextBtn = document.getElementById('validation-next');
+  const validationCloseBtn = document.getElementById('validation-close');
+  const validationFeedback = document.getElementById('validation-feedback');
+  const validationSuccessModal = document.getElementById('validation-success-modal');
+  const validationFailureModal = document.getElementById('validation-failure-modal');
+
+  let validationIndex = 0;
+  let validationUserAnswer = Array(9).fill(0);
+
   // ───────────────────────────────────────────────
   // Fonctions utilitaires
   // ───────────────────────────────────────────────
@@ -29,6 +45,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     const current = model.getState().map(b => b ? 1 : 0);
     const target = model.rule.targetState;
     if (JSON.stringify(current) === JSON.stringify(target)) {
+      model.addVictory();
+      historyView.update();
+      // Afficher ou masquer le bouton de validation selon le JSON
+      const validationBtn = document.getElementById('start-validation');
+      if (model.rule.hasValidation && !model.isValidation) {
+        validationBtn?.classList.remove('hidden');
+      } else {
+        validationBtn?.classList.add('hidden');
+      }
       victoryModal?.classList.remove('hidden');
     }
   }
@@ -39,6 +64,88 @@ document.addEventListener("DOMContentLoaded", async () => {
     historyView.update();
     renderObjective(model.rule.description, model.rule.targetState);
     checkVictory();
+  }
+
+  function renderMiniGrid(container, state, clickable = false, onClick = null) {
+    container.innerHTML = "";
+
+    state.forEach((cell, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = i + 1;
+
+      if (cell) btn.classList.add("on");
+
+      if (clickable && onClick) {
+        btn.addEventListener("click", () => onClick(i));
+      }
+
+      container.appendChild(btn);
+    });
+  }
+  function renderAnswerGrid() {
+    renderMiniGrid(validationAnswerGrid, validationUserAnswer, true, (i) => {
+      validationUserAnswer[i] = validationUserAnswer[i] ? 0 : 1;
+      renderAnswerGrid();
+    });
+  }
+  function openValidationQuestion() {
+    const questions = model.rule.validationQuestions || [];
+    const question = questions[validationIndex];
+    if (!question) return;
+
+    validationUserAnswer = Array(9).fill(0);
+    validationFeedback.textContent = "";
+    validationCheckBtn.classList.remove("hidden");
+
+    validationCloseBtn.classList.add("hidden");
+
+    validationQuestionText.textContent = question.description;
+    validationClickInfo.textContent = `On clique sur le bouton ${question.clickButton}`;
+
+    renderMiniGrid(validationInitialGrid, question.initialState);
+    renderAnswerGrid();
+
+    validationPanel.classList.remove("hidden");
+  }
+  function arraysEqual(a, b) {
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+  function checkValidationAnswer() {
+    const questions = model.rule.validationQuestions || [];
+    const question = questions[validationIndex];
+    if (!question) return;
+
+    const isCorrect = arraysEqual(validationUserAnswer, question.expectedState);
+
+    // Afficher le retour utilisateur
+    validationFeedback.textContent = isCorrect
+        ? "Bonne réponse."
+        : "Ce n'est pas la bonne réponse.";
+    validationFeedback.style.color = isCorrect ? "green" : "red";
+
+    // Enregistrer dans l'historique
+    model.addValidationQuestionResult(validationIndex, isCorrect);
+    historyView.update();
+
+    // Passer automatiquement à la suite après un court délai
+    setTimeout(() => {
+      if (validationIndex < questions.length - 1) {
+        validationIndex++;
+        openValidationQuestion();
+      } else {
+        validationPanel.classList.add('hidden');
+
+        if (model.validationAllCorrect) {
+          model.addValidationSuccess();
+          historyView.update();
+          validationSuccessModal?.classList.remove('hidden');
+        } else {
+          model.addValidationFailure();
+          historyView.update();
+          validationFailureModal?.classList.remove('hidden');
+        }
+      }
+    }, 700);
   }
 
   // ───────────────────────────────────────────────
@@ -177,5 +284,56 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.getElementById('close-victory')?.addEventListener('click', () => {
     victoryModal?.classList.add('hidden');
+  });
+
+  // ───────────────────────────────────────────────
+  // Téléchargement résultats JSON
+  // ───────────────────────────────────────────────
+  document.getElementById('export')?.addEventListener('click', () => {
+    const data = model.exportJSON();
+    const json = JSON.stringify(data, null, 2);
+
+    /*const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+
+    const now = new Date();
+    const timestamp = now.toISOString().replace(/[:.]/g, '-').slice(0, 19);
+    a.download = `resultats_session_${timestamp}.json`;
+    a.click();
+    URL.revokeObjectURL(url);*/
+    const now = new Date();
+    const destinataire = "test@test.fr";
+    const sujet = encodeURIComponent(`Résultats session du ${now.toLocaleDateString('fr-FR')} à ${now.toLocaleTimeString('fr-FR')}`);
+// → "Résultats session du 25/03/2026 à 13:33:01"
+    //const corps = encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-dessous les résultats de la session :\n\n${json}`);
+    const contenu = document.getElementById('actions-list').innerText;
+    const corps = encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-dessous les résultats de la session :\n\n${contenu}`);
+
+    window.location.href = `mailto:${destinataire}?subject=${sujet}&body=${corps}`;
+
+  });
+  document.getElementById('start-validation')?.addEventListener('click', async () => {
+    victoryModal?.classList.add('hidden');
+    validationIndex = 0;
+    await model.setValidation();
+    historyView.update();
+    openValidationQuestion();
+  });
+  validationCheckBtn?.addEventListener('click', () => {
+    checkValidationAnswer();
+  });
+
+
+
+  validationCloseBtn?.addEventListener('click', () => {
+    validationPanel.classList.add('hidden');
+  });
+  document.getElementById('close-validation-success')?.addEventListener('click', () => {
+    validationSuccessModal?.classList.add('hidden');
+  });
+  document.getElementById('close-validation-failure')?.addEventListener('click', () => {
+    validationFailureModal?.classList.add('hidden');
   });
 });

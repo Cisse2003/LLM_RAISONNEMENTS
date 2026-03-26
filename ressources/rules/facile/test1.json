@@ -2,6 +2,14 @@
   "description": "Allumer uniquement le bouton 9",
   "targetState": [0,0,0,0,0,0,0,0,1],
   "difficulty": "facile",
+  "validationQuestions": [
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 6, quel sera l'état suivant ?",
+      "initialState": [1,1,0,0,1,0,1,0,0],
+      "clickButton": 6,
+      "expectedState": [1,1,0,0,1,1,1,0,0]
+    }
+  ],
   "rule": [
     "buttons[index%9] = !buttons[index%9]"
   ]
