@@ -43,6 +43,7 @@
     "buttons.fill(false);",
     "if (count >= 2) {",
     "  buttons[index] = true;",
-    "}"
+    "}",
+    "// sol : 5,5,5"
   ]
 }

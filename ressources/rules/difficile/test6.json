@@ -2,6 +2,36 @@
   "description": "Allumer tous les boutons",
   "targetState": [1,1,1,1,1,1,1,1,1],
   "difficulty": "difficile",
+  "validationQuestions": [
+    {
+      "description": "L'historique est vide. On clique sur le bouton 1. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 1,
+      "expectedState": [0,0,0,0,1,0,0,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur le bouton 1. On clique maintenant sur le bouton 2. Quel est l'état suivant ?",
+      "historique": [{"button": 1}],
+      "initialState": [0,0,0,0,1,0,0,0,0],
+      "clickButton": 2,
+      "expectedState": [0,0,0,1,1,1,0,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur les boutons 1 et 2. On clique maintenant sur le bouton 4. Quel est l'état suivant ?",
+      "historique": [{"button": 1}, {"button": 2}],
+      "initialState": [0,0,0,1,1,1,0,0,0],
+      "clickButton": 4,
+      "expectedState": [0,1,0,1,1,1,0,1,0]
+    },
+    {
+      "description": "On a déjà cliqué sur les boutons 1, 2 et 4. On clique maintenant sur le bouton 5. Quel est l'état suivant ?",
+      "historique": [{"button": 1}, {"button": 2}, {"button": 4}],
+      "initialState": [0,1,0,1,1,1,0,1,0],
+      "clickButton": 5,
+      "expectedState": [1,1,1,1,1,1,1,1,1]
+    }
+  ],
   "rule": [
     "function appliquerClic(buttons, index) {",
     "  let row = Math.floor(index / 3);",
@@ -20,6 +50,7 @@
     "for (let h of historiques) {",
     "  appliquerClic(buttons, h.button - 1);",
     "}",
-    "appliquerClic(buttons, index);"
+    "appliquerClic(buttons, index);",
+    "// sol : 1,2,4,5 (autres solutions : 1,2,5,6 | 1,4,5,8 | 2,4,5,6)"
   ]
 }

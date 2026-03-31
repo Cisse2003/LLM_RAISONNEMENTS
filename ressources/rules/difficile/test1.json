@@ -44,6 +44,7 @@
     "buttons.fill(false);",
     "if (pairs === impairs && pairs > 0) {",
     "  buttons[index] = true;",
-    "}"
+    "}",
+    "// sol : 2,3 (autres solutions : 4,3 | 6,3 | 8,3)"
   ]
 }
