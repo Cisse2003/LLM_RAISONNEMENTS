@@ -1,0 +1,48 @@
+{
+  "description": "Allumer uniquement le bouton 2, 4, 5, 6 et 8",
+  "targetState": [0,1,0,1,1,1,0,1,0],
+  "difficulty": "difficile",
+  "validationQuestions": [
+    {
+      "description": "L'historique est vide. On clique sur le bouton 1. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 1,
+      "expectedState": [1,1,0,0,0,0,0,0,0]
+    },
+    {
+      "description": "L'historique est vide. On clique sur le bouton 5. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 5,
+      "expectedState": [0,0,0,1,1,1,0,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur le bouton 3. On clique maintenant sur le bouton 4. Quel est l'état suivant ?",
+      "historique": [{"button": 3}],
+      "initialState": [0,1,1,1,0,0,0,0,0],
+      "clickButton": 4,
+      "expectedState": [0,1,0,0,1,0,0,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur les boutons 3 et 4. On clique maintenant sur le bouton 5. Quel est l'état suivant ?",
+      "historique": [{"button": 3}, {"button": 4}],
+      "initialState": [0,1,0,0,1,0,0,0,0],
+      "clickButton": 5,
+      "expectedState": [0,1,0,1,0,1,0,0,0]
+    }
+  ],
+  "rule": [
+    "function xorVoisins(buttons, i) {",
+    "  let voisins = [i];",
+    "  if (i - 1 >= 0) voisins.push(i - 1);",
+    "  if (i + 1 <= 8) voisins.push(i + 1);",
+    "  for (let v of voisins) {",
+    "    buttons[v] = !buttons[v];",
+    "  }",
+    "}",
+    "",
+    "xorVoisins(buttons, index);",
+    "// sol : 3,4,5,6,7 (autres solutions : 3,4,5,7,6 | 3,4,6,7,5 | 4,5,6,7,3)"
+  ]
+}
