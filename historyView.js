@@ -67,6 +67,13 @@ export const historyView = {
       </div>
     `;
       }
+      if (a.type === 'validation-abandon') {
+        return `
+        <div class="action-validation-abandon">
+            <strong>Validation abandonnée</strong> à ${a.timestamp}
+        </div>
+    `;
+      }
       return `
         <div>
           <strong>Action ${idx + 1} :</strong> Bouton ${a.button} cliqué à ${a.timestamp}<br>

@@ -1,25 +1,44 @@
 {
-  "description": "Allumer tous les boutons",
-  "targetState": [1,1,1,1,1,1,1,1,1],
+  "description": "Allumer uniquement les boutons 1, 3 et 7",
+  "targetState": [1,0,1,0,0,0,1,0,0],
   "difficulty": "difficile",
+  "validationQuestions": [
+    {
+      "description": "L'historique est vide. On clique sur le bouton 5. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 5,
+      "expectedState": [0,1,0,1,1,1,0,1,0]
+    },
+    {
+      "description": "L'historique est vide. On clique sur le bouton 2. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [1,1,0,1,1,0,0,0,0],
+      "clickButton": 2,
+      "expectedState": [0,0,1,1,0,0,0,0,0]
+    },
+    {
+      "description": "L'historique est vide. On clique sur le bouton 4. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [0,0,1,1,1,0,0,0,0],
+      "clickButton": 4,
+      "expectedState": [1,0,1,0,0,0,1,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur le bouton 1. On clique maintenant sur le bouton 2. Quel est l'état suivant ?",
+      "historique": [{"button": 1}],
+      "initialState": [1,1,0,1,0,0,0,0,0],
+      "clickButton": 2,
+      "expectedState": [0,0,1,1,1,0,0,0,0]
+    }
+  ],
   "rule": [
-    "function appliquerClic(buttons, index) {",
-    "  let row = Math.floor(index / 3);",
-    "  let col = index % 3;",
-    "  let diagonales = [[-1,-1],[-1,1],[1,-1],[1,1]];",
-    "  for (let [dr, dc] of diagonales) {",
-    "    let nr = row + dr;",
-    "    let nc = col + dc;",
-    "    if (nr >= 0 && nr < 3 && nc >= 0 && nc < 3) {",
-    "      buttons[nr * 3 + nc] = !buttons[nr * 3 + nc];",
-    "    }",
-    "  }",
-    "}",
-    "",
-    "for (let i = 0; i < 9; i++) buttons[i] = false;",
-    "for (let h of historiques) {",
-    "  appliquerClic(buttons, h.button - 1);",
-    "}",
-    "appliquerClic(buttons, index);"
+    "let row = Math.floor(index / 3), col = index % 3;",
+    "buttons[index] = !buttons[index];",
+    "if (row > 0) buttons[index - 3] = !buttons[index - 3];",
+    "if (row < 2) buttons[index + 3] = !buttons[index + 3];",
+    "if (col > 0) buttons[index - 1] = !buttons[index - 1];",
+    "if (col < 2) buttons[index + 1] = !buttons[index + 1];",
+    "//sol : 1,2,4"
   ]
 }

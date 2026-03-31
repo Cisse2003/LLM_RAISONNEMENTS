@@ -1,17 +1,53 @@
 {
-  "description": "Allumer uniquement le bouton 2, 4, 5, 6 et 8",
-  "targetState": [0,1,0,1,1,1,0,1,0],
+  "description": "Allumer uniquement les boutons 2, 4, 5 et 6",
+  "targetState": [0,1,0,1,1,1,0,0,0],
   "difficulty": "difficile",
+  "validationQuestions": [
+    {
+      "description": "L'historique est vide. On clique sur le bouton 1. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 1,
+      "expectedState": [1,0,0,0,1,0,0,0,1]
+    },
+    {
+      "description": "On a déjà cliqué sur le bouton 1. On clique maintenant sur le bouton 2. Quel est l'état suivant ?",
+      "historique": [{"button": 1}],
+      "initialState": [1,0,0,0,1,0,0,0,1],
+      "clickButton": 2,
+      "expectedState": [1,1,0,1,1,1,0,0,1]
+    },
+    {
+      "description": "On a déjà cliqué sur les boutons 1 et 2. On clique maintenant sur le bouton 3. Quel est l'état suivant ?",
+      "historique": [{"button": 1}, {"button": 2}],
+      "initialState": [1,1,0,1,1,1,0,0,1],
+      "clickButton": 3,
+      "expectedState": [1,1,1,1,0,1,1,0,1]
+    },
+    {
+      "description": "On a déjà cliqué sur les boutons 1, 2 et 3. On clique maintenant sur le bouton 5. Quel est l'état suivant ?",
+      "historique": [{"button": 1}, {"button": 2}, {"button": 3}],
+      "initialState": [1,1,1,1,0,1,1,0,1],
+      "clickButton": 5,
+      "expectedState": [0,1,0,1,1,1,0,0,0]
+    }
+  ],
   "rule": [
-    "function xorVoisins(buttons, i) {",
-    "  let voisins = [i];",
-    "  if (i - 1 >= 0) voisins.push(i - 1);",
-    "  if (i + 1 <= 8) voisins.push(i + 1);",
-    "  for (let v of voisins) {",
-    "    buttons[v] = !buttons[v];",
-    "  }",
-    "}",
+    "let row = Math.floor(index / 3), col = index % 3;",
     "",
-    "xorVoisins(buttons, index);"
+    "buttons[index] = !buttons[index];",
+    "",
+    "for (let i = 0; i < 3; i++) {",
+    "  let r1 = row - Math.min(row, col) + i;",
+    "  let c1 = col - Math.min(row, col) + i;",
+    "  if (r1 >= 0 && r1 < 3 && c1 >= 0 && c1 < 3 && !(r1 === row && c1 === col))",
+    "    buttons[r1*3+c1] = !buttons[r1*3+c1];",
+    "",
+    "  let r2 = row - Math.min(row, 2-col) + i;",
+    "  let c2 = col + Math.min(row, 2-col) - i;",
+    "  if (r2 >= 0 && r2 < 3 && c2 >= 0 && c2 < 3 && !(r2 === r1 && c2 === c1) && !(r2 === row && c2 === col))",
+    "    buttons[r2*3+c2] = !buttons[r2*3+c2];",
+    "}",
+    "// sol : 1,2,3,5 (autres solutions : 1,2,5,3 | 1,2,5,7 | 2,3,5,9)"
   ]
 }

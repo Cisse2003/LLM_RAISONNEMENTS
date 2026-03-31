@@ -1,0 +1,49 @@
+{
+  "description": "Allumer uniquement le bouton 5",
+  "targetState": [0,0,0,0,1,0,0,0,0],
+  "difficulty": "difficile",
+  "validationQuestions": [
+    {
+      "description": "Si l'historique est vide et qu'on clique sur le bouton 7, quel sera l'état suivant ?",
+      "initialState": [1,0,1,0,1,0,0,0,1],
+      "historique": [],
+      "clickButton": 7,
+      "expectedState": [0,0,0,0,0,0,0,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur 5 et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "historique": [{"button": 5}],
+      "clickButton": 5,
+      "expectedState": [0,0,0,0,0,0,0,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur 5 puis encore 5 et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "historique": [{"button": 5}, {"button": 5}],
+      "clickButton": 5,
+      "expectedState": [0,0,0,0,1,0,0,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur 2 puis 2 puis 2 et qu'on clique sur le bouton 2, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "historique": [{"button": 2}, {"button": 2}, {"button": 2}],
+      "clickButton": 2,
+      "expectedState": [0,1,0,0,0,0,0,0,0]
+    }
+  ],
+  "rule": [
+    "let count = 0;",
+    "for (let i = 0; i < historiques.length; i++) {",
+    "  if (historiques[i].button == index + 1) {",
+    "    count++;",
+    "  }",
+    "}",
+    "",
+    "buttons.fill(false);",
+    "if (count >= 2) {",
+    "  buttons[index] = true;",
+    "}",
+    "// sol : 5,5,5"
+  ]
+}

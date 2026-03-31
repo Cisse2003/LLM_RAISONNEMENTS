@@ -1,15 +1,56 @@
 {
-  "description": "Allumer uniquement les boutons 2, 4 et 8",
-  "targetState": [0,1,0,1,0,0,0,1,0],
+  "description": "Allumer tous les boutons",
+  "targetState": [1,1,1,1,1,1,1,1,1],
   "difficulty": "difficile",
+  "validationQuestions": [
+    {
+      "description": "L'historique est vide. On clique sur le bouton 1. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 1,
+      "expectedState": [0,0,0,0,1,0,0,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur le bouton 1. On clique maintenant sur le bouton 2. Quel est l'état suivant ?",
+      "historique": [{"button": 1}],
+      "initialState": [0,0,0,0,1,0,0,0,0],
+      "clickButton": 2,
+      "expectedState": [0,0,0,1,1,1,0,0,0]
+    },
+    {
+      "description": "On a déjà cliqué sur les boutons 1 et 2. On clique maintenant sur le bouton 4. Quel est l'état suivant ?",
+      "historique": [{"button": 1}, {"button": 2}],
+      "initialState": [0,0,0,1,1,1,0,0,0],
+      "clickButton": 4,
+      "expectedState": [0,1,0,1,1,1,0,1,0]
+    },
+    {
+      "description": "On a déjà cliqué sur les boutons 1, 2 et 4. On clique maintenant sur le bouton 5. Quel est l'état suivant ?",
+      "historique": [{"button": 1}, {"button": 2}, {"button": 4}],
+      "initialState": [0,1,0,1,1,1,0,1,0],
+      "clickButton": 5,
+      "expectedState": [1,1,1,1,1,1,1,1,1]
+    }
+  ],
   "rule": [
-    "function pgcd(a, b) { return b === 0 ? a : pgcd(b, a % b); }",
-    "",
-    "let numeroBouton = index + 1;",
-    "for (let i = 1; i <= 9; i++) {",
-    "  if (pgcd(numeroBouton, i) > 1) {",
-    "    buttons[i - 1] = !buttons[i - 1];",
+    "function appliquerClic(buttons, index) {",
+    "  let row = Math.floor(index / 3);",
+    "  let col = index % 3;",
+    "  let diagonales = [[-1,-1],[-1,1],[1,-1],[1,1]];",
+    "  for (let [dr, dc] of diagonales) {",
+    "    let nr = row + dr;",
+    "    let nc = col + dc;",
+    "    if (nr >= 0 && nr < 3 && nc >= 0 && nc < 3) {",
+    "      buttons[nr * 3 + nc] = !buttons[nr * 3 + nc];",
+    "    }",
     "  }",
-    "}"
+    "}",
+    "",
+    "for (let i = 0; i < 9; i++) buttons[i] = false;",
+    "for (let h of historiques) {",
+    "  appliquerClic(buttons, h.button - 1);",
+    "}",
+    "appliquerClic(buttons, index);",
+    "// sol : 1,2,4,5 (autres solutions : 1,2,5,6 | 1,4,5,8 | 2,4,5,6)"
   ]
 }

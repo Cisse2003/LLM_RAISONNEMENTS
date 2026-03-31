@@ -1,0 +1,51 @@
+{
+  "description": "Allumer uniquement le bouton 9",
+  "targetState": [0,0,0,0,0,0,0,0,1],
+  "difficulty": "difficile",
+  "validationQuestions": [
+    {
+      "description": "Si l'état initial est vide et qu'on clique sur le bouton 4, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 4,
+      "expectedState": [0,0,0,1,0,0,0,0,0]
+    },
+    {
+      "description": "Si le bouton 3 est allumé et qu'on clique sur le bouton 4, quel sera l'état suivant ?",
+      "initialState": [0,0,1,0,0,0,0,0,0],
+      "clickButton": 4,
+      "expectedState": [0,0,0,0,0,0,1,0,0]
+    },
+    {
+      "description": "Si le bouton 5 est allumé et qu'on clique sur le bouton 6, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,1,0,0,0,0],
+      "clickButton": 6,
+      "expectedState": [0,0,0,0,0,0,0,0,0]
+    },
+    {
+      "description": "Si le bouton 2 est allumé et qu'on clique sur le bouton 3, quel sera l'état suivant ?",
+      "initialState": [0,1,0,0,0,0,0,0,0],
+      "clickButton": 3,
+      "expectedState": [0,0,0,0,1,0,0,0,0]
+    }
+  ],
+  "rule": [
+    "let bouton = index + 1;",
+    "let allumé = null;",
+    "",
+    "for (let i = 0; i < buttons.length; i++) {",
+    "  if (buttons[i]) allumé = i + 1;",
+    "}",
+    "",
+    "let somme = 0;",
+    "if (allumé) {",
+    "  somme = allumé + bouton;",
+    "} else {",
+    "  somme = bouton;",
+    "}",
+    "",
+    "buttons.fill(false);",
+    "if (somme > 0 && somme <= 9) {",
+    "  buttons[somme - 1] = true;",
+    "}"
+  ]
+}
