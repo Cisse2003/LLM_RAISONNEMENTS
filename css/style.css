@@ -136,6 +136,7 @@ button:hover {
 }
 
 .modal-content {
+  position: relative;
   background: #1e293b;
   border: 3px solid #fbbf24;
   border-radius: 16px;
@@ -373,6 +374,7 @@ button:hover {
   flex-wrap: wrap;
 }
 
+#validation-back,
 #validation-check,
 #validation-next,
 #validation-close {
@@ -385,6 +387,7 @@ button:hover {
   border: none;
   cursor: pointer;
 }
+#validation-back { background: #475569; color: white; } 
 
 #validation-click-info {
   margin-bottom: 10px;
@@ -436,3 +439,28 @@ button:hover {
   color: #ef4444;
   font-weight: 600;
 }
+
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  background: #475569;
+  border: none;
+  color: white;
+  font-size: 0.8rem;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.modal-close-btn:hover {
+  background: #ef4444;
+  color: white;
+}
+

@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const validationClickInfo = document.getElementById('validation-click-info');
   const validationCheckBtn = document.getElementById('validation-check');
   const validationNextBtn = document.getElementById('validation-next');
+  const validationBackBtn = document.getElementById('validation-back');
   const validationCloseBtn = document.getElementById('validation-close');
   const validationFeedback = document.getElementById('validation-feedback');
   const validationSuccessModal = document.getElementById('validation-success-modal');
@@ -96,6 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     validationUserAnswer = Array(9).fill(0);
     validationFeedback.textContent = "";
     validationCheckBtn.classList.remove("hidden");
+    validationBackBtn.classList.toggle("hidden", validationIndex === 0);
 
     validationCloseBtn.classList.add("hidden");
 
@@ -213,6 +215,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   await loadRules();
+  // Fermeture modales via croix
+  document.querySelectorAll('.modal-close-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.modal').classList.add('hidden');
+  });
+});
 
   // ───────────────────────────────────────────────
   // Événements grille
@@ -321,11 +329,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     historyView.update();
     openValidationQuestion();
   });
+
+  // Croix fermeture validation
+document.querySelector('#validation-panel .modal-close-btn')?.addEventListener('click', () => {
+  validationPanel.classList.add('hidden');
+});
+
   validationCheckBtn?.addEventListener('click', () => {
     checkValidationAnswer();
   });
 
 
+  validationBackBtn?.addEventListener('click', () => { 
+  if (validationIndex > 0) {
+    validationIndex--;
+    openValidationQuestion();
+  }
+});
 
   validationCloseBtn?.addEventListener('click', () => {
     validationPanel.classList.add('hidden');
