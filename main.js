@@ -364,9 +364,16 @@ document.querySelector('#validation-panel .modal-close-btn')?.addEventListener('
   }
 
 // ── Bouton Retour ──
-  document.getElementById('validation-back')?.addEventListener('click', () => {
+ /* document.getElementById('validation-back')?.addEventListener('click', () => {
     closeValidation();
-  });
+  });*/
+
+  validationBackBtn?.addEventListener('click', () => { 
+  if (validationIndex > 0) {
+    validationIndex--;
+    openValidationQuestion();
+  }
+});
 
 // ── Clic en dehors du panel ──
   validationPanel?.addEventListener('click', (e) => {
