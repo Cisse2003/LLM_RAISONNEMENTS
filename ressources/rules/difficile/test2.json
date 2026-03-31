@@ -1,0 +1,46 @@
+{
+  "description": "Allumer uniquement les boutons 2, 4 et 8",
+  "targetState": [0,1,0,1,0,0,0,1,0],
+  "difficulty": "difficile",
+  "validationQuestions": [
+    {
+      "description": "L'historique est vide. On clique sur le bouton 1. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 1,
+      "expectedState": [0,0,0,0,0,0,0,0,0]
+    },
+    {
+      "description": "L'historique est vide. On clique sur le bouton 2. Quel est l'état suivant ?",
+      "historique": [],
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 2,
+      "expectedState": [0,1,0,1,0,1,0,1,0]
+    },
+    {
+      "description": "On a déjà cliqué sur le bouton 2. On clique maintenant sur le bouton 3. Quel est l'état suivant ?",
+      "historique": [{"button": 2}],
+      "initialState": [0,1,0,1,0,1,0,1,0],
+      "clickButton": 3,
+      "expectedState": [0,1,1,1,0,0,0,1,1]
+    },
+    {
+      "description": "On a déjà cliqué sur le bouton 3. On clique maintenant sur le bouton 6. Quel est l'état suivant ?",
+      "historique": [{"button": 3}],
+      "initialState": [0,0,1,0,0,1,0,0,1],
+      "clickButton": 6,
+      "expectedState": [0,1,0,1,0,0,0,1,0]
+    }
+  ],
+  "rule": [
+    "function pgcd(a, b) { return b === 0 ? a : pgcd(b, a % b); }",
+    "",
+    "let numeroBouton = index + 1;",
+    "for (let i = 1; i <= 9; i++) {",
+    "  if (pgcd(numeroBouton, i) > 1) {",
+    "    buttons[i - 1] = !buttons[i - 1];",
+    "  }",
+    "}",
+    "// sol : 3,6 (autres solutions : 6,3 | 6,9)"
+  ]
+}

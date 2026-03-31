@@ -1,6 +1,6 @@
 {
-  "description": "Allumer tous les boutons",
-  "targetState": [1,1,1,1,1,1,1,1,1],
+  "description": "Allumer uniquement les boutons 2, 4, 5 et 6",
+  "targetState": [0,1,0,1,1,1,0,0,0],
   "difficulty": "difficile",
   "validationQuestions": [
     {
@@ -8,49 +8,46 @@
       "historique": [],
       "initialState": [0,0,0,0,0,0,0,0,0],
       "clickButton": 1,
-      "expectedState": [0,0,0,0,1,0,0,0,0]
+      "expectedState": [1,0,0,0,1,0,0,0,1]
     },
     {
       "description": "On a déjà cliqué sur le bouton 1. On clique maintenant sur le bouton 2. Quel est l'état suivant ?",
       "historique": [{"button": 1}],
-      "initialState": [0,0,0,0,1,0,0,0,0],
+      "initialState": [1,0,0,0,1,0,0,0,1],
       "clickButton": 2,
-      "expectedState": [0,0,0,1,1,1,0,0,0]
+      "expectedState": [1,1,0,1,1,1,0,0,1]
     },
     {
-      "description": "On a déjà cliqué sur les boutons 1 et 2. On clique maintenant sur le bouton 4. Quel est l'état suivant ?",
+      "description": "On a déjà cliqué sur les boutons 1 et 2. On clique maintenant sur le bouton 3. Quel est l'état suivant ?",
       "historique": [{"button": 1}, {"button": 2}],
-      "initialState": [0,0,0,1,1,1,0,0,0],
-      "clickButton": 4,
-      "expectedState": [0,1,0,1,1,1,0,1,0]
+      "initialState": [1,1,0,1,1,1,0,0,1],
+      "clickButton": 3,
+      "expectedState": [1,1,1,1,0,1,1,0,1]
     },
     {
-      "description": "On a déjà cliqué sur les boutons 1, 2 et 4. On clique maintenant sur le bouton 5. Quel est l'état suivant ?",
-      "historique": [{"button": 1}, {"button": 2}, {"button": 4}],
-      "initialState": [0,1,0,1,1,1,0,1,0],
+      "description": "On a déjà cliqué sur les boutons 1, 2 et 3. On clique maintenant sur le bouton 5. Quel est l'état suivant ?",
+      "historique": [{"button": 1}, {"button": 2}, {"button": 3}],
+      "initialState": [1,1,1,1,0,1,1,0,1],
       "clickButton": 5,
-      "expectedState": [1,1,1,1,1,1,1,1,1]
+      "expectedState": [0,1,0,1,1,1,0,0,0]
     }
   ],
   "rule": [
-    "function appliquerClic(buttons, index) {",
-    "  let row = Math.floor(index / 3);",
-    "  let col = index % 3;",
-    "  let diagonales = [[-1,-1],[-1,1],[1,-1],[1,1]];",
-    "  for (let [dr, dc] of diagonales) {",
-    "    let nr = row + dr;",
-    "    let nc = col + dc;",
-    "    if (nr >= 0 && nr < 3 && nc >= 0 && nc < 3) {",
-    "      buttons[nr * 3 + nc] = !buttons[nr * 3 + nc];",
-    "    }",
-    "  }",
-    "}",
+    "let row = Math.floor(index / 3), col = index % 3;",
     "",
-    "for (let i = 0; i < 9; i++) buttons[i] = false;",
-    "for (let h of historiques) {",
-    "  appliquerClic(buttons, h.button - 1);",
+    "buttons[index] = !buttons[index];",
+    "",
+    "for (let i = 0; i < 3; i++) {",
+    "  let r1 = row - Math.min(row, col) + i;",
+    "  let c1 = col - Math.min(row, col) + i;",
+    "  if (r1 >= 0 && r1 < 3 && c1 >= 0 && c1 < 3 && !(r1 === row && c1 === col))",
+    "    buttons[r1*3+c1] = !buttons[r1*3+c1];",
+    "",
+    "  let r2 = row - Math.min(row, 2-col) + i;",
+    "  let c2 = col + Math.min(row, 2-col) - i;",
+    "  if (r2 >= 0 && r2 < 3 && c2 >= 0 && c2 < 3 && !(r2 === r1 && c2 === c1) && !(r2 === row && c2 === col))",
+    "    buttons[r2*3+c2] = !buttons[r2*3+c2];",
     "}",
-    "appliquerClic(buttons, index);",
-    "// sol : 1,2,4,5 (autres solutions : 1,2,5,6 | 1,4,5,8 | 2,4,5,6)"
+    "// sol : 1,2,3,5 (autres solutions : 1,2,5,3 | 1,2,5,7 | 2,3,5,9)"
   ]
 }
