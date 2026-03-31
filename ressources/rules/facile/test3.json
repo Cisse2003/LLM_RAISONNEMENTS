@@ -13,7 +13,7 @@
       "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
       "initialState": [1,0,0,1,1,0,0,8,0],
       "clickButton": 5,
-      "expectedState": [1,0,0,4,0,0,0,0,0]
+      "expectedState": [1,0,0,1,0,0,0,0,0]
     },
     {
       "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 9, quel sera l'état suivant ?",
