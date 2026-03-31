@@ -336,4 +336,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById('close-validation-failure')?.addEventListener('click', () => {
     validationFailureModal?.classList.add('hidden');
   });
+  // ── Fonction commune : fermer la validation et enregistrer l'abandon ──
+  function closeValidation() {
+    validationPanel.classList.add('hidden');
+    model.addValidationAbandon();
+    historyView.update();
+  }
+
+// ── Bouton Retour ──
+  document.getElementById('validation-back')?.addEventListener('click', () => {
+    closeValidation();
+  });
+
+// ── Clic en dehors du panel ──
+  validationPanel?.addEventListener('click', (e) => {
+    // Si le clic est sur le fond (pas sur le contenu), fermer
+    if (e.target === validationPanel) {
+      closeValidation();
+    }
+  });
+
+// ── Remplacer l'ancien listener du bouton Fermer pour aussi enregistrer ──
+  validationCloseBtn?.addEventListener('click', () => {
+    closeValidation();
+  });
 });

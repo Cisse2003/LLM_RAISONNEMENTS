@@ -374,6 +374,7 @@ button:hover {
 }
 
 #validation-check,
+#validation-back,
 #validation-next,
 #validation-close {
   width: auto;

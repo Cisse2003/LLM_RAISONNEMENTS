@@ -131,6 +131,14 @@ class Model {
         this.actions.push(action);
         this.globalActions.push(action);
     }
+    addValidationAbandon() {
+        const action = {
+            type: 'validation-abandon',
+            timestamp: new Date().toLocaleTimeString(),
+        };
+        this.actions.push(action);
+        this.globalActions.push(action);
+    }
 }
 
 export const model = new Model();
