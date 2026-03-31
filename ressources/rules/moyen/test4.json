@@ -1,14 +1,35 @@
 {
-  "description": "Allumer uniquement les boutons 1, 3 et 7",
-  "targetState": [1, 0, 1, 0, 0, 0, 1, 0, 0],
+  "description": "Obtenir le motif cibler",
+  "targetState": [0,0,0,0,0,1,1,1,0],
+  "difficulty": "moyen",
+  "validationQuestions": [
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 4, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 4,
+      "expectedState": [0,0,0,1,0,0,0,0,0]
+    },
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 7, quel sera l'état suivant ?",
+      "initialState": [0,0,0,1,1,1,0,0,0],
+      "clickButton": 7,
+      "expectedState": [0,0,0,0,1,1,1,0,0]
+    },
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 8, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,1,1,1,0,0],
+      "clickButton": 8,
+      "expectedState": [0,0,0,0,0,1,1,1,0]
+    }
+  ],
   "rule": [
-    "let row = Math.floor(index / 3), col = index % 3;",
-    "buttons[index] = !buttons[index];",
-    "if (row > 0) buttons[index - 3] = !buttons[index - 3];",
-    "if (row < 2) buttons[index + 3] = !buttons[index + 3];",
-    "if (col > 0) buttons[index - 1] = !buttons[index - 1];",
-    "if (col < 2) buttons[index + 1] = !buttons[index + 1];",
-    "//sol : 1,2,4"
-
+    "let anciens = [...buttons];",
+    "buttons.fill(false);",
+    "for (let i = 0; i < 9; i++) {",
+    "  if (anciens[i]) {",
+    "    buttons[(i + 1) % 9] = true;",
+    "  }",
+    "}",
+    "buttons[index] = true;"
   ]
 }
