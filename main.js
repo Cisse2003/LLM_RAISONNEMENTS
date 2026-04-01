@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const validationAnswerGrid = document.getElementById('validation-answer-grid');
   const validationClickInfo = document.getElementById('validation-click-info');
   const validationCheckBtn = document.getElementById('validation-check');
-  const validationNextBtn = document.getElementById('validation-next');
   const validationBackBtn = document.getElementById('validation-back');
   const validationCloseBtn = document.getElementById('validation-close');
   const validationFeedback = document.getElementById('validation-feedback');
@@ -218,6 +217,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Fermeture modales via croix
   document.querySelectorAll('.modal-close-btn').forEach(btn => {
   btn.addEventListener('click', () => {
+    closeValidation();
     btn.closest('.modal').classList.add('hidden');
   });
 });
@@ -298,8 +298,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Téléchargement résultats JSON
   // ───────────────────────────────────────────────
   document.getElementById('export')?.addEventListener('click', () => {
-    const data = model.exportJSON();
-    const json = JSON.stringify(data, null, 2);
 
     /*const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);

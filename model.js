@@ -114,11 +114,7 @@ class Model {
         };
 
         this.validationResults.push(isCorrect);
-        if (!isCorrect) {
-            this.validationAllCorrect = false;
-        }else {
-            this.validationAllCorrect = true;
-        }
+        this.validationAllCorrect = isCorrect;
 
         this.actions.push(action);
         this.globalActions.push(action);
@@ -138,6 +134,7 @@ class Model {
             type: 'validation-abandon',
             timestamp: new Date().toLocaleTimeString(),
         };
+
         this.actions.push(action);
         this.globalActions.push(action);
     }

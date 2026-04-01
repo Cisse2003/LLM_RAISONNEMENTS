@@ -16,6 +16,7 @@ export const historyView = {
   },
 
   update() {
+
     const actions = model.globalActions;
     if (!actions || actions.length === 0) {
       this.list.innerHTML = '<p>Aucune action pour l\'instant</p>';
@@ -23,6 +24,7 @@ export const historyView = {
     }
 
     this.list.innerHTML = actions.map((a, idx) => {
+      console.log(a.type)
       if (a.type === 'load') {
         return `
           <div class="action-load">
