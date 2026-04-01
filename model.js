@@ -116,6 +116,8 @@ class Model {
         this.validationResults.push(isCorrect);
         if (!isCorrect) {
             this.validationAllCorrect = false;
+        }else {
+            this.validationAllCorrect = true;
         }
 
         this.actions.push(action);
