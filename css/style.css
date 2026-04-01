@@ -297,6 +297,31 @@ button:hover {
   padding-left: 8px;
   margin: 4px 0;
 }
+.validation-failure-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#close-validation-failure {
+  width: auto;
+  height: auto;
+  min-width: 180px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #ef4444;
+  color: white;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#close-validation-failure:hover {
+  background: #dc2626;
+  transform: scale(1.03);
+}
 
 /* ─────────────────────────────
    Validation
