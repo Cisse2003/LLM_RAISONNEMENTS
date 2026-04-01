@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     validationUserAnswer = Array(9).fill(0);
     validationFeedback.textContent = "";
     validationCheckBtn.classList.remove("hidden");
-    validationBackBtn.classList.toggle("hidden", validationIndex === 0);
+    validationBackBtn.classList.toggle("hidden", validationIndex === validationIndex-1);
 
     validationCloseBtn.classList.add("hidden");
 
@@ -340,12 +340,7 @@ document.querySelector('#validation-panel .modal-close-btn')?.addEventListener('
   });
 
 
-  validationBackBtn?.addEventListener('click', () => { 
-  if (validationIndex > 0) {
-    validationIndex--;
-    openValidationQuestion();
-  }
-});
+
 
   validationCloseBtn?.addEventListener('click', () => {
     validationPanel.classList.add('hidden');
