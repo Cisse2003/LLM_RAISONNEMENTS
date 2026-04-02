@@ -115,16 +115,37 @@
         </div>
     </div>
 
+    <div id="resizer"></div>
+
     <aside class="history">
         <div class="header">
-            <div class="icon">📜</div>
-            <h3>Historique des actions</h3>
+            <div class="icon" id="history-icon">📜</div>
+            <h3 id="history-title">Historique des actions</h3>
+            <button id="toggle-llm-btn" title="Tester avec le LLM">LLM</button>
         </div>
-        <div id="actions-list"></div>
+
+        <!-- Panneau Historique -->
+        <div id="panel-history">
+            <div id="actions-list"></div>
+        </div>
+
+        <!-- Panneau LLM -->
+        <div id="panel-llm" class="hidden">
+            <div id="llm-config">
+                <input type="password" id="llm-api-key" placeholder="Clé API OpenRouter (sk-or-v1-...)" />
+                <input type="text" id="llm-model" placeholder="Modèle" value="openai/gpt-4o-mini" />
+            </div>
+            <div id="llm-messages"></div>
+            <div id="llm-actions-row">
+                <button id="llm-btn-description">📋 Description</button>
+                <button id="llm-btn-etape">👣 Étape</button>
+            </div>
+        </div>
     </aside>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="resizer.js"></script>
+<script type="module" src="llmView.js"></script>
 <script type="module" src="main.js"></script>
 </body>
 </html>

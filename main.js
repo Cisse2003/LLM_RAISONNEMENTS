@@ -1,3 +1,4 @@
+//main.js
 import { model } from './model.js';
 import { view } from './view.js';
 import { historyView } from './historyView.js';

@@ -7,8 +7,19 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 220px 1fr 300px;
+  grid-template-columns: 220px 1fr 4px minmax(200px, 400px);
   height: 100vh;
+}
+
+#resizer {
+  background: #334155;
+  cursor: col-resize;
+  transition: background 0.15s;
+  grid-column: 3;
+}
+
+#resizer:hover, #resizer.dragging {
+  background: #3b82f6;
 }
 
 .sidebar, .history {
@@ -489,4 +500,145 @@ button:hover {
   background: #ef4444;
   color: white;
 }
+/* ── Bouton bascule LLM dans le header de la sidebar ── */
+.history .header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.history .header h3 { flex: 1; }
 
+#toggle-llm-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 6px;
+  transition: background 0.15s;
+}
+#toggle-llm-btn:hover { background: rgba(255,255,255,0.1); }
+
+/* ── Panneau LLM ── */
+#panel-llm {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 150px); /* 80px ≈ hauteur du header */
+  gap: 8px;
+}
+#panel-llm.hidden, #panel-history.hidden { display: none; }
+
+#llm-config {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+#llm-config input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: inherit;
+  font-size: 12px;
+  padding: 6px 8px;
+  width: 100%;
+}
+#llm-config input::placeholder { opacity: 0.5; }
+
+#llm-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+  min-height: 0;
+  max-height: 340px;
+}
+
+.llm-msg {
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 90%;
+  padding: 8px 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.llm-msg-user {
+  align-self: flex-end;
+  background: rgba(99, 179, 237, 0.25);
+  border: 1px solid rgba(99, 179, 237, 0.3);
+}
+.llm-msg-assistant {
+  align-self: flex-start;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.llm-msg-error {
+  align-self: flex-start;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  font-size: 12px;
+}
+.llm-typing { opacity: 0.5; font-style: italic; }
+
+#llm-input-row {
+  display: flex;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+#llm-input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: inherit;
+  flex: 1;
+  font-size: 13px;
+  padding: 7px 10px;
+}
+#llm-input:focus { border-color: rgba(99,179,237,0.5); outline: none; }
+
+#llm-send-btn {
+  background: rgba(99, 179, 237, 0.3);
+  border: 1px solid rgba(99, 179, 237, 0.4);
+  border-radius: 6px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px 10px;
+  transition: background 0.15s;
+}
+#llm-send-btn:hover { background: rgba(99, 179, 237, 0.5); }
+#llm-actions-row {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: auto;
+  padding-bottom: 8px;
+}
+#llm-actions-row button {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 6px;
+  transition: background 0.15s;
+}
+#llm-actions-row button:hover {
+  background: rgba(99, 179, 237, 0.25);
+  border-color: rgba(99, 179, 237, 0.4);
+}
+.action-llm {
+  /* adaptez à votre thème existant */
+  opacity: 0.75;
+  font-style: italic;
+}

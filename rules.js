@@ -1,3 +1,4 @@
+//rules.js
 export class Rule {
   constructor(testNumber = 1, difficulty = 'facile', isValidation = false) {
     this.testNumber = testNumber;

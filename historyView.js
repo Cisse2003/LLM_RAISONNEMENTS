@@ -1,10 +1,13 @@
+//historyView.js
 import { model } from './model.js';
+import { llmView } from './llmView.js';
 
 export const historyView = {
   list: null,
 
   init() {
     this.list = document.getElementById('actions-list');
+    llmView.init();
   },
 
   updateClear() {
@@ -74,6 +77,21 @@ export const historyView = {
         <div class="action-validation-abandon">
             <strong>Validation abandonnée</strong> à ${a.timestamp}
         </div>
+    `;
+      }
+      if (a.type === 'llm-description') {
+        return `
+      <div class="action-llm">
+        <strong>Envoi Description LLM</strong> à ${a.timestamp}
+      </div>
+    `;
+      }
+      if (a.type === 'llm-etape') {
+        const ref = a.actionRef ? ` (bouton ${a.actionRef})` : '';
+        return `
+      <div class="action-llm">
+        <strong>Envoi Étape LLM</strong>${ref} à ${a.timestamp}
+      </div>
     `;
       }
       return `
