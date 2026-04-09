@@ -746,3 +746,84 @@ button:hover {
   font-size: 15px !important;
   white-space: nowrap;
 }
+
+/* Mode Automatique */
+
+#auto-mode-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 6px;
+}
+
+#auto-mode-row {
+    display: flex;
+    gap: 8px;
+}
+
+#llm-btn-auto,
+#llm-btn-stop {
+    flex: 1;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+#llm-btn-auto {
+    background: #22c55e;
+    color: white;
+}
+
+#llm-btn-stop {
+    background: #ef4444;
+    color: white;
+}
+
+#llm-btn-auto:disabled,
+#llm-btn-stop:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#auto-delay-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+#auto-delay-slider {
+    flex: 1;
+    accent-color: #6366f1;
+}
+
+#auto-delay-value {
+    min-width: 24px;
+    text-align: right;
+    color: #e2e8f0;
+    font-weight: bold;
+}
+
+#auto-status {
+    font-size: 0.78rem;
+    padding: 4px 6px;
+    border-radius: 4px;
+    min-height: 1.4em;
+}
+
+.auto-status-running  { color: #facc15; }
+.auto-status-success  { color: #22c55e; }
+.auto-status-stopped  { color: #94a3b8; }
+.auto-status-error    { color: #f87171; }
+
+/* Nouveaux types d'actions dans l'historique */
+.action-auto-start   { color: #818cf8; }
+.action-auto-stop    { color: #94a3b8; font-style: italic; }
+.action-llm-auto     { color: #38bdf8; }
+.action-llm-abandon  { color: #f97316; font-weight: bold; }
