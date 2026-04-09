@@ -642,6 +642,63 @@ button:hover {
   opacity: 0.75;
   font-style: italic;
 }
+#llm-mode-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+#llm-mode-select {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: inherit;
+  padding: 6px 8px;
+}
+
+#llm-actions-semi,
+#llm-actions-auto {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: auto;
+  padding-bottom: 8px;
+}
+
+#llm-actions-semi button,
+#llm-actions-auto button,
+#llm-manual-send {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 6px;
+  width: auto;
+  height: auto;
+}
+
+#llm-manual-row {
+  display: flex;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+#llm-manual-input {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: inherit;
+  font-size: 13px;
+  padding: 7px 10px;
+}
 .comment-box {
   display: flex;
   align-items: flex-start;

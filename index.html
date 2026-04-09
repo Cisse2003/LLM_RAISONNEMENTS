@@ -139,10 +139,32 @@
                 <input type="password" id="llm-api-key" placeholder="Clé API OpenRouter (sk-or-v1-...)" />
                 <input type="text" id="llm-model" placeholder="Modèle" value="openai/gpt-4o-mini" />
             </div>
+
+            <div id="llm-mode-row">
+                <label for="llm-mode-select">Mode :</label>
+                <select id="llm-mode-select">
+                    <option value="semi">Semi-automatique</option>
+                    <option value="auto">Automatique</option>
+                </select>
+            </div>
+
             <div id="llm-messages"></div>
-            <div id="llm-actions-row">
+
+            <div id="llm-actions-semi">
                 <button id="llm-btn-description">📋 Description</button>
                 <button id="llm-btn-etape">👣 Étape</button>
+            </div>
+
+            <div id="llm-actions-auto" class="hidden">
+                <button id="llm-auto-start">▶ Démarrer</button>
+                <button id="llm-auto-pause">⏸ Pause</button>
+                <button id="llm-auto-stop">■ Stop</button>
+                <button id="llm-auto-manual">✍ Prendre la main</button>
+            </div>
+
+            <div id="llm-manual-row" class="hidden">
+                <input type="text" id="llm-manual-input" placeholder="Écrire au LLM..." />
+                <button id="llm-manual-send">Envoyer</button>
             </div>
         </div>
     </aside>
