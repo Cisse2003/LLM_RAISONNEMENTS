@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let validationIndex = 0;
   let validationUserAnswer = Array(9).fill(0);
+  const SEND_EMAIL = "test@test.fr";
 
   // ───────────────────────────────────────────────
   // Fonctions utilitaires
@@ -148,6 +149,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       }
     }, 700);
+  }
+  function buildSendText() {
+        const now = new Date();
+        const contenu = document.getElementById('actions-list')?.innerText || '';
+
+        return `Bonjour,
+    
+    Veuillez trouver ci-dessous les résultats de la session.
+    
+    Date : ${now.toLocaleDateString('fr-FR')}
+    Heure : ${now.toLocaleTimeString('fr-FR')}
+    
+    ${contenu}`;
   }
 
   // ───────────────────────────────────────────────
@@ -299,27 +313,74 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Téléchargement résultats JSON
   // ───────────────────────────────────────────────
   document.getElementById('export')?.addEventListener('click', () => {
+    const modal = document.getElementById('send-modal');
+    const preview = document.getElementById('send-preview');
+    const feedback = document.getElementById('send-feedback');
+    const emailLabel = document.getElementById('send-destination-email');
 
-    /*const blob = new Blob([json], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
+    const text = buildSendText();
 
+    if (preview) preview.value = text;
+    if (feedback) {
+      feedback.textContent = '';
+      feedback.style.color = '';
+    }
+    if (emailLabel) emailLabel.textContent = SEND_EMAIL;
+
+    modal?.classList.remove('hidden');
+  });
+  document.getElementById('confirm-send')?.addEventListener('click', () => {
     const now = new Date();
-    const timestamp = now.toISOString().replace(/[:.]/g, '-').slice(0, 19);
-    a.download = `resultats_session_${timestamp}.json`;
-    a.click();
-    URL.revokeObjectURL(url);*/
-    const now = new Date();
-    const destinataire = "test@test.fr";
-    const sujet = encodeURIComponent(`Résultats session du ${now.toLocaleDateString('fr-FR')} à ${now.toLocaleTimeString('fr-FR')}`);
-// → "Résultats session du 25/03/2026 à 13:33:01"
-    //const corps = encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-dessous les résultats de la session :\n\n${json}`);
-    const contenu = document.getElementById('actions-list').innerText;
-    const corps = encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-dessous les résultats de la session :\n\n${contenu}`);
+    const sujet = encodeURIComponent(
+        `Résultats session du ${now.toLocaleDateString('fr-FR')} à ${now.toLocaleTimeString('fr-FR')}`
+    );
 
-    window.location.href = `mailto:${destinataire}?subject=${sujet}&body=${corps}`;
+    const preview = document.getElementById('send-preview');
+    const corps = encodeURIComponent(preview?.value || '');
 
+    window.location.href = `mailto:${SEND_EMAIL}?subject=${sujet}&body=${corps}`;
+  });
+  document.getElementById('copy-send-text')?.addEventListener('click', async () => {
+    const preview = document.getElementById('send-preview');
+    const feedback = document.getElementById('send-feedback');
+
+    try {
+      await navigator.clipboard.writeText(preview?.value || '');
+      if (feedback) {
+        feedback.textContent = 'Texte copié dans le presse-papiers.';
+        feedback.style.color = 'green';
+      }
+    } catch (err) {
+      if (feedback) {
+        feedback.textContent = 'Impossible de copier automatiquement. Vous pouvez sélectionner le texte manuellement.';
+        feedback.style.color = 'red';
+      }
+    }
+  });
+  document.getElementById('copy-send-email')?.addEventListener('click', async () => {
+    const feedback = document.getElementById('send-feedback');
+
+    try {
+      await navigator.clipboard.writeText(SEND_EMAIL);
+      if (feedback) {
+        feedback.textContent = 'Adresse mail copiée.';
+        feedback.style.color = 'green';
+      }
+    } catch (err) {
+      if (feedback) {
+        feedback.textContent = 'Impossible de copier automatiquement l’adresse.';
+        feedback.style.color = 'red';
+      }
+    }
+  });
+  document.getElementById('close-send-modal')?.addEventListener('click', () => {
+    document.getElementById('send-modal')?.classList.add('hidden');
+  });
+
+  document.getElementById('send-modal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'send-modal') {
+      e.currentTarget.classList.add('hidden');
+    }
   });
   document.getElementById('start-validation')?.addEventListener('click', async () => {
     victoryModal?.classList.add('hidden');
@@ -391,4 +452,5 @@ document.querySelector('#validation-panel .modal-close-btn')?.addEventListener('
   validationCloseBtn?.addEventListener('click', () => {
     closeValidation();
   });
+
 });
