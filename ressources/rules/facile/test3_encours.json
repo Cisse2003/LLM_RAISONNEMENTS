@@ -1,0 +1,31 @@
+{
+  "description": "Allumer uniquement les boutons 1, 2, 3, 7, 8 et 9",
+  "targetState": [1,1,1,0,0,0,1,1,1],
+  "difficulty": "facile",
+  "validationQuestions": [
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 1, quel sera l'état suivant ?",
+      "initialState": [0,0,0,0,0,0,0,0,0],
+      "clickButton": 1,
+      "expectedState": [1,0,0,1,0,0,0,0,0]
+    },
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 5, quel sera l'état suivant ?",
+      "initialState": [1,0,0,1,1,0,0,1,0],
+      "clickButton": 5,
+      "expectedState": [1,0,0,1,0,0,0,0,0]
+    },
+    {
+      "description": "Si l'état initial est celui-ci et qu'on clique sur le bouton 9, quel sera l'état suivant ?",
+      "initialState": [0,0,1,0,0,1,0,0,0],
+      "clickButton": 9,
+      "expectedState": [0,0,1,0,0,0,0,0,1]
+    }
+  ],
+  "rule": [
+    "let bas = index + 3;",
+    "let cible = bas <= 8 ? bas : index - 3;",
+    "buttons[index] = !buttons[index];",
+    "buttons[cible]  = !buttons[cible];"
+  ]
+}
