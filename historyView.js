@@ -94,6 +94,13 @@ export const historyView = {
       </div>
     `;
       }
+          if (a.type === 'comment') {
+            return `
+        <div class="action-comment">
+          <strong>Commentaire :</strong> ${a.text} à ${a.timestamp}
+        </div>
+      `;
+      }
       return `
         <div>
           <strong>Action ${idx + 1} :</strong> Bouton ${a.button} cliqué à ${a.timestamp}<br>

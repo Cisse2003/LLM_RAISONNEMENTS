@@ -368,6 +368,16 @@ document.querySelector('#validation-panel .modal-close-btn')?.addEventListener('
     openValidationQuestion();
   }
 });
+  document.getElementById('add-comment')?.addEventListener('click', () => {
+    const input = document.getElementById('comment-input');
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    model.addComment(text);
+    historyView.update();
+    input.value = '';
+  });
 
 // ── Clic en dehors du panel ──
   validationPanel?.addEventListener('click', (e) => {

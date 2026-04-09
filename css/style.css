@@ -642,3 +642,110 @@ button:hover {
   opacity: 0.75;
   font-style: italic;
 }
+.comment-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#comment-input {
+  flex: 1;
+  min-height: 90px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: none;
+  resize: vertical;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+#add-comment {
+  width: 180px !important;
+  min-width: 180px !important;
+  max-width: 180px !important;
+  height: 56px !important;
+  padding: 0 16px !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 16px;
+  background: #6c7bff;
+  color: white;
+  font-size: 16px !important;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+
+  flex: 0 0 180px !important;
+  align-self: center;
+  cursor: pointer;
+}
+
+.send-modal-content {
+  width: 90%;
+  max-width: 720px;
+}
+
+.send-help-text {
+  margin: 12px 0;
+  line-height: 1.5;
+}
+
+.send-destination {
+  margin: 12px 0;
+  line-height: 1.5;
+}
+
+#copy-send-email {
+  margin-left: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#send-preview {
+  width: 100%;
+  min-height: 260px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.send-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+#copy-send-text,
+#confirm-send {
+  width: auto !important;
+  min-width: 180px;
+  height: auto !important;
+  padding: 10px 16px !important;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px !important;
+  white-space: nowrap;
+}
+
+#send-feedback {
+  margin-top: 12px;
+  font-size: 14px;
+}

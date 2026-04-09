@@ -71,6 +71,16 @@ class Model {
         this.actions.push(victoryAction);
         this.globalActions.push(victoryAction); // ajout session globale
     }
+    addComment(commentText) {
+        const action = {
+            type: 'comment',
+            text: commentText,
+            timestamp: new Date().toLocaleTimeString(),
+        };
+
+        this.actions.push(action);
+        this.globalActions.push(action);
+    }
     addValidationSuccess() {
         const validationAction = {
             type: 'validation-success',
