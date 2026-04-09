@@ -110,12 +110,17 @@ export const autoMode = {
         const target = model.rule?.targetState || Array(9).fill(0);
         const description = model.rule?.description || '';
 
-        const initText = `Grille de 9 boutons (3×3 : 1 2 3 / 4 5 6 / 7 8 9), tous éteints au départ : [□ □ □ □ □ □ □ □ □].
-Quand je clique sur un bouton, une règle cachée modifie l'état d'un ou plusieurs boutons.
-CLEAR remet tout à [□ □ □ □ □ □ □ □ □] sans compter comme une action.
-État cible : [${target.map(v => v ? '■' : '□').join(' ')}].
-Description : "${description}".
-Je suis en mode automatique : tu joues pour moi. Donne ta première instruction.`;
+        const initText = `On va jouer à un jeu avec une grille de 9 boutons (3x3 : 1 2 3 / 4 5 6 / 7 8 9), tous éteints au départ : [□ □ □ □ □ □ □ □ □].
+    Tu disposes également d'un bouton CLEAR qui éteint ([□ □ □ □ □ □ □ □ □]) tous les boutons instantanément sans compter comme une action.
+
+    État cible à atteindre : [${target.map(v => v ? '■' : '□').join(' ')}]  
+    Description de l'objectif : "${description}"
+    
+    Règles du jeu :
+    - À chaque tour, indique-moi quel bouton tu appuies (1 à 9 ou RESET) et si tu penses avoir gagné.
+    - Je te répondrai en indiquant quels boutons se sont allumés ou éteints.
+    - Continue jusqu'à atteindre l'état cible.
+    - Si tu connais la solution, donne-la directement ; sinon, propose un bouton à tester ensuite.`;
 
         this._appendMessage('user', initText);
         this.conversationHistory.push({ role: 'user', content: initText });
