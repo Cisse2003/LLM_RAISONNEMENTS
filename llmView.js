@@ -13,7 +13,7 @@ export const llmView = {
     autoRunning: false,
     autoPaused: false,
     autoStepCount: 0,
-    autoMaxSteps: 15,
+    autoMaxSteps: 1000,
     manualTakenOver: false,
     lastAutoMessage: null,
 
@@ -85,50 +85,52 @@ export const llmView = {
         const target = model.rule?.targetState || Array(9).fill(0);
         const description = model.rule?.description || '';
 
-        return `Tu participes à une expérience de raisonnement logique.
+        return `On va jouer à un jeu.
 
-        Le jeu :
-        - Il y a 9 boutons disposés en grille 3×3 :
-          1 2 3
-          4 5 6
-          7 8 9
-        - Chaque bouton peut être allumé (■) ou éteint (□).
-        - Au départ, tous les boutons sont éteints : [□ □ □ □ □ □ □ □ □].
-        - Quand on clique sur un bouton, une règle cachée modifie l’état d’un ou plusieurs boutons.
-        - Il existe aussi une action CLEAR qui remet instantanément tous les boutons à [□ □ □ □ □ □ □ □ □].
-        - Ton objectif est de découvrir la règle et d’atteindre l’état cible.
+        Tu as devant toi 9 boutons numérotés de 1 à 9, disposés en grille 3×3 :
+        1 2 3
+        4 5 6
+        7 8 9
         
-        État cible :
+        Au départ, tous les boutons sont éteints.
+        
+        À chaque tour, tu peux choisir une action :
+        - appuyer sur un des boutons numérotés
+        - ou utiliser le bouton "reset", qui remet tous les boutons à l’état éteint
+        
+        Après chaque action, je t’indiquerai l’état obtenu, c’est-à-dire quels boutons sont allumés et quels boutons sont éteints.
+        
+        Attention : -appuyer sur un bouton ne veut pas dire que ce bouton-là va forcément s’allumer.
+                    -l’action d’appuyer sur un bouton peut modifier n’importe quelle partie de l’état
+        
+        Ton objectif est d’atteindre exactement l’état suivant :
         [${target.map(v => v ? '■' : '□').join(' ')}]
         
         Description de l’objectif :
         "${description}"
         
-        Consignes de réponse :
-        - Réponds uniquement avec un objet JSON valide.
-        - N’écris aucun texte avant ou après.
-        - Si tu veux tester un bouton : {"action":"test","button":1}
-        - Si tu penses avoir trouvé une solution finale : {"action":"solve","sequence":[1,2,3]}
-        - Si tu veux arrêter : {"action":"stop","reason":"..."}
+        À chaque tour, tu dois donc me dire quelle action tu veux faire ensuite, ou si tu penses que l’objectif est atteint.
         
-        Commence par proposer un premier test.`;
+        Réponds uniquement avec l’un des formats suivants :
+        {"action":"press","button":1}
+        {"action":"reset"}
+        {"action":"won"}`;
     },
     buildAutoSystemPrompt() {
-        return `Tu es un assistant d'analyse logique.
-        Tu participes à une expérience sur une grille de 9 boutons.
-        En mode automatique, tu dois répondre uniquement avec un JSON valide.
+        return `Tu participes à un jeu de raisonnement logique.
+
+        Tu dois répondre uniquement avec un JSON valide, sans aucun texte avant ou après.
         
         Formats autorisés :
-        {"action":"test","button":1}
-        {"action":"solve","sequence":[1,2,3]}
-        {"action":"stop","reason":"..."}
+        {"action":"press","button":1}
+        {"action":"reset"}
+        {"action":"won"}
         
         Règles :
-        - Aucune phrase hors JSON
-        - Aucun markdown
-        - Aucun commentaire
-        - Le champ "button" doit être un entier entre 1 et 9
-        - Le champ "sequence" doit être un tableau d'entiers entre 1 et 9`;
+        - pour appuyer sur un bouton, utilise "press" avec un numéro entre 1 et 9
+        - pour remettre tous les boutons à zéro, utilise "reset"
+        - si tu penses que l’objectif est atteint, utilise "won"
+        - n’écris rien d’autre que le JSON`;
     },
     async startAutoMode() {
         this.autoRunning = true;
@@ -212,13 +214,11 @@ export const llmView = {
     },
     async runAutoLoop(nextMessage) {
         while (
-
             this.autoRunning &&
             !this.autoPaused &&
             !this.manualTakenOver &&
             this.autoStepCount < this.autoMaxSteps
             ) {
-            this.lastAutoMessage = nextMessage;
             const reply = await this._sendAuto(nextMessage);
             const parsed = this.parseAutoReply(reply);
 
@@ -228,7 +228,7 @@ export const llmView = {
                 return;
             }
 
-            if (parsed.action === 'test' && Number.isInteger(parsed.button) && parsed.button >= 1 && parsed.button <= 9) {
+            if (parsed.action === 'press' && Number.isInteger(parsed.button) && parsed.button >= 1 && parsed.button <= 9) {
                 const before = [...model.getState()];
 
                 model.toggle(parsed.button - 1);
@@ -238,22 +238,65 @@ export const llmView = {
                 const after = [...model.getState()];
                 this.autoStepCount++;
 
-                this.appendMessage('assistant', `✅ Bouton ${parsed.button} testé automatiquement.`);
+                const hasWon = this.checkAutoVictory();
+                if (hasWon) {
+                    this.autoRunning = false;
+                    return;
+                }
 
+                this.appendMessage('assistant', `✅ Bouton ${parsed.button} testé automatiquement.`);
                 nextMessage = this.buildAutoObservationMessage(parsed.button, before, after);
                 continue;
             }
 
-            if (parsed.action === 'solve' && Array.isArray(parsed.sequence)) {
-                this.appendMessage('assistant', `Solution proposée : ${JSON.stringify(parsed.sequence)}`);
-                this.autoRunning = false;
-                return;
+            if (parsed.action === 'reset') {
+                document.getElementById('reset')?.click();
+                this.autoStepCount++;
+
+                const current = model.getState();
+                this.appendMessage('assistant', '🔄 RESET effectué automatiquement.');
+
+                nextMessage = `Après RESET, tous les boutons sont éteints :
+                [${current.map(s => s ? '■' : '□').join(' ')}]
+                
+                Propose l’action suivante.
+                
+                Réponds uniquement avec l’un des formats suivants :
+                {"action":"press","button":1}
+                {"action":"reset"}
+                {"action":"won"}`;
+                continue;
             }
 
-            if (parsed.action === 'stop') {
-                this.appendMessage('assistant', `Arrêt demandé : ${parsed.reason || 'sans raison'}`);
-                this.autoRunning = false;
-                return;
+            if (parsed.action === 'won') {
+                const hasWon = this.checkAutoVictory();
+
+                if (hasWon) {
+                    this.appendMessage('assistant', '✅ Le LLM pense avoir gagné, et l’objectif est bien atteint.');
+                    this.autoRunning = false;
+                    return;
+                }
+
+                this.appendMessage('assistant', '❌ Le LLM pense avoir gagné, mais l’objectif n’est pas encore atteint.');
+
+                const current = model.getState();
+                const target = model.rule?.targetState || Array(9).fill(0);
+
+                nextMessage = `Tu as indiqué que tu pensais avoir gagné, mais ce n'est pas encore le cas.
+
+                État actuel :
+                [${current.map(s => s ? '■' : '□').join(' ')}]
+                
+                État cible :
+                [${target.map(s => s ? '■' : '□').join(' ')}]
+                
+                Propose l’action suivante.
+                
+                Réponds uniquement avec l’un des formats suivants :
+                {"action":"press","button":1}
+                {"action":"reset"}
+                {"action":"won"}`;
+                continue;
             }
 
             this.appendMessage('error', '⚠ Format JSON non reconnu.');
@@ -267,18 +310,18 @@ export const llmView = {
         }
     },
     buildAutoObservationMessage(button, before, after) {
-        return `Observation après test :
-
-        Bouton testé : ${button}
-        Avant : [${before.map(s => s ? '■' : '□').join(' ')}]
-        Après : [${after.map(s => s ? '■' : '□').join(' ')}]
+                return `Observation après action :
         
-        Réponds uniquement avec un JSON valide.
+        Action choisie : appuyer sur le bouton ${button}
+        État avant : [${before.map(s => s ? '■' : '□').join(' ')}]
+        État actuel : [${after.map(s => s ? '■' : '□').join(' ')}]
         
-        Formats autorisés :
-        {"action":"test","button":1}
-        {"action":"solve","sequence":[1,2,3]}
-        {"action":"stop","reason":"..."}`;
+        Tu dois maintenant proposer l’action suivante à partir de cette observation.
+        
+        Réponds uniquement avec l’un des formats suivants :
+        {"action":"press","button":1}
+        {"action":"reset"}
+        {"action":"won"}`;
     },
     pauseAutoMode() {
         this.autoPaused = true;
@@ -315,6 +358,29 @@ export const llmView = {
 
         this.appendMessage('assistant', '▶ Reprise du mode automatique.');
         await this.runAutoLoop(this.lastAutoMessage);
+    },
+    checkAutoVictory() {
+        const current = model.getState().map(b => b ? 1 : 0);
+        const target = model.rule?.targetState || Array(9).fill(0);
+
+        if (JSON.stringify(current) === JSON.stringify(target)) {
+            model.addVictory();
+            historyView.update();
+
+            const victoryModal = document.getElementById('victory-modal');
+            const validationBtn = document.getElementById('start-validation');
+
+            if (model.rule.hasValidation && !model.isValidation) {
+                validationBtn?.classList.remove('hidden');
+            } else {
+                validationBtn?.classList.add('hidden');
+            }
+
+            victoryModal?.classList.remove('hidden');
+            return true;
+        }
+
+        return false;
     },
 
 
