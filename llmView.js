@@ -92,7 +92,6 @@ export const llmView = {
         let text;
 
         // Si le LLM a dit "Terminer"
-        /*
         if (lastReply.trim().toLowerCase() === 'terminer') {
             if (this.isTargetReached()) {
                 text = `🎉 Félicitations ! L'objectif est atteint ! Pouvez-vous maintenant me donner la règle qui cachait les boutons ?`;
@@ -101,7 +100,7 @@ export const llmView = {
             }
             this._send(text);
             return;
-        }  */
+        }
 
         // Sinon, on continue normal
         if (!lastAction || (!(lastAction.type === 'clear' || lastAction.type === 'load') && lastAction.button === undefined)) {
@@ -187,6 +186,7 @@ export const llmView = {
         IMPORTANT :
         - Tu ne dois répondre **que par le numéro du bouton à appuyer (1 à 9), RESET ou "Terminer" si l'objectif est atteint**.
         - Ne jamais ajouter d’explications, commentaires ou phrases supplémentaires.
+        - **Exception :** uniquement si l'utilisateur te demande explicitement de lui donner la règle qui cachait les boutons, tu peux alors expliquer avec des phrases.
         - Si l'utilisateur te corrige ou te remet sur la bonne voie, continue simplement à suivre ces instructions.
         - Toujours répondre en français, de manière concise et directe, **une seule valeur par réponse**.`;
     },
@@ -208,15 +208,23 @@ export const llmView = {
         document.getElementById(id)?.remove();
     },
     isTargetReached() {
-        const states = model.globalActions
-            .filter(a => Array.isArray(a.stateAfter))
-            .map(a => a.stateAfter);
+        const target = model.rule?.targetState || Array(9).fill(false);
 
-        if (!states.length) return false;
+        // Cherche la dernière action ayant un stateAfter
+        for (let i = model.globalActions.length - 1; i >= 0; i--) {
+            const action = model.globalActions[i];
 
-        const currentState = states[states.length - 1];
-        const target = model.rule?.targetState || Array(9).fill(0);
+            if (Array.isArray(action.stateAfter)) {
+                const currentState = action.stateAfter;
+                return currentState.every((v, idx) => v === target[idx]);
+            }
 
-        return currentState.every((v, i) => v === target[i]);
+            // Si l'action est "victory", on considère que la cible est atteinte
+            if (action.type === 'victory') {
+                return true;
+            }
+        }
+
+        return false; // aucun état correspondant trouvé
     }
 };
