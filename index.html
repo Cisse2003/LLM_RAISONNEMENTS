@@ -137,7 +137,13 @@
         <div id="panel-llm" class="hidden">
             <div id="llm-config">
                 <input type="password" id="llm-api-key" placeholder="Clé API OpenRouter (sk-or-v1-...)" />
-                <input type="text" id="llm-model" placeholder="Modèle" value="openai/gpt-4o-mini" />
+                <select id="llm-model">
+                    <option value="openai/gpt-4o-mini" selected>OpenAI GPT-4o-mini</option>
+                    <option value="qwen/qwen3-next-80b-a3b-instruct">Qwen Qwen3-next-80b-a3b-instruct</option>
+                    <option value="openai/gpt-oss-120b">OpenAI GPT-oss-120b</option>
+                    <option value="nvidia/nemotron-3-super-120b-a12b:free">Nvidia Nemotron-3-super-120b-a12b</option>
+                    <!-- Autres modèles ici -->
+                </select>
             </div>
             <div id="llm-messages"></div>
             <div id="llm-actions-row">

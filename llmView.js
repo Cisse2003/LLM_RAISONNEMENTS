@@ -55,12 +55,17 @@ export const llmView = {
         const target = model.rule?.targetState || Array(9).fill(0);
         const description = model.rule?.description || '';
 
-        const text = `Grille de 9 boutons (3×3 : 1 2 3 / 4 5 6 / 7 8 9), tous éteints au départ : [□ □ □ □ □ □ □ □ □].
-    Quand je clique sur un bouton, une règle cachée modifie l'état d'un ou plusieurs boutons.
-    Je dispose aussi d'un bouton CLEAR qui remet instantanément tous les boutons à [□ □ □ □ □ □ □ □ □] sans compter comme une action.
-    État cible à atteindre : [${target.map(v => v ? '■' : '□').join(' ')}].
-    Description de l'objectif : "${description}".
-    Je vais te décrire mes actions une par une. Donne-moi la solution dès que tu la connais, sinon dis-moi quel bouton tester ensuite.`;
+        const text = `On va jouer à un jeu avec une grille de 9 boutons (3x3 : 1 2 3 / 4 5 6 / 7 8 9), tous éteints au départ : [□ □ □ □ □ □ □ □ □].
+    Tu disposes également d'un bouton CLEAR qui éteint ([□ □ □ □ □ □ □ □ □]) tous les boutons instantanément sans compter comme une action.
+
+    État cible à atteindre : [${target.map(v => v ? '■' : '□').join(' ')}]  
+    Description de l'objectif : "${description}"
+    
+    Règles du jeu :
+    - À chaque tour, indique-moi quel bouton tu appuies (1 à 9 ou RESET) et si tu penses avoir gagné.
+    - Je te répondrai en indiquant quels boutons se sont allumés ou éteints.
+    - Continue jusqu'à atteindre l'état cible.
+    - Si tu connais la solution, donne-la directement ; sinon, propose un bouton à tester ensuite.`;
 
         // Enregistre dans l'historique du modèle
         model.globalActions.push({
@@ -79,28 +84,45 @@ export const llmView = {
             .reverse()
             .find(a => a.button !== undefined || a.type === 'clear' || a.type === 'load');
 
+        // Récupère la dernière réponse du LLM
+        const lastReply = this.conversationHistory.length
+            ? this.conversationHistory[this.conversationHistory.length - 1].content
+            : '';
+
         let text;
-        if (!lastAction || (!(lastAction.type === 'clear' || lastAction.type === 'load') && !lastAction.button === undefined)) {
-            text = `Aucune action effectuée. Rappel : je peux utiliser CLEAR à tout moment pour remettre tous les boutons à zéro. Quel bouton tester en premier ?`;
+
+        // Si le LLM a dit "Terminer"
+        if (lastReply.trim().toLowerCase() === 'terminer') {
+            if (this.isTargetReached()) {
+                text = `🎉 Félicitations ! L'objectif est atteint ! Pouvez-vous maintenant me donner la règle qui cachait les boutons ?`;
+            } else {
+                text = `⚠️ L'objectif n'est pas encore atteint. Rappelez-vous les règles : \n- Appuyez sur un bouton (1-9) ou RESET\n- Continuez jusqu'à atteindre l'état cible.`;
+            }
+            this._send(text);
+            return;
+        }
+
+        // Sinon, on continue normal
+        if (!lastAction || (!(lastAction.type === 'clear' || lastAction.type === 'load') && lastAction.button === undefined)) {
+            text = `Aucune action effectuée. Quel bouton tester en premier ? (Répondre uniquement par un numéro 1-9, RESET ou "Terminer")`;
         } else if (lastAction.type === 'clear' || lastAction.type === 'load') {
-            text = `J'ai utilisé CLEAR : tous les boutons sont maintenant éteints [□ □ □ □ □ □ □ □ □].
-            Tu connais la solution ? Si oui, donne-la. Sinon, quel bouton tester ensuite ?`;
+            text = `J'ai utilisé CLEAR : tous les boutons sont maintenant éteints [□ □ □ □ □ □ □ □ □].`;
         } else {
             const avant = lastAction.stateBefore.map(s => s ? '■' : '□').join(' ');
             const apres = lastAction.stateAfter.map(s => s ? '■' : '□').join(' ');
             text = `Bouton ${lastAction.button} cliqué.
             Avant : [${avant}]
-            Après : [${apres}]
-            Tu connais la solution ? Si oui, donne-la. Sinon, quel bouton tester ensuite ?`;
+            Après : [${apres}]`;
+
             model.globalActions.push({
                 type: 'llm-etape',
                 timestamp: new Date().toLocaleTimeString(),
-                actionRef: lastAction?.button ??  null,
+                actionRef: lastAction?.button ?? null,
             });
             historyView.update();
         }
-        this._send(text);
 
+        this._send(text);
     },
 
     // ── Envoi commun ─────────────────────────────────────────────────────────
@@ -157,18 +179,15 @@ export const llmView = {
     },
 
     buildSystemPrompt() {
-        return `Tu es un assistant d'analyse logique.
-L'utilisateur interagit avec une grille de 9 boutons numérotés de 1 à 9 (disposés en 3×3 : 1 2 3 / 4 5 6 / 7 8 9).
-Chaque bouton peut être allumé (■) ou éteint (□).
-Cliquer sur un bouton modifie l'état de certains boutons selon une règle fixe.
-Je dispose aussi d'un bouton CLEAR qui remet instantanément tous les boutons à [□ □ □ □ □ □ □ □ □] sans compter comme une action.
-
-Ton rôle :
-- Analyser chaque action (bouton cliqué → changement d'état observé) pour comprendre le mécanisme
-- Déduire le plus vite possible la séquence exacte de boutons à cliquer pour atteindre l'état cible
-- Dès que tu as la solution, donner directement la liste ordonnée des boutons à cliquer
-- Si tu n'as pas encore assez de données, indiquer précisément quel bouton tester ensuite pour maximiser l'information
-- Répondre en français, de manière courte et directe`;
+        return `Tu es un assistant d'analyse logique spécialisé dans les puzzles de boutons.
+        - Il y a 9 boutons numérotés de 1 à 9 (3x3 : 1 2 3 / 4 5 6 / 7 8 9), chacun allumé (■) ou éteint (□).
+        - Un bouton CLEAR remet tous les boutons à [□ □ □ □ □ □ □ □ □] instantanément sans compter comme action.
+        
+        IMPORTANT :
+        - Tu ne dois répondre **que par le numéro du bouton à appuyer (1 à 9), RESET ou "Terminer" si l'objectif est atteint**.
+        - Ne jamais ajouter d’explications, commentaires ou phrases supplémentaires.
+        - Si l'utilisateur te corrige ou te remet sur la bonne voie, continue simplement à suivre ces instructions.
+        - Toujours répondre en français, de manière concise et directe, **une seule valeur par réponse**.`;
     },
 
     appendMessage(role, text, isTyping = false) {
@@ -187,4 +206,20 @@ Ton rôle :
     removeMessage(id) {
         document.getElementById(id)?.remove();
     },
+    isTargetReached() {
+        const lastAction = model.globalActions.length
+            ? model.globalActions[model.globalActions.length - 1]
+            : null;
+
+        // Si pas d'action ou stateAfter non défini, on considère tous les boutons éteints
+        const currentState = (lastAction && Array.isArray(lastAction.stateAfter))
+            ? lastAction.stateAfter
+            : Array(9).fill(0);
+
+        const target = Array.isArray(model.rule?.targetState)
+            ? model.rule.targetState
+            : Array(9).fill(0);
+
+        return currentState.every((val, idx) => val === target[idx]);
+    }
 };
