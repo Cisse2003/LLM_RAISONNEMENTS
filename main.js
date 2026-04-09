@@ -2,10 +2,12 @@
 import { model } from './model.js';
 import { view } from './view.js';
 import { historyView } from './historyView.js';
+import { autoMode } from './autoMode.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   view.init();
   historyView.init();
+  autoMode.init();
 
   const ruleSelect = document.getElementById('rule-select');
   const objectiveDesc = document.getElementById('objective-description');

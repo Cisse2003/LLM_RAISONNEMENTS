@@ -101,6 +101,41 @@ export const historyView = {
         </div>
       `;
       }
+       if (a.type === 'auto-start') {
+        return `
+          <div class="action-auto-start">
+            <strong>🤖 Mode automatique démarré</strong> à ${a.timestamp}
+          </div>
+        `;
+      }
+      if (a.type === 'auto-stop') {
+        return `
+          <div class="action-auto-stop">
+            <strong>⏹ Mode auto arrêté</strong> — ${a.reason} à ${a.timestamp}
+          </div>
+        `;
+      }
+      if (a.type === 'llm-auto-reply') {
+        return `
+          <div class="action-llm">
+            <strong>🤖 Réponse LLM :</strong> ${a.reply} à ${a.timestamp}
+          </div>
+        `;
+      }
+      if (a.type === 'llm-auto-action') {
+        return `
+          <div class="action-llm-auto">
+            <strong>🤖 LLM clique bouton ${a.button}</strong> à ${a.timestamp}
+          </div>
+        `;
+      }
+      if (a.type === 'llm-abandon') {
+        return `
+          <div class="action-llm-abandon">
+            <strong>🏳 LLM abandonne :</strong> ${a.reason} à ${a.timestamp}
+          </div>
+        `;
+      }
       return `
         <div>
           <strong>Action ${idx + 1} :</strong> Bouton ${a.button} cliqué à ${a.timestamp}<br>
@@ -109,4 +144,5 @@ export const historyView = {
       `;
     }).join('');
   }
+
 };
