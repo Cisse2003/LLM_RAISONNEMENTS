@@ -25,7 +25,9 @@ export const autoMode = {
         if (!actionsRow) return;
 
         // Contrôles du mode auto
+
         const wrapper = document.createElement('div');
+        wrapper.style.display = 'none';
         wrapper.id = 'auto-mode-controls';
         wrapper.innerHTML = `
             <div id="auto-mode-row">
@@ -83,6 +85,13 @@ export const autoMode = {
 
     // ── Démarrage ──────────────────────────────────────────────────────────
     async start() {
+
+        const mode = document.getElementById('llm-mode')?.value;
+        if (mode !== 'auto') {
+            this._setStatus('⚠️ Passe en mode automatique pour lancer.', 'error');
+            return;
+        }
+        
         const apiKey = document.getElementById('llm-api-key')?.value.trim();
         if (!apiKey) {
             this._setStatus('⚠ Entrez votre clé API OpenRouter.', 'error');

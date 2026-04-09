@@ -145,7 +145,12 @@
                     <option value="nvidia/nemotron-3-super-120b-a12b:free">Nvidia Nemotron-3-super-120b-a12b</option>
                     <!-- Autres modèles ici -->
                 </select>
+                <select id="llm-mode">
+                    <option value="semi" selected>Mode semi-auto</option>
+                    <option value="auto">Mode automatique</option>
+                </select>
             </div>
+
             <div id="llm-messages"></div>
             <div id="llm-actions-row">
                 <button id="llm-btn-description">📋 Description</button>

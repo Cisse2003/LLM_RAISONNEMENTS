@@ -12,10 +12,14 @@ export const llmView = {
         const toggleBtn = document.getElementById('toggle-llm-btn');
         const btnDescription = document.getElementById('llm-btn-description');
         const btnEtape       = document.getElementById('llm-btn-etape');
+        const modeSelect = document.getElementById('llm-mode');
 
+        modeSelect?.addEventListener('change', () => this.updateModeUI());
         toggleBtn?.addEventListener('click', () => this.toggle());
         btnDescription?.addEventListener('click', () => this.sendDescription());
         btnEtape?.addEventListener('click',       () => this.sendEtape());
+
+        this.updateModeUI();
     },
 
     toggle() {
@@ -226,5 +230,23 @@ export const llmView = {
         }
 
         return false; // aucun état correspondant trouvé
+    },
+
+    updateModeUI() {
+        const mode = document.getElementById('llm-mode')?.value;
+
+        const autoControls = document.getElementById('auto-mode-controls');
+        const btnDesc = document.getElementById('llm-btn-description');
+        const btnEtape = document.getElementById('llm-btn-etape');
+
+        if (mode === 'auto') {
+            if (autoControls) autoControls.style.display = 'flex';
+            if (btnDesc) btnDesc.style.display = 'none';
+            if (btnEtape) btnEtape.style.display = 'none';
+        } else {
+            if (autoControls) autoControls.style.display = 'none';
+            if (btnDesc) btnDesc.style.display = 'block';
+            if (btnEtape) btnEtape.style.display = 'block';
+        }
     }
 };
