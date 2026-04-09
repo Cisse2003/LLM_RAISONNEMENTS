@@ -1,3 +1,4 @@
+//controller.js
 import { view } from './view.js';
 import { historyView } from './historyView.js';
 import { model } from './model.js';

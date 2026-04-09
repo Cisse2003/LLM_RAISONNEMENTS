@@ -54,6 +54,10 @@
             <button id="export">SEND</button>
             <!--<button id="clean">CLEAN</button>-->
         </div>
+        <div class="comment-box">
+            <textarea id="comment-input" placeholder="Ajouter un commentaire..."></textarea>
+            <button id="add-comment">Valider</button>
+        </div>
     </main>
 
     <div id="victory-modal" class="modal hidden">
@@ -115,16 +119,72 @@
         </div>
     </div>
 
+    <div id="resizer"></div>
+
     <aside class="history">
         <div class="header">
-            <div class="icon">📜</div>
-            <h3>Historique des actions</h3>
+            <div class="icon" id="history-icon">📜</div>
+            <h3 id="history-title">Historique des actions</h3>
+            <button id="toggle-llm-btn" title="Tester avec le LLM">LLM</button>
         </div>
-        <div id="actions-list"></div>
+
+        <!-- Panneau Historique -->
+        <div id="panel-history">
+            <div id="actions-list"></div>
+        </div>
+
+        <!-- Panneau LLM -->
+        <div id="panel-llm" class="hidden">
+            <div id="llm-config">
+                <input type="password" id="llm-api-key" placeholder="Clé API OpenRouter (sk-or-v1-...)" />
+                <select id="llm-model">
+                    <option value="openai/gpt-4o-mini" selected>OpenAI GPT-4o-mini</option>
+                    <option value="qwen/qwen3-next-80b-a3b-instruct">Qwen Qwen3-next-80b-a3b-instruct</option>
+                    <option value="openai/gpt-oss-120b">OpenAI GPT-oss-120b</option>
+                    <option value="nvidia/nemotron-3-super-120b-a12b:free">Nvidia Nemotron-3-super-120b-a12b</option>
+                    <!-- Autres modèles ici -->
+                </select>
+            </div>
+            <div id="llm-messages"></div>
+            <div id="llm-actions-row">
+                <button id="llm-btn-description">📋 Description</button>
+                <button id="llm-btn-etape">👣 Étape</button>
+            </div>
+        </div>
     </aside>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="resizer.js"></script>
+<script type="module" src="llmView.js"></script>
 <script type="module" src="main.js"></script>
 </body>
+<div id="send-modal" class="modal hidden">
+    <div class="modal-content send-modal-content">
+        <button class="modal-close-btn" id="close-send-modal">✕</button>
+
+        <h2>Envoi de votre historique</h2>
+
+        <p class="send-help-text">
+            Merci pour votre participation.
+            Voici le récapitulatif de votre test.
+            Vous pouvez soit ouvrir automatiquement votre messagerie, soit copier le texte ci-dessous
+            pour l’envoyer manuellement à l’adresse indiquée.
+        </p>
+
+        <p class="send-destination">
+            Adresse de destination :
+            <strong id="send-destination-email">test@test.fr</strong>
+            <button id="copy-send-email" type="button">Copier l’adresse</button>
+        </p>
+
+        <textarea id="send-preview" readonly></textarea>
+
+        <div class="send-actions">
+            <button id="copy-send-text" type="button">Copier le texte</button>
+            <button id="confirm-send" type="button">Envoyer par mail</button>
+        </div>
+
+        <p id="send-feedback"></p>
+    </div>
+</div>
 </html>

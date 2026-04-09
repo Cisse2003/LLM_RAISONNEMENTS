@@ -1,3 +1,4 @@
+//view.js
 export const view = {
   gridButtons: null,
 
