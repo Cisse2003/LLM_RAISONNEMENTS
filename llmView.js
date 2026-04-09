@@ -92,6 +92,7 @@ export const llmView = {
         let text;
 
         // Si le LLM a dit "Terminer"
+        /*
         if (lastReply.trim().toLowerCase() === 'terminer') {
             if (this.isTargetReached()) {
                 text = `🎉 Félicitations ! L'objectif est atteint ! Pouvez-vous maintenant me donner la règle qui cachait les boutons ?`;
@@ -100,7 +101,7 @@ export const llmView = {
             }
             this._send(text);
             return;
-        }
+        }  */
 
         // Sinon, on continue normal
         if (!lastAction || (!(lastAction.type === 'clear' || lastAction.type === 'load') && lastAction.button === undefined)) {
@@ -207,19 +208,15 @@ export const llmView = {
         document.getElementById(id)?.remove();
     },
     isTargetReached() {
-        const lastAction = model.globalActions.length
-            ? model.globalActions[model.globalActions.length - 1]
-            : null;
+        const states = model.globalActions
+            .filter(a => Array.isArray(a.stateAfter))
+            .map(a => a.stateAfter);
 
-        // Si pas d'action ou stateAfter non défini, on considère tous les boutons éteints
-        const currentState = (lastAction && Array.isArray(lastAction.stateAfter))
-            ? lastAction.stateAfter
-            : Array(9).fill(0);
+        if (!states.length) return false;
 
-        const target = Array.isArray(model.rule?.targetState)
-            ? model.rule.targetState
-            : Array(9).fill(0);
+        const currentState = states[states.length - 1];
+        const target = model.rule?.targetState || Array(9).fill(0);
 
-        return currentState.every((val, idx) => val === target[idx]);
+        return currentState.every((v, i) => v === target[i]);
     }
 };
