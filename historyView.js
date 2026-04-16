@@ -136,6 +136,25 @@ export const historyView = {
           </div>
         `;
       }
+      if (a.type === 'llm-validation-end') {
+
+        const isSuccess = a.result === 'RÉUSSIE';
+        const statusClass = isSuccess ? 'action-validation-success' : 'action-validation-failure';
+        const borderColor = isSuccess ? '#28a745' : '#dc3545'; // Vert ou Rouge
+        const textColor = isSuccess ? '#28a745' : '#dc3545';
+
+        return `
+          <div class="${statusClass}" style="border-left: 4px solid ${borderColor}; padding-left: 10px;">
+            <strong style="color: ${textColor};">Validation LLM terminée</strong><br>
+            <span style="color: ${textColor};">Score : ${a.score} (${a.result})</span> à ${a.timestamp}
+          </div>
+        `;
+      }
+
+      const stateStr = (a.stateAfter && Array.isArray(a.stateAfter))
+          ? a.stateAfter.map(s => s ? '■' : '□').join(' ')
+          : 'N/A';
+
       return `
         <div>
           <strong>Action ${idx + 1} :</strong> Bouton ${a.button} cliqué à ${a.timestamp}<br>
