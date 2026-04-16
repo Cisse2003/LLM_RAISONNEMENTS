@@ -179,7 +179,6 @@ export const llmView = {
         if (lastReply.includes('terminer')) {
             if (this.isTargetReached()) {
 
-                n
                 if (btnValidation) {
                     btnValidation.style.display = 'block';
                     btnValidation.textContent = "🏁 Démarrer la validation";
