@@ -837,3 +837,20 @@ button:hover {
   padding: 6px 8px;
   width: 100%;
 }
+
+#llm-btn-validation-semi {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  animation: pulse 2s infinite; /* Optionnel : pour attirer l'oeil */
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
