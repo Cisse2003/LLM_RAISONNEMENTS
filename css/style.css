@@ -517,6 +517,7 @@ button:hover {
   font-size: 16px;
   padding: 2px 6px;
   transition: background 0.15s;
+  display: none;
 }
 #toggle-llm-btn:hover { background: rgba(255,255,255,0.1); }
 

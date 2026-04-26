@@ -1,5 +1,5 @@
 {
-  "description": "Obtenir le motif cibler",
+  "description": "Allumer uniquement les boutons 6, 7 et 8",
   "targetState": [0,0,0,0,0,1,1,1,0],
   "difficulty": "moyen",
   "validationQuestions": [
