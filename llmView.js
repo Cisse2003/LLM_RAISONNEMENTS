@@ -168,7 +168,7 @@ export const llmView = {
         }
     },
 
-    sendEtape() {
+    async sendEtape() {
 
         const btnValidation = document.getElementById('llm-btn-validation-wrapper');
         const lastReply = this.conversationHistory.length
@@ -178,6 +178,7 @@ export const llmView = {
 
         if (lastReply.includes('terminer')) {
             if (this.isTargetReached()) {
+                await this._send("Objectif atteint ! Explique en une phrase la règle que tu as identifiée : quel(s) bouton(s) chaque clic affecte-t-il ?");
 
                 if (btnValidation) {
                     btnValidation.style.display = 'block';
@@ -202,11 +203,9 @@ export const llmView = {
 
         if (!lastAction) {
             promptText = `Aucune action effectuée sur la grille. Quel bouton souhaites-tu tester en premier ? (Réponds uniquement par un numéro 1-9, RESET ou "Terminer")`;
-        }
-        else if (lastAction.type === 'clear' || lastAction.type === 'load') {
+        } else if (lastAction.type === 'clear' || lastAction.type === 'load') {
             promptText = `L'état de la grille a été réinitialisé. Tous les boutons sont éteints : [□ □ □ □ □ □ □ □ □]. Quelle est ta prochaine action ?`;
-        }
-        else {
+        } else {
 
             const avant = lastAction.stateBefore.map(s => s ? '■' : '□').join(' ');
             const apres = lastAction.stateAfter.map(s => s ? '■' : '□').join(' ');
@@ -216,12 +215,12 @@ export const llmView = {
         État après : [${apres}]
         Quelle est ta prochaine analyse ou action ?`;
 
-        model.globalActions.push({
-            type: 'llm-etape',
-            timestamp: new Date().toLocaleTimeString(),
-            actionRef: lastAction.button,
-        });
-        historyView.update();
+            model.globalActions.push({
+                type: 'llm-etape',
+                timestamp: new Date().toLocaleTimeString(),
+                actionRef: lastAction.button,
+            });
+            historyView.update();
         }
 
         this._send(promptText);
