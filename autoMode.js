@@ -4,7 +4,7 @@ import { historyView } from './historyView.js';
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
-const autoMode = {
+export const autoMode = {
     running: false,
     _timeoutId: null,
     conversationHistory: [],
