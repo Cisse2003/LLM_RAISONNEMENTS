@@ -384,6 +384,28 @@ document.addEventListener("DOMContentLoaded", async () => {
       e.currentTarget.classList.add('hidden');
     }
   });
+
+  document.getElementById('download-json')?.addEventListener('click', () => {
+
+    const reportText = buildSendText();
+
+    const blob = new Blob([reportText], { type: "text/plain;charset=utf-8" });
+
+    const testName = document.querySelector('#rule-select li.active')?.textContent.trim() || "Session";
+    const dateStr = new Date().toLocaleDateString('fr-FR').replace(/\//g, '-');
+    const fileName = `Rapport_${testName}_${dateStr}.txt`;
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  });
+
   document.getElementById('start-validation')?.addEventListener('click', async () => {
     victoryModal?.classList.add('hidden');
     validationIndex = 0;

@@ -31,7 +31,7 @@ export const historyView = {
       if (a.type === 'load') {
         return `
           <div class="action-load">
-            <strong>📂 ${a.testLabel}</strong> — chargé à ${a.timestamp}
+            <strong>📂 ${a.testLabel}</strong> - chargé à ${a.timestamp}
           </div>
         `;
       }
@@ -59,7 +59,7 @@ export const historyView = {
       if (a.type === 'validation-question') {
           return `
       <div class="action-validation-question">
-        <strong>Phase de validation — Question ${a.questionIndex}</strong> :
+        <strong>Phase de validation - Question ${a.questionIndex}</strong> :
         ${a.status} à ${a.timestamp}
       </div>
     `;
@@ -111,7 +111,7 @@ export const historyView = {
       if (a.type === 'auto-stop') {
         return `
           <div class="action-auto-stop">
-            <strong>⏹ Mode auto arrêté</strong> — ${a.reason} à ${a.timestamp}
+            <strong>⏹ Mode auto arrêté</strong> - ${a.reason} à ${a.timestamp}
           </div>
         `;
       }

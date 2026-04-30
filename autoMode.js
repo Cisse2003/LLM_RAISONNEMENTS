@@ -460,7 +460,7 @@ CLEAR remet tout à zéro sans compter comme une action.
 
 Ton objectif : atteindre l'état cible décrit dans le premier message.
 
-Règles de réponse STRICTES — réponds UNIQUEMENT avec l'un de ces formats :
+Règles de réponse STRICTES - réponds UNIQUEMENT avec l'un de ces formats :
 - Pour cliquer un bouton : ACTION: N  (ex: ACTION: 5)
 - Quand tu as la solution complète : SOLUTION: N1 N2 N3  (ex: SOLUTION: 3 7 2)
 - Pour remettre à zéro : CLEAR

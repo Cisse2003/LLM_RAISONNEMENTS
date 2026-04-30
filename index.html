@@ -187,9 +187,16 @@
         <textarea id="send-preview" readonly></textarea>
 
         <div class="send-actions">
-            <button id="copy-send-text" type="button">Copier le texte</button>
-            <button id="confirm-send" type="button">Envoyer par mail</button>
+            <div class="send-actions-row">
+                <button id="download-json" type="button" class="btn-primary-json">Télécharger</button>
+            </div>
+
+            <div class="send-actions-row">
+                <button id="copy-send-text" type="button">Copier le texte</button>
+                <button id="confirm-send" type="button">Envoyer par mail</button>
+            </div>
         </div>
+    </div>
 
         <p id="send-feedback"></p>
     </div>
