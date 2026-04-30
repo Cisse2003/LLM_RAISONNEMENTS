@@ -231,6 +231,8 @@ export const autoMode = {
             if (parsed.type === 'action') {
                 await this._clickButton(parsed.button);
                 if (this._isVictory()) {
+
+                    await this._askRuleExplanation();
                     this._setStatus('🎉 Objectif atteint ! Passage à la validation...', 'success');
                     model.addVictory();
                     historyView.update();
@@ -259,7 +261,39 @@ export const autoMode = {
             this.stop('Erreur réseau ou API.');
         }
     },
+    async _askRuleExplanation() {
+        const prompt = "Objectif atteint ! Avant de continuer, explique en une phrase la règle que tu as identifiée : quel(s) bouton(s) chaque clic affecte-t-il ?";
+        this._appendMessage('user', prompt);
+        this.conversationHistory.push({ role: 'user', content: prompt });
 
+        const apiKey  = document.getElementById('llm-api-key')?.value.trim();
+        const modelId = document.getElementById('llm-model')?.value.trim() || 'openai/gpt-4o-mini';
+        const typingId = this._appendMessage('assistant', '...', true);
+
+        try {
+            const res = await fetch(OPENROUTER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
+                body: JSON.stringify({
+                    model: modelId,
+                    messages: [
+                        { role: 'system', content: this._buildSystemPrompt() },
+                        ...this.conversationHistory,
+                    ],
+                    max_tokens: 200,
+                    temperature: 0.3,
+                }),
+            });
+            const data = await res.json();
+            const reply = data.choices?.[0]?.message?.content?.trim() || '';
+            this._removeMessage(typingId);
+            this._appendMessage('assistant', reply);
+            this.conversationHistory.push({ role: 'assistant', content: reply });
+        } catch (e) {
+            this._removeMessage(typingId);
+            this._appendMessage('error', '⚠ Erreur explication : ' + e.message);
+        }
+    },
     async _startValidationPhase() {
         this.isValidationPhase = true;
         this.currentValidationIndex = 0;
@@ -412,6 +446,8 @@ export const autoMode = {
 
                 document.getElementById('victory-modal')?.classList.add('hidden');
 
+                await this._askRuleExplanation();
+
                 const msg = "Bravo, tu as atteint l'objectif. Passons à la phase de VALIDATION...";
                 await this._showAutoVictoryModal(msg);
                 await this._startValidationPhase();
@@ -469,7 +505,9 @@ Règles de réponse STRICTES - réponds UNIQUEMENT avec l'un de ces formats :
 N'écris rien d'autre que ces commandes. Pas d'explication, pas de texte supplémentaire.
 Si tu n'es pas encore sûr, teste un bouton avec ACTION: N pour recueillir plus d'informations.
 Tu peux faire jusqu'à ${this.MAX_STEPS} actions au total.
-Une fois l'objectif atteint, tu devras passer un test de compréhension.`;
+Une fois l'objectif atteint, tu devras passer un test de compréhension.
+Exception : si l'utilisateur te demande d'expliquer la règle identifiée, réponds avec une phrase descriptive complète en français.`;
+
     },
 
     _appendMessage(role, text, isTyping = false) {
@@ -506,3 +544,4 @@ Une fois l'objectif atteint, tu devras passer un test de compréhension.`;
         }
     },
 };
+export default autoMode
