@@ -1,6 +1,7 @@
 import { model } from './model.js';
 import { view } from './view.js';
 import { historyView } from './historyView.js';
+import { prompts } from './prompts.js';
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -122,18 +123,7 @@ export const autoMode = {
         const target = model.rule?.targetState || Array(9).fill(0);
         const description = model.rule?.description || '';
 
-        const initText = `On va jouer à un jeu avec une grille de 9 boutons (3x3 : 1 2 3 / 4 5 6 / 7 8 9), tous éteints au départ : [□ □ □ □ □ □ □ □ □].
-    Tu disposes également d'un bouton CLEAR qui éteint ([□ □ □ □ □ □ □ □ □]) tous les boutons instantanément sans compter comme une action.
-
-    État cible à atteindre : [${target.map(v => v ? '■' : '□').join(' ')}]  
-    Description de l'objectif : "${description}"
-    
-    Règles du jeu :
-    - À chaque tour, indique-moi quel bouton tu appuies (1 à 9 ou RESET) et si tu penses avoir gagné.
-    - Je te répondrai en indiquant quels boutons se sont allumés ou éteints.
-    - Continue jusqu'à atteindre l'état cible.
-    - Si tu connais la solution, donne-la directement ; sinon, propose un bouton à tester ensuite.`;
-
+        const initText = prompts.initGame({ target, description });
         this._appendMessage('user', initText);
         this.conversationHistory.push({ role: 'user', content: initText });
 
@@ -196,7 +186,7 @@ export const autoMode = {
 
             if (!parsed) {
                 // Réponse incompréhensible → on redemande
-                const clarif = 'Je n\'ai pas compris. Réponds uniquement avec ACTION: N, SOLUTION: N1 N2 …, CLEAR ou ABANDON: raison.';
+                const clarif = prompts.clarificationRequest();
                 this.conversationHistory.push({ role: 'user', content: clarif });
                 this._appendMessage('user', clarif);
                 this._scheduleNext();
@@ -216,7 +206,7 @@ export const autoMode = {
 
             if (parsed.type === 'clear') {
                 document.getElementById('reset')?.click();
-                const feedback = 'CLEAR effectué. État : [□ □ □ □ □ □ □ □ □]. Instruction suivante ?';
+                const feedback = prompts.feedbackClear();
                 this.conversationHistory.push({ role: 'user', content: feedback });
                 this._appendMessage('user', feedback);
                 this._scheduleNext();
@@ -240,14 +230,12 @@ export const autoMode = {
                     // On bloque la modale manuelle si le controller l'a ouverte
                     document.getElementById('victory-modal')?.classList.add('hidden');
 
-                    const msg = "Bravo, tu as atteint l'objectif. Passons à la phase de VALIDATION pour prouver que tu as compris la règle. Je vais te donner des situations hypothétiques.";
 
-                    await this._showAutoVictoryModal(msg);
+                    await this._showAutoVictoryModal(prompts.autoVictoryModalStep());
                     await this._startValidationPhase();
                 } else {
                     const state = model.getState();
-                    const stateStr = state.map(s => s ? '■' : '□').join(' ');
-                    const feedback = `Bouton ${parsed.button} cliqué. État actuel : [${stateStr}]. Instruction suivante ?`;
+                    const feedback = prompts.feedbackClick({ button: parsed.button, state });
                     this.conversationHistory.push({ role: 'user', content: feedback });
                     this._appendMessage('user', feedback);
 
@@ -262,7 +250,7 @@ export const autoMode = {
         }
     },
     async _askRuleExplanation() {
-        const prompt = "Objectif atteint ! Avant de continuer, explique en une phrase la règle que tu as identifiée : quel(s) bouton(s) chaque clic affecte-t-il ?";
+        const prompt = prompts.askRuleAuto();
         this._appendMessage('user', prompt);
         this.conversationHistory.push({ role: 'user', content: prompt });
 
@@ -289,6 +277,15 @@ export const autoMode = {
             this._removeMessage(typingId);
             this._appendMessage('assistant', reply);
             this.conversationHistory.push({ role: 'assistant', content: reply });
+
+            // Logue la réponse dans l'historique global
+            model.globalActions.push({
+                type: 'llm-rule-explanation',
+                reply,
+                timestamp: new Date().toLocaleTimeString(),
+            });
+            historyView.update();
+
         } catch (e) {
             this._removeMessage(typingId);
             this._appendMessage('error', '⚠ Erreur explication : ' + e.message);
@@ -301,7 +298,7 @@ export const autoMode = {
 
         await model.setValidation();
 
-        const introVal = "Bravo, tu as atteint l'objectif. Passons à la phase de VALIDATION pour prouver que tu as compris la règle. Je vais te donner des situations hypothétiques.";
+        const introVal = prompts.validationIntroAuto();
         this._appendMessage('user', introVal);
         this.conversationHistory.push({ role: 'user', content: introVal });
 
@@ -316,22 +313,16 @@ export const autoMode = {
             // Si le score est égal au nombre de questions, c'est un succès total
             const isAllCorrect = (this.validationScore === questions.length);
 
+            const finalFeedback = isAllCorrect
+                ? prompts.validationSuccess({ score: this.validationScore, total: questions.length })
+                : prompts.validationFailure({ score: this.validationScore, total: questions.length });
+
             if (isAllCorrect) {
                 this._setStatus('🎉 Validation réussie !', 'success');
-                finalFeedback = `Félicitations ! Tu as répondu correctement à toutes les questions (${this.validationScore}/${questions.length}). 
-                                    Tu as prouvé ta compréhension de la règle. Fin du test.`;
-                model.globalActions.push({
-                    type: 'validation-success',
-                    timestamp: new Date().toLocaleTimeString()
-                });
+                model.globalActions.push({ type: 'validation-success', timestamp: new Date().toLocaleTimeString() });
             } else {
                 this._setStatus('❌ Validation échouée.', 'error');
-                finalFeedback = `Le test de validation est terminé. Tu as obtenu un score de ${this.validationScore}/${questions.length}. 
-                                    C'est insuffisant pour confirmer la compréhension de la règle. Fin du test.`;
-                model.globalActions.push({
-                    type: 'validation-failure',
-                    timestamp: new Date().toLocaleTimeString()
-                });
+                model.globalActions.push({ type: 'validation-failure', timestamp: new Date().toLocaleTimeString() });
             }
 
             this._appendMessage('user', finalFeedback);
@@ -344,11 +335,11 @@ export const autoMode = {
         }
 
         const q = questions[this.currentValidationIndex];
-        const questionText = `QUESTION ${this.currentValidationIndex + 1}: 
-        État initial : [${q.initialState.map(v => v ? '■' : '□').join(' ')}]
-        Si on clique sur le bouton : ${q.clickButton}
-        Quel sera l'état final ? 
-        Réponds UNIQUEMENT sous la forme d'un tableau de 9 chiffres : [□ ■ □ ...]`;
+        const questionText = prompts.validationQuestion({
+            index:        this.currentValidationIndex + 1,
+            initialState: q.initialState,
+            clickButton:  q.clickButton,
+        });
 
         this._appendMessage('user', questionText);
         this.conversationHistory.push({ role: 'user', content: questionText });
@@ -387,7 +378,7 @@ export const autoMode = {
 
                     model.addValidationQuestionResult(this.currentValidationIndex, isCorrect);
 
-                    const feedback = isCorrect ? "✅ CORRECT !" : `❌ INCORRECT.`;
+                    const feedback = isCorrect ? prompts.validationCorrect() : prompts.validationIncorrect();
                     this._appendMessage('user', feedback);
                     this.conversationHistory.push({ role: 'user', content: feedback });
                 }
@@ -398,7 +389,9 @@ export const autoMode = {
                     status: '⚠️ FORMAT INCORRECT',
                     timestamp: new Date().toLocaleTimeString()
                 });
-                this._appendMessage('user', "Format non reconnu.");
+                const errMsg = prompts.validationFormatError();
+                this._appendMessage('user', errMsg);
+                this.conversationHistory.push({ role: 'user', content: errMsg });
             }
 
             historyView.update();
@@ -447,15 +440,13 @@ export const autoMode = {
                 document.getElementById('victory-modal')?.classList.add('hidden');
 
                 await this._askRuleExplanation();
-
-                const msg = "Bravo, tu as atteint l'objectif. Passons à la phase de VALIDATION...";
-                await this._showAutoVictoryModal(msg);
+                await this._showAutoVictoryModal(prompts.autoVictoryModal());
                 await this._startValidationPhase();
                 return;
             }
             await this._wait(this._getDelay());
         }
-        this._sendFeedback("Séquence terminée, mais pas de victoire. Que fais-tu ?");
+        this._sendFeedback(prompts.solutionFailed());
     },
 
     _isVictory() {
@@ -488,26 +479,7 @@ export const autoMode = {
     },
 
     _buildSystemPrompt() {
-        return `Tu es un agent autonome qui joue à un jeu de logique.
-Tu interagis avec une grille de 9 boutons (3×3 : 1 2 3 / 4 5 6 / 7 8 9).
-Chaque bouton peut être allumé (■) ou éteint (□).
-Cliquer sur un bouton modifie certains boutons selon une règle fixe inconnue.
-CLEAR remet tout à zéro sans compter comme une action.
-
-Ton objectif : atteindre l'état cible décrit dans le premier message.
-
-Règles de réponse STRICTES - réponds UNIQUEMENT avec l'un de ces formats :
-- Pour cliquer un bouton : ACTION: N  (ex: ACTION: 5)
-- Quand tu as la solution complète : SOLUTION: N1 N2 N3  (ex: SOLUTION: 3 7 2)
-- Pour remettre à zéro : CLEAR
-- Si tu abandonnes (trop difficile ou trop long) : ABANDON: raison
-
-N'écris rien d'autre que ces commandes. Pas d'explication, pas de texte supplémentaire.
-Si tu n'es pas encore sûr, teste un bouton avec ACTION: N pour recueillir plus d'informations.
-Tu peux faire jusqu'à ${this.MAX_STEPS} actions au total.
-Une fois l'objectif atteint, tu devras passer un test de compréhension.
-Exception : si l'utilisateur te demande d'expliquer la règle identifiée, réponds avec une phrase descriptive complète en français.`;
-
+        return prompts.systemAuto({ maxSteps: this.MAX_STEPS });
     },
 
     _appendMessage(role, text, isTyping = false) {

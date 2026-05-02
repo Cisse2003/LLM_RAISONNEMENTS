@@ -1,6 +1,7 @@
 // llmView.js
 import { model } from './model.js';
 import { historyView } from './historyView.js';
+import { prompts } from './prompts.js';
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -61,17 +62,8 @@ export const llmView = {
         const target = model.rule?.targetState || Array(9).fill(0);
         const description = model.rule?.description || '';
 
-        const text = `On va jouer à un jeu avec une grille de 9 boutons (3x3 : 1 2 3 / 4 5 6 / 7 8 9), tous éteints au départ : [□ □ □ □ □ □ □ □ □].
-    Tu disposes également d'un bouton CLEAR qui éteint ([□ □ □ □ □ □ □ □ □]) tous les boutons instantanément sans compter comme une action.
+        const text = prompts.initGame({ target, description });
 
-    État cible à atteindre : [${target.map(v => v ? '■' : '□').join(' ')}]  
-    Description de l'objectif : "${description}"
-    
-    Règles du jeu :
-    - À chaque tour, indique-moi quel bouton tu appuies (1 à 9 ou RESET) et si tu penses avoir gagné.
-    - Je te répondrai en indiquant quels boutons se sont allumés ou éteints.
-    - Continue jusqu'à atteindre l'état cible.
-    - Si tu connais la solution, donne-la directement ; sinon, propose un bouton à tester ensuite.`;
 
         // Enregistre dans l'historique du modèle
         model.globalActions.push({
@@ -99,12 +91,11 @@ export const llmView = {
         if (btn.textContent.includes("Envoyer")) {
             this.currentQuestion = questions[this.validationStep - 1];
 
-            const initialStr = this.currentQuestion.initialState.map(v => v ? '■' : '□').join(' ');
-
-            const qText = `QUESTION ${this.validationStep}: 
-        État initial : [${initialStr}]
-        Si on clique sur le bouton : ${this.currentQuestion.clickButton}
-        Quel sera l'état final ? Réponds uniquement sous la forme [? ? ? ? ? ? ? ? ?]`;
+            const qText = prompts.validationQuestion({
+                index:        this.validationStep,
+                initialState: this.currentQuestion.initialState,
+                clickButton:  this.currentQuestion.clickButton,
+            });
 
             await this._send(qText);
 
@@ -129,7 +120,7 @@ export const llmView = {
 
             if (isCorrect) this.correctAnswersCount++;
 
-            const feedback = isCorrect ? "✅ CORRECT !" : "❌ INCORRECT.";
+            const feedback = isCorrect ? prompts.validationCorrect() : prompts.validationIncorrect();
             this.appendMessage('user', feedback);
             this.conversationHistory.push({ role: 'user', content: feedback });
 
@@ -139,21 +130,20 @@ export const llmView = {
                 btn.textContent = `Envoyer Question ${this.validationStep} / ${questions.length}`;
                 btn.style.backgroundColor = "#28a745";
             } else {
-
-                const finalScore = this.correctAnswersCount;
-                const total = questions.length;
-                const scoreMsg = `Validation terminée ! Score final : ${finalScore} / ${total}`;
-
+                const scoreMsg = prompts.validationFinalScore({
+                    score: this.correctAnswersCount,
+                    total: questions.length,
+                });
                 this.appendMessage('assistant', scoreMsg);
 
                 model.globalActions.push({
                     type: 'llm-validation-end',
                     timestamp: new Date().toLocaleTimeString(),
-                    score: `${finalScore}/${total}`,
+                    score: `${this.correctAnswersCount}/${questions.length}`,
                     button: null,
                     stateBefore: [],
                     stateAfter: [],
-                    result: finalScore === total ? 'RÉUSSIE' : 'ÉCHOUÉE'
+                    result: this.correctAnswersCount === questions.length ? 'RÉUSSIE' : 'ÉCHOUÉE',
                 });
 
                 historyView.update();
@@ -178,7 +168,7 @@ export const llmView = {
 
         if (lastReply.includes('terminer')) {
             if (this.isTargetReached()) {
-                await this._send("Objectif atteint ! Explique en une phrase la règle que tu as identifiée : quel(s) bouton(s) chaque clic affecte-t-il ?");
+                await this._sendAndLogRule(prompts.askRuleManual());
 
                 if (btnValidation) {
                     btnValidation.style.display = 'block';
@@ -188,9 +178,7 @@ export const llmView = {
                     this.validationStep = 0;
                 }
             } else {
-                const failText = `⚠️ L'objectif n'est pas encore atteint. 
-            Regarde bien l'état cible. Continue à chercher ou utilise RESET si tu es bloqué.`;
-                this._send(failText);
+                this._send(prompts.notYetReached());
             }
             return;
         }
@@ -202,18 +190,15 @@ export const llmView = {
         let promptText;
 
         if (!lastAction) {
-            promptText = `Aucune action effectuée sur la grille. Quel bouton souhaites-tu tester en premier ? (Réponds uniquement par un numéro 1-9, RESET ou "Terminer")`;
+            promptText = prompts.feedbackNoAction();
         } else if (lastAction.type === 'clear' || lastAction.type === 'load') {
-            promptText = `L'état de la grille a été réinitialisé. Tous les boutons sont éteints : [□ □ □ □ □ □ □ □ □]. Quelle est ta prochaine action ?`;
+            promptText = prompts.feedbackReset();
         } else {
-
-            const avant = lastAction.stateBefore.map(s => s ? '■' : '□').join(' ');
-            const apres = lastAction.stateAfter.map(s => s ? '■' : '□').join(' ');
-
-            promptText = `Bouton ${lastAction.button} cliqué.
-        État avant : [${avant}]
-        État après : [${apres}]
-        Quelle est ta prochaine analyse ou action ?`;
+            promptText = prompts.feedbackEtape({
+                button:      lastAction.button,
+                stateBefore: lastAction.stateBefore,
+                stateAfter:  lastAction.stateAfter,
+            });
 
             model.globalActions.push({
                 type: 'llm-etape',
@@ -224,6 +209,68 @@ export const llmView = {
         }
 
         this._send(promptText);
+    },
+
+    // ── Envoi avec log de la règle dans l'historique ─────────────────────────
+    // Utilisé uniquement pour askRuleManual — attend la réponse et la logue.
+    async _sendAndLogRule(text) {
+        const apiKey  = document.getElementById('llm-api-key').value.trim();
+        const modelId = document.getElementById('llm-model').value.trim() || 'openai/gpt-4o-mini';
+
+        if (!apiKey) {
+            this.appendMessage('error', '⚠ Entrez votre clé API OpenRouter pour continuer.');
+            return;
+        }
+
+        this.appendMessage('user', text);
+        this.conversationHistory.push({ role: 'user', content: text });
+
+        const typingId = this.appendMessage('assistant', '…', true);
+
+        try {
+            const res = await fetch(OPENROUTER_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type':  'application/json',
+                    'Authorization': `Bearer ${apiKey}`,
+                    'HTTP-Referer':  window.location.href,
+                    'X-Title':       'Reasoning Experiment',
+                },
+                body: JSON.stringify({
+                    model: modelId,
+                    messages: [
+                        { role: 'system', content: this.buildSystemPrompt() },
+                        ...this.conversationHistory,
+                    ],
+                    max_tokens: 400,
+                    temperature: 0.7,
+                }),
+            });
+
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.error?.message || `Erreur ${res.status}`);
+            }
+
+            const data  = await res.json();
+            const reply = data.choices?.[0]?.message?.content || '(pas de réponse)';
+
+            this.removeMessage(typingId);
+            this.appendMessage('assistant', reply);
+            this.conversationHistory.push({ role: 'assistant', content: reply });
+
+            // Logue la réponse dans l'historique global
+            model.globalActions.push({
+                type: 'llm-rule-explanation',
+                reply,
+                timestamp: new Date().toLocaleTimeString(),
+            });
+            historyView.update();
+
+        } catch (e) {
+            this.removeMessage(typingId);
+            this.appendMessage('error', '⚠ Erreur : ' + e.message);
+        }
     },
 
     // ── Envoi commun ─────────────────────────────────────────────────────────
@@ -280,16 +327,7 @@ export const llmView = {
     },
 
     buildSystemPrompt() {
-        return `Tu es un assistant d'analyse logique spécialisé dans les puzzles de boutons.
-        - Il y a 9 boutons numérotés de 1 à 9 (3x3 : 1 2 3 / 4 5 6 / 7 8 9), chacun allumé (■) ou éteint (□).
-        - Un bouton CLEAR remet tous les boutons à [□ □ □ □ □ □ □ □ □] instantanément sans compter comme action.
-        
-        IMPORTANT :
-        - Tu ne dois répondre **que par le numéro du bouton à appuyer (1 à 9), RESET ou "Terminer" si l'objectif est atteint**.
-        - Ne jamais ajouter d’explications, commentaires ou phrases supplémentaires.
-        - **Exception :** uniquement si l'utilisateur te demande explicitement de lui donner la règle qui cachait les boutons, tu peux alors expliquer avec des phrases.
-        - Si l'utilisateur te corrige ou te remet sur la bonne voie, continue simplement à suivre ces instructions.
-        - Toujours répondre en français, de manière concise et directe, **une seule valeur par réponse**.`;
+        return prompts.systemManual();
     },
 
     appendMessage(role, text, isTyping = false) {
@@ -316,8 +354,7 @@ export const llmView = {
             const action = model.globalActions[i];
 
             if (Array.isArray(action.stateAfter)) {
-                const currentState = action.stateAfter;
-                return currentState.every((v, idx) => v === target[idx]);
+                return action.stateAfter.every((v, idx) => v === target[idx]);
             }
 
             // Si l'action est "victory", on considère que la cible est atteinte
@@ -349,10 +386,7 @@ export const llmView = {
 
     async startValidationFlow() {
         // On rappelle explicitement que la règle est la MÊME
-        const introVal = "Bravo, tu as atteint l'objectif ! Tu as maintenant identifié la règle logique de ce test. " +
-            "Passons à la phase de VALIDATION : je vais te donner des situations hypothétiques " +
-            "et tu devras prédire le résultat en utilisant la MÊME RÈGLE que celle que tu viens de trouver. " +
-            "C'est un test pour vérifier que ta compréhension de la règle est parfaite.";
+        const introVal = prompts.validationIntroManual();
 
         this.appendMessage('user', introVal);
         this.conversationHistory.push({ role: 'user', content: introVal });

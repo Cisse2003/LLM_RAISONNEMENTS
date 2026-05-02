@@ -135,6 +135,16 @@ export const historyView = {
             <strong>🏳 LLM abandonne :</strong> ${a.reason} à ${a.timestamp}
           </div>
         `;
+            }
+
+            // ── Nouvelle entrée : explication de la règle ──────────────────────────
+            if (a.type === 'llm-rule-explanation') {
+                return `
+          <div class="action-llm-rule">
+            <strong>💡 Règle identifiée par le LLM</strong> à ${a.timestamp}<br>
+            <em>${a.reply}</em>
+          </div>
+        `;
       }
       if (a.type === 'llm-validation-end') {
 
