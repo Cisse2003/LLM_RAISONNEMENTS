@@ -168,6 +168,11 @@ export const autoMode = {
                 }),
             });
 
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.error?.message || `Erreur ${res.status}`);
+            }
+
             const data = await res.json();
             const reply = data.choices?.[0]?.message?.content?.trim() || '';
 
@@ -357,6 +362,12 @@ export const autoMode = {
                     temperature: 0.1
                 }),
             });
+
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.error?.message || `Erreur ${res.status}`);
+            }
+
             const data = await res.json();
             const reply = data.choices[0].message.content;
 
@@ -399,8 +410,10 @@ export const autoMode = {
             this._scheduleNext();
 
         } catch (e) {
-            console.error(e);
-            this.stop('Erreur phase validation');
+            //console.error(e);
+            //this.stop('Erreur phase validation');
+            this._appendMessage('error', '⚠ Erreur : ' + e.message);
+            this.stop('Erreur phase validation.');
         }
     },
 
