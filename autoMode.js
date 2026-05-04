@@ -140,7 +140,15 @@ export const autoMode = {
         }
 
         if (this.stepCount >= this.MAX_STEPS) {
-            this.stop(`Limite de ${this.MAX_STEPS} actions atteinte.`);
+            //this.stop(`Limite de ${this.MAX_STEPS} actions atteinte.`);
+                const reason = `Limite de ${this.MAX_STEPS} actions atteinte.`;
+                model.globalActions.push({
+                    type: 'llm-abandon',
+                    reason,
+                    timestamp: new Date().toLocaleTimeString(),
+                });
+                historyView.update();
+                this.stop(reason);
             return;
         }
 
@@ -486,8 +494,8 @@ export const autoMode = {
         }
         const actionMatch = text.match(/ACTION\s*[:\-]\s*(\d)/i);
         if (actionMatch) return { type: 'action', button: parseInt(actionMatch[1]) };
-        const loose = text.match(/\b([1-9])\b/);
-        if (loose) return { type: 'action', button: parseInt(loose[1]) };
+        /*const loose = text.match(/\b([1-9])\b/);
+        if (loose) return { type: 'action', button: parseInt(loose[1]) };*/
         return null;
     },
 
