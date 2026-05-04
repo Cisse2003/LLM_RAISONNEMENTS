@@ -1,0 +1,810 @@
+Bonjour,
+
+Veuillez trouver ci-dessous les résultats de la session.
+
+Date : 21/04/2026
+Heure : 16:37:19
+
+📂 Test1 Facile — chargé à 4:23:54 PM
+Action 2 : Bouton 9 cliqué à 4:23:57 PM
+État après : □ □ □ □ □ □ □ □ ■
+Objectif atteint ! à 4:23:57 PM
+Action 4 : Bouton 9 cliqué à 4:24:01 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 5 : Bouton 5 cliqué à 4:24:01 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 6 : Bouton 5 cliqué à 4:24:02 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 7 : Bouton 6 cliqué à 4:24:02 PM
+État après : □ □ □ □ □ ■ □ □ □
+Action 8 : Bouton 6 cliqué à 4:24:03 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 9 : Bouton 9 cliqué à 4:24:04 PM
+État après : □ □ □ □ □ □ □ □ ■
+Objectif atteint ! à 4:24:04 PM
+📂 Test1 Validation Facile — chargé à 4:24:05 PM
+Phase de validation — Question 1 : correcte à 4:24:10 PM
+Validation réussie ! à 4:24:11 PM
+📂 Test2 Facile — chargé à 4:24:13 PM
+Action 15 : Bouton 6 cliqué à 4:24:17 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 16 : Bouton 2 cliqué à 4:24:19 PM
+État après : □ □ □ □ □ □ □ ■ □
+Action 17 : Bouton 5 cliqué à 4:24:20 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 18 : Bouton 4 cliqué à 4:24:21 PM
+État après : □ □ □ □ □ ■ □ □ □
+Objectif atteint ! à 4:24:21 PM
+📂 Test2 Validation Facile — chargé à 4:24:24 PM
+Phase de validation — Question 1 : correcte à 4:24:28 PM
+Phase de validation — Question 2 : correcte à 4:24:35 PM
+Phase de validation — Question 3 : correcte à 4:24:39 PM
+Validation réussie ! à 4:24:40 PM
+📂 Test3 Facile — chargé à 4:24:42 PM
+Action 26 : Bouton 1 cliqué à 4:24:45 PM
+État après : ■ □ □ ■ □ □ □ □ □
+Action 27 : Bouton 4 cliqué à 4:24:47 PM
+État après : ■ □ □ □ □ □ ■ □ □
+Action 28 : Bouton 7 cliqué à 4:24:51 PM
+État après : ■ □ □ ■ □ □ □ □ □
+Action 29 : Bouton 5 cliqué à 4:24:53 PM
+État après : ■ □ □ ■ ■ □ □ ■ □
+Action 30 : Bouton 5 cliqué à 4:25:04 PM
+État après : ■ □ □ ■ □ □ □ □ □
+Action 31 : Bouton 7 cliqué à 4:25:05 PM
+État après : ■ □ □ □ □ □ ■ □ □
+Action 32 : Bouton 7 cliqué à 4:25:07 PM
+État après : ■ □ □ ■ □ □ □ □ □
+Action 33 : Bouton 7 cliqué à 4:25:10 PM
+État après : ■ □ □ □ □ □ ■ □ □
+Action 34 : Bouton 2 cliqué à 4:25:10 PM
+État après : ■ ■ □ □ ■ □ ■ □ □
+Action 35 : Bouton 5 cliqué à 4:25:11 PM
+État après : ■ ■ □ □ □ □ ■ ■ □
+Action 36 : Bouton 3 cliqué à 4:25:11 PM
+État après : ■ ■ ■ □ □ ■ ■ ■ □
+Action 37 : Bouton 6 cliqué à 4:25:12 PM
+État après : ■ ■ ■ □ □ □ ■ ■ ■
+Objectif atteint ! à 4:25:12 PM
+📂 Test3 Validation Facile — chargé à 4:25:13 PM
+Phase de validation — Question 1 : correcte à 4:25:17 PM
+Phase de validation — Question 2 : correcte à 4:25:28 PM
+Phase de validation — Question 3 : correcte à 4:25:32 PM
+Validation réussie ! à 4:25:33 PM
+📂 Test4 Facile — chargé à 4:25:35 PM
+Action 45 : Bouton 2 cliqué à 4:25:37 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 46 : Bouton 5 cliqué à 4:25:38 PM
+État après : □ □ □ □ □ □ □ ■ □
+Action 47 : Bouton 8 cliqué à 4:25:39 PM
+État après : □ ■ □ □ □ □ □ □ □
+Objectif atteint ! à 4:25:39 PM
+📂 Test4 Validation Facile — chargé à 4:25:40 PM
+Phase de validation — Question 1 : correcte à 4:25:43 PM
+Phase de validation — Question 2 : incorrecte à 4:25:48 PM
+Phase de validation — Question 3 : incorrecte à 4:25:57 PM
+Validation échouée à 4:25:58 PM
+Action 54 : Bouton 8 cliqué à 4:26:02 PM
+État après : □ ■ □ □ □ □ □ □ □
+Objectif atteint ! à 4:26:02 PM
+Action 56 : Bouton 4 cliqué à 4:26:08 PM
+État après : □ □ □ □ □ □ ■ □ □
+Action 57 : Bouton 1 cliqué à 4:26:11 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 58 : Bouton 7 cliqué à 4:26:12 PM
+État après : ■ □ □ □ □ □ □ □ □
+Action 59 : Bouton 6 cliqué à 4:26:16 PM
+État après : □ □ □ □ □ □ □ □ ■
+📂 Test5 Facile — chargé à 4:26:19 PM
+Action 61 : Bouton 3 cliqué à 4:26:21 PM
+État après : □ ■ □ □ □ □ □ □ □
+Action 62 : Bouton 4 cliqué à 4:26:22 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 63 : Bouton 5 cliqué à 4:26:24 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 64 : Bouton 6 cliqué à 4:26:25 PM
+État après : □ □ □ □ □ □ ■ □ □
+Action 65 : Bouton 8 cliqué à 4:26:30 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 66 : Bouton 7 cliqué à 4:26:31 PM
+État après : □ □ □ □ □ ■ □ □ □
+Objectif atteint ! à 4:26:31 PM
+Action 68 : Bouton 1 cliqué à 4:26:36 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 69 : Bouton 2 cliqué à 4:26:38 PM
+État après : □ □ ■ □ □ □ □ □ □
+Action 70 : Bouton 3 cliqué à 4:26:43 PM
+État après : □ ■ □ □ □ □ □ □ □
+Action 71 : Bouton 4 cliqué à 4:26:45 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 72 : Bouton 5 cliqué à 4:26:46 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 73 : Bouton 6 cliqué à 4:26:49 PM
+État après : □ □ □ □ □ □ ■ □ □
+Action 74 : Bouton 8 cliqué à 4:26:50 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 75 : Bouton 7 cliqué à 4:26:52 PM
+État après : □ □ □ □ □ ■ □ □ □
+Objectif atteint ! à 4:26:52 PM
+Action 77 : Bouton 1 cliqué à 4:27:07 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 78 : Bouton 2 cliqué à 4:27:09 PM
+État après : □ □ ■ □ □ □ □ □ □
+Action 79 : Bouton 9 cliqué à 4:27:13 PM
+État après : □ □ □ □ □ □ □ ■ □
+Action 80 : Bouton 8 cliqué à 4:27:15 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 81 : Bouton 1 cliqué à 4:27:18 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 82 : Bouton 1 cliqué à 4:27:19 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 83 : Bouton 1 cliqué à 4:27:19 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 84 : Bouton 4 cliqué à 4:27:21 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 85 : Bouton 5 cliqué à 4:27:25 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 86 : Bouton 6 cliqué à 4:27:29 PM
+État après : □ □ □ □ □ □ ■ □ □
+Action 87 : Bouton 7 cliqué à 4:27:31 PM
+État après : □ □ □ □ □ ■ □ □ □
+Objectif atteint ! à 4:27:31 PM
+📂 Test5 Validation Facile — chargé à 4:27:33 PM
+Phase de validation — Question 1 : correcte à 4:27:37 PM
+Phase de validation — Question 2 : incorrecte à 4:27:40 PM
+Phase de validation — Question 3 : correcte à 4:27:50 PM
+Validation réussie ! à 4:27:51 PM
+📂 Test1 Moyen — chargé à 4:27:53 PM
+Action 95 : Bouton 2 cliqué à 4:27:56 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 96 : Bouton 3 cliqué à 4:27:57 PM
+État après : □ □ □ ■ □ ■ □ □ □
+Action 97 : Bouton 5 cliqué à 4:27:59 PM
+État après : ■ □ □ ■ □ ■ □ □ □
+Action 98 : Bouton 8 cliqué à 4:28:01 PM
+État après : ■ □ □ ■ □ ■ ■ □ □
+Action 99 : Bouton 5 cliqué à 4:28:03 PM
+État après : ■ □ □ ■ □ ■ ■ □ □
+Action 100 : Bouton 9 cliqué à 4:28:03 PM
+État après : ■ □ □ ■ □ ■ ■ □ □
+Action 101 : Bouton 3 cliqué à 4:28:04 PM
+État après : ■ □ □ ■ □ □ ■ □ □
+Action 102 : Bouton 2 cliqué à 4:28:05 PM
+État après : ■ □ □ ■ □ □ ■ □ □
+Action 103 : Bouton 1 cliqué à 4:28:06 PM
+État après : ■ ■ □ ■ □ □ ■ □ □
+Action 104 : Bouton 4 cliqué à 4:28:06 PM
+État après : ■ ■ □ ■ □ □ ■ ■ □
+Action 105 : Bouton 7 cliqué à 4:28:07 PM
+État après : ■ ■ □ ■ ■ □ ■ ■ □
+Action 106 : Bouton 7 cliqué à 4:28:07 PM
+État après : ■ ■ □ ■ ■ □ ■ ■ □
+Action 107 : Bouton 5 cliqué à 4:28:08 PM
+État après : □ ■ □ ■ ■ □ ■ ■ □
+Action 108 : Bouton 2 cliqué à 4:28:09 PM
+État après : □ ■ □ □ ■ □ ■ ■ □
+Action 109 : Bouton 1 cliqué à 4:28:09 PM
+État après : □ ■ □ □ ■ □ ■ ■ □
+Action 110 : Bouton 2 cliqué à 4:28:10 PM
+État après : □ ■ □ □ ■ □ ■ ■ □
+Action 111 : Bouton 5 cliqué à 4:28:10 PM
+État après : □ ■ □ □ ■ □ ■ ■ □
+Action 112 : Bouton 7 cliqué à 4:28:11 PM
+État après : □ ■ □ □ ■ □ ■ ■ □
+📂 Test1 Moyen — chargé à 4:28:12 PM
+Action 114 : Bouton 1 cliqué à 4:28:12 PM
+État après : □ ■ □ □ □ □ □ □ □
+Action 115 : Bouton 2 cliqué à 4:28:14 PM
+État après : □ ■ □ ■ □ □ □ □ □
+Action 116 : Bouton 1 cliqué à 4:28:15 PM
+État après : □ ■ □ ■ □ □ □ □ □
+Action 117 : Bouton 4 cliqué à 4:28:16 PM
+État après : □ ■ □ ■ □ □ □ ■ □
+📂 Test1 Moyen — chargé à 4:28:17 PM
+Action 119 : Bouton 2 cliqué à 4:28:17 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 120 : Bouton 5 cliqué à 4:28:20 PM
+État après : ■ □ □ ■ □ □ □ □ □
+Action 121 : Bouton 3 cliqué à 4:28:22 PM
+État après : ■ □ □ ■ □ ■ □ □ □
+Action 122 : Bouton 7 cliqué à 4:28:30 PM
+État après : ■ □ □ ■ □ ■ □ □ □
+📂 Test1 Moyen — chargé à 4:28:31 PM
+Action 124 : Bouton 7 cliqué à 4:28:31 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 125 : Bouton 4 cliqué à 4:28:34 PM
+État après : □ □ □ □ ■ □ □ ■ □
+Action 126 : Bouton 6 cliqué à 4:28:34 PM
+État après : □ □ ■ □ ■ □ □ ■ □
+Action 127 : Bouton 6 cliqué à 4:28:35 PM
+État après : □ □ ■ □ ■ □ □ ■ □
+Action 128 : Bouton 9 cliqué à 4:28:35 PM
+État après : □ □ ■ □ ■ □ □ ■ □
+Action 129 : Bouton 2 cliqué à 4:28:36 PM
+État après : □ □ ■ □ ■ □ □ ■ □
+Action 130 : Bouton 1 cliqué à 4:28:36 PM
+État après : □ □ ■ □ ■ □ □ ■ □
+📂 Test1 Moyen — chargé à 4:28:38 PM
+Action 132 : Bouton 4 cliqué à 4:28:43 PM
+État après : □ □ □ □ □ □ □ ■ □
+Objectif atteint ! à 4:28:43 PM
+📂 Test1 Validation Moyen — chargé à 4:28:44 PM
+Phase de validation — Question 1 : incorrecte à 4:28:57 PM
+Validation abandonnée à 4:29:00 PM
+Action 137 : Bouton 7 cliqué à 4:29:02 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 138 : Bouton 5 cliqué à 4:29:04 PM
+État après : ■ □ □ □ ■ □ □ □ □
+Action 139 : Bouton 1 cliqué à 4:29:05 PM
+État après : ■ ■ □ □ ■ □ □ □ □
+Action 140 : Bouton 2 cliqué à 4:29:07 PM
+État après : ■ ■ □ □ ■ □ □ □ □
+📂 Test1 Validation Moyen — chargé à 4:29:08 PM
+Action 142 : Bouton 2 cliqué à 4:29:09 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 143 : Bouton 4 cliqué à 4:29:10 PM
+État après : □ □ □ ■ □ □ □ ■ □
+Action 144 : Bouton 8 cliqué à 4:29:11 PM
+État après : □ □ □ ■ □ □ □ ■ □
+📂 Test1 Validation Moyen — chargé à 4:29:12 PM
+Action 146 : Bouton 8 cliqué à 4:29:12 PM
+État après : □ □ □ □ □ □ ■ □ □
+📂 Test1 Validation Moyen — chargé à 4:29:13 PM
+Action 148 : Bouton 9 cliqué à 4:29:13 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 149 : Bouton 9 cliqué à 4:29:14 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 150 : Bouton 6 cliqué à 4:29:15 PM
+État après : □ □ ■ □ □ □ □ □ □
+Action 151 : Bouton 3 cliqué à 4:29:16 PM
+État après : □ □ ■ □ □ ■ □ □ □
+Action 152 : Bouton 6 cliqué à 4:29:18 PM
+État après : □ □ ■ □ □ ■ □ □ □
+📂 Test1 Validation Moyen — chargé à 4:29:19 PM
+Action 154 : Bouton 9 cliqué à 4:29:19 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 155 : Bouton 6 cliqué à 4:29:20 PM
+État après : □ □ ■ □ □ □ □ □ □
+Action 156 : Bouton 3 cliqué à 4:29:20 PM
+État après : □ □ ■ □ □ ■ □ □ □
+Action 157 : Bouton 2 cliqué à 4:29:21 PM
+État après : □ □ ■ ■ □ ■ □ □ □
+Action 158 : Bouton 4 cliqué à 4:29:22 PM
+État après : □ □ ■ ■ □ ■ □ ■ □
+Action 159 : Bouton 5 cliqué à 4:29:23 PM
+État après : ■ □ ■ ■ □ ■ □ ■ □
+Action 160 : Bouton 1 cliqué à 4:29:25 PM
+État après : ■ □ ■ ■ □ ■ □ ■ □
+Action 161 : Bouton 2 cliqué à 4:29:26 PM
+État après : ■ □ ■ ■ □ ■ □ ■ □
+Action 162 : Bouton 7 cliqué à 4:29:26 PM
+État après : ■ □ ■ ■ □ ■ □ ■ □
+📂 Test1 Validation Moyen — chargé à 4:29:27 PM
+Action 164 : Bouton 1 cliqué à 4:29:27 PM
+État après : □ ■ □ □ □ □ □ □ □
+Action 165 : Bouton 2 cliqué à 4:29:28 PM
+État après : □ ■ □ ■ □ □ □ □ □
+Action 166 : Bouton 4 cliqué à 4:29:29 PM
+État après : □ ■ □ ■ □ □ □ ■ □
+📂 Test1 Validation Moyen — chargé à 4:29:30 PM
+Action 168 : Bouton 7 cliqué à 4:29:31 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 169 : Bouton 5 cliqué à 4:29:32 PM
+État après : ■ □ □ □ ■ □ □ □ □
+📂 Test1 Validation Moyen — chargé à 4:29:33 PM
+Action 171 : Bouton 4 cliqué à 4:29:34 PM
+État après : □ □ □ □ □ □ □ ■ □
+Objectif atteint ! à 4:29:34 PM
+📂 Test2 Moyen — chargé à 4:29:39 PM
+Action 174 : Bouton 1 cliqué à 4:29:40 PM
+État après : ■ □ □ □ □ □ □ □ □
+Action 175 : Bouton 2 cliqué à 4:29:41 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 176 : Bouton 3 cliqué à 4:29:43 PM
+État après : □ □ □ □ □ □ □ □ ■
+Objectif atteint ! à 4:29:43 PM
+Action 178 : Bouton 5 cliqué à 4:29:48 PM
+État après : □ □ □ □ □ □ □ □ ■
+Objectif atteint ! à 4:29:48 PM
+Action 180 : Bouton 6 cliqué à 4:29:49 PM
+État après : □ ■ □ □ □ □ □ □ □
+Action 181 : Bouton 7 cliqué à 4:30:00 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 182 : Bouton 8 cliqué à 4:30:03 PM
+État après : □ □ □ □ □ ■ □ □ □
+Action 183 : Bouton 5 cliqué à 4:30:05 PM
+État après : □ □ □ □ □ □ □ □ ■
+Objectif atteint ! à 4:30:05 PM
+📂 Test2 Validation Moyen — chargé à 4:30:08 PM
+Phase de validation — Question 1 : correcte à 4:30:11 PM
+Phase de validation — Question 2 : incorrecte à 4:30:19 PM
+Phase de validation — Question 3 : incorrecte à 4:30:29 PM
+Validation échouée à 4:30:30 PM
+📂 Test3 Moyen — chargé à 4:30:32 PM
+Action 191 : Bouton 1 cliqué à 4:30:36 PM
+État après : ■ ■ □ ■ □ □ □ □ □
+Action 192 : Bouton 5 cliqué à 4:30:38 PM
+État après : ■ ■ □ ■ ■ ■ □ ■ □
+Action 193 : Bouton 1 cliqué à 4:30:39 PM
+État après : □ □ □ □ ■ ■ □ ■ □
+Action 194 : Bouton 9 cliqué à 4:30:40 PM
+État après : □ □ ■ □ ■ ■ ■ ■ ■
+Action 195 : Bouton 9 cliqué à 4:30:41 PM
+État après : □ □ □ □ ■ ■ □ ■ □
+Action 196 : Bouton 3 cliqué à 4:30:43 PM
+État après : ■ □ ■ □ ■ □ □ ■ □
+Action 197 : Bouton 2 cliqué à 4:30:44 PM
+État après : ■ ■ □ □ □ □ □ ■ □
+Action 198 : Bouton 2 cliqué à 4:30:45 PM
+État après : ■ □ ■ □ ■ □ □ ■ □
+Action 199 : Bouton 4 cliqué à 4:30:46 PM
+État après : ■ □ ■ ■ □ □ ■ ■ □
+Action 200 : Bouton 4 cliqué à 4:30:46 PM
+État après : ■ □ ■ □ ■ □ □ ■ □
+Action 201 : Bouton 7 cliqué à 4:30:47 PM
+État après : □ □ ■ □ ■ □ ■ □ □
+Action 202 : Bouton 9 cliqué à 4:30:49 PM
+État après : □ □ □ □ ■ □ □ □ ■
+Action 203 : Bouton 8 cliqué à 4:30:50 PM
+État après : □ ■ □ □ ■ □ □ ■ □
+Action 204 : Bouton 5 cliqué à 4:30:51 PM
+État après : □ ■ □ □ □ ■ □ □ □
+Action 205 : Bouton 3 cliqué à 4:30:52 PM
+État après : ■ ■ ■ □ □ □ □ □ □
+Action 206 : Bouton 1 cliqué à 4:30:53 PM
+État après : □ □ ■ ■ □ □ □ □ □
+Action 207 : Bouton 5 cliqué à 4:30:55 PM
+État après : □ □ ■ ■ ■ ■ □ ■ □
+📂 Test4 Moyen — chargé à 4:30:57 PM
+Action 209 : Bouton 7 cliqué à 4:30:58 PM
+État après : □ □ □ □ □ □ ■ □ □
+Action 210 : Bouton 8 cliqué à 4:30:59 PM
+État après : □ □ □ □ □ □ □ ■ □
+Action 211 : Bouton 6 cliqué à 4:31:00 PM
+État après : □ □ □ □ □ ■ □ □ ■
+Action 212 : Bouton 8 cliqué à 4:31:01 PM
+État après : ■ □ □ □ □ □ ■ ■ □
+Action 213 : Bouton 5 cliqué à 4:31:02 PM
+État après : □ ■ □ □ ■ □ □ ■ ■
+Action 214 : Bouton 6 cliqué à 4:31:04 PM
+État après : ■ □ ■ □ □ ■ □ □ ■
+Action 215 : Bouton 2 cliqué à 4:31:04 PM
+État après : ■ ■ □ ■ □ □ ■ □ □
+Action 216 : Bouton 3 cliqué à 4:31:05 PM
+État après : □ ■ ■ □ ■ □ □ ■ □
+Action 217 : Bouton 6 cliqué à 4:31:06 PM
+État après : □ □ ■ ■ □ ■ □ □ ■
+Action 218 : Bouton 5 cliqué à 4:31:06 PM
+État après : ■ □ □ ■ ■ □ ■ □ □
+Action 219 : Bouton 3 cliqué à 4:31:08 PM
+État après : □ ■ ■ □ ■ ■ □ ■ □
+Action 220 : Bouton 9 cliqué à 4:31:09 PM
+État après : □ □ ■ ■ □ ■ ■ □ ■
+📂 Test4 Moyen — chargé à 4:31:10 PM
+Action 222 : Bouton 1 cliqué à 4:31:10 PM
+État après : ■ □ □ □ □ □ □ □ □
+Action 223 : Bouton 3 cliqué à 4:31:11 PM
+État après : □ ■ ■ □ □ □ □ □ □
+Action 224 : Bouton 4 cliqué à 4:31:13 PM
+État après : □ □ ■ ■ □ □ □ □ □
+Action 225 : Bouton 6 cliqué à 4:31:13 PM
+État après : □ □ □ ■ ■ ■ □ □ □
+Action 226 : Bouton 7 cliqué à 4:31:14 PM
+État après : □ □ □ □ ■ ■ ■ □ □
+Action 227 : Bouton 9 cliqué à 4:31:15 PM
+État après : □ □ □ □ □ ■ ■ ■ ■
+📂 Test4 Moyen — chargé à 4:31:17 PM
+📂 Test5 Moyen — chargé à 4:31:18 PM
+Action 230 : Bouton 3 cliqué à 4:31:20 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 231 : Bouton 3 cliqué à 4:31:21 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 232 : Bouton 2 cliqué à 4:31:22 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 233 : Bouton 1 cliqué à 4:31:22 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 234 : Bouton 4 cliqué à 4:31:22 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 235 : Bouton 7 cliqué à 4:31:23 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 236 : Bouton 8 cliqué à 4:31:23 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 237 : Bouton 9 cliqué à 4:31:24 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 238 : Bouton 6 cliqué à 4:31:24 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 239 : Bouton 5 cliqué à 4:31:24 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 240 : Bouton 5 cliqué à 4:31:25 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 241 : Bouton 5 cliqué à 4:31:25 PM
+État après : □ □ □ □ ■ □ □ □ □
+Objectif atteint ! à 4:31:25 PM
+Action 243 : Bouton 4 cliqué à 4:31:26 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 244 : Bouton 4 cliqué à 4:31:26 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 245 : Bouton 7 cliqué à 4:31:27 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 246 : Bouton 7 cliqué à 4:31:27 PM
+État après : □ □ □ □ □ □ ■ □ □
+Action 247 : Bouton 5 cliqué à 4:31:28 PM
+État après : □ □ □ □ ■ □ □ □ □
+Objectif atteint ! à 4:31:28 PM
+📂 Test5 Validation Moyen — chargé à 4:31:29 PM
+Phase de validation — Question 1 : incorrecte à 4:31:36 PM
+Phase de validation — Question 1 : correcte à 4:31:46 PM
+Phase de validation — Question 2 : incorrecte à 4:31:51 PM
+Phase de validation — Question 3 : correcte à 4:31:55 PM
+Phase de validation — Question 1 : correcte à 4:32:02 PM
+Phase de validation — Question 2 : correcte à 4:32:03 PM
+Phase de validation — Question 3 : correcte à 4:32:05 PM
+Phase de validation — Question 4 : correcte à 4:32:11 PM
+Validation réussie ! à 4:32:12 PM
+📂 Test1 Difficile — chargé à 4:32:14 PM
+Action 260 : Bouton 2 cliqué à 4:32:18 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 261 : Bouton 3 cliqué à 4:32:18 PM
+État après : □ □ ■ □ □ □ □ □ □
+Objectif atteint ! à 4:32:18 PM
+Action 263 : Bouton 5 cliqué à 4:32:21 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 264 : Bouton 6 cliqué à 4:32:22 PM
+État après : □ □ □ □ □ ■ □ □ □
+Action 265 : Bouton 8 cliqué à 4:32:23 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 266 : Bouton 9 cliqué à 4:32:23 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 267 : Bouton 7 cliqué à 4:32:24 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 268 : Bouton 4 cliqué à 4:32:24 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 269 : Bouton 5 cliqué à 4:32:24 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 270 : Bouton 4 cliqué à 4:32:25 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 271 : Bouton 4 cliqué à 4:32:25 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 272 : Bouton 4 cliqué à 4:32:26 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 273 : Bouton 4 cliqué à 4:32:26 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 274 : Bouton 5 cliqué à 4:32:27 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 275 : Bouton 4 cliqué à 4:32:28 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 276 : Bouton 5 cliqué à 4:32:28 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 277 : Bouton 7 cliqué à 4:32:29 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 278 : Bouton 4 cliqué à 4:32:29 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 279 : Bouton 1 cliqué à 4:32:29 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 280 : Bouton 1 cliqué à 4:32:30 PM
+État après : ■ □ □ □ □ □ □ □ □
+Action 281 : Bouton 1 cliqué à 4:32:30 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 282 : Bouton 2 cliqué à 4:32:31 PM
+État après : □ ■ □ □ □ □ □ □ □
+Action 283 : Bouton 2 cliqué à 4:32:31 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 284 : Bouton 2 cliqué à 4:32:31 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 285 : Bouton 2 cliqué à 4:32:32 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 286 : Bouton 2 cliqué à 4:32:32 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 287 : Bouton 2 cliqué à 4:32:33 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 288 : Bouton 2 cliqué à 4:32:33 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 289 : Bouton 2 cliqué à 4:32:33 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 290 : Bouton 2 cliqué à 4:32:34 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 291 : Bouton 5 cliqué à 4:32:34 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 292 : Bouton 5 cliqué à 4:32:35 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 293 : Bouton 5 cliqué à 4:32:35 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 294 : Bouton 5 cliqué à 4:32:36 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 295 : Bouton 5 cliqué à 4:32:36 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 296 : Bouton 8 cliqué à 4:32:36 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 297 : Bouton 8 cliqué à 4:32:37 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 298 : Bouton 8 cliqué à 4:32:37 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 299 : Bouton 8 cliqué à 4:32:37 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 300 : Bouton 8 cliqué à 4:32:37 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 301 : Bouton 8 cliqué à 4:32:37 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 302 : Bouton 8 cliqué à 4:32:38 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 303 : Bouton 8 cliqué à 4:32:38 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 304 : Bouton 8 cliqué à 4:32:38 PM
+État après : □ □ □ □ □ □ □ □ □
+📂 Test1 Difficile — chargé à 4:32:39 PM
+Action 306 : Bouton 8 cliqué à 4:32:40 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 307 : Bouton 8 cliqué à 4:32:40 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 308 : Bouton 8 cliqué à 4:32:40 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 309 : Bouton 8 cliqué à 4:32:40 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 310 : Bouton 8 cliqué à 4:32:40 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 311 : Bouton 8 cliqué à 4:32:40 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 312 : Bouton 8 cliqué à 4:32:41 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 313 : Bouton 8 cliqué à 4:32:41 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 314 : Bouton 7 cliqué à 4:32:42 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 315 : Bouton 5 cliqué à 4:32:42 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 316 : Bouton 8 cliqué à 4:32:43 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 317 : Bouton 9 cliqué à 4:32:43 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 318 : Bouton 6 cliqué à 4:32:43 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 319 : Bouton 3 cliqué à 4:32:44 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 320 : Bouton 3 cliqué à 4:32:44 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 321 : Bouton 3 cliqué à 4:32:44 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 322 : Bouton 3 cliqué à 4:32:44 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 323 : Bouton 3 cliqué à 4:32:45 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 324 : Bouton 3 cliqué à 4:32:45 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 325 : Bouton 2 cliqué à 4:32:45 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 326 : Bouton 1 cliqué à 4:32:45 PM
+État après : □ □ □ □ □ □ □ □ □
+📂 Test1 Difficile — chargé à 4:32:46 PM
+Action 328 : Bouton 3 cliqué à 4:32:46 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 329 : Bouton 3 cliqué à 4:32:46 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 330 : Bouton 3 cliqué à 4:32:47 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 331 : Bouton 3 cliqué à 4:32:47 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 332 : Bouton 3 cliqué à 4:32:47 PM
+État après : □ □ □ □ □ □ □ □ □
+📂 Test1 Difficile — chargé à 4:32:48 PM
+Action 334 : Bouton 2 cliqué à 4:32:48 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 335 : Bouton 3 cliqué à 4:32:49 PM
+État après : □ □ ■ □ □ □ □ □ □
+Objectif atteint ! à 4:32:49 PM
+Action 337 : Bouton 6 cliqué à 4:32:51 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 338 : Bouton 9 cliqué à 4:32:52 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 339 : Bouton 8 cliqué à 4:32:53 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 340 : Bouton 9 cliqué à 4:32:53 PM
+État après : □ □ □ □ □ □ □ □ ■
+Action 341 : Bouton 8 cliqué à 4:32:54 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 342 : Bouton 5 cliqué à 4:32:54 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 343 : Bouton 6 cliqué à 4:32:55 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 344 : Bouton 8 cliqué à 4:32:56 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 345 : Bouton 6 cliqué à 4:32:56 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 346 : Bouton 2 cliqué à 4:32:57 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 347 : Bouton 6 cliqué à 4:32:57 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 348 : Bouton 3 cliqué à 4:32:57 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 349 : Bouton 6 cliqué à 4:32:58 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 350 : Bouton 3 cliqué à 4:32:59 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 351 : Bouton 1 cliqué à 4:32:59 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 352 : Bouton 4 cliqué à 4:32:59 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 353 : Bouton 5 cliqué à 4:33:00 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 354 : Bouton 2 cliqué à 4:33:00 PM
+État après : □ □ □ □ □ □ □ □ □
+📂 Test1 Difficile — chargé à 4:33:01 PM
+Action 356 : Bouton 8 cliqué à 4:33:01 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 357 : Bouton 5 cliqué à 4:33:02 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 358 : Bouton 4 cliqué à 4:33:03 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 359 : Bouton 5 cliqué à 4:33:04 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 360 : Bouton 2 cliqué à 4:33:05 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 361 : Bouton 3 cliqué à 4:33:05 PM
+État après : □ □ ■ □ □ □ □ □ □
+Objectif atteint ! à 4:33:06 PM
+Action 363 : Bouton 5 cliqué à 4:33:08 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 364 : Bouton 6 cliqué à 4:33:09 PM
+État après : □ □ □ □ □ ■ □ □ □
+Action 365 : Bouton 9 cliqué à 4:33:10 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 366 : Bouton 8 cliqué à 4:33:10 PM
+État après : □ □ □ □ □ □ □ ■ □
+Action 367 : Bouton 7 cliqué à 4:33:10 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 368 : Bouton 4 cliqué à 4:33:11 PM
+État après : □ □ □ ■ □ □ □ □ □
+Action 369 : Bouton 2 cliqué à 4:33:11 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 370 : Bouton 3 cliqué à 4:33:12 PM
+État après : □ □ ■ □ □ □ □ □ □
+Objectif atteint ! à 4:33:12 PM
+📂 Test1 Validation Difficile — chargé à 4:33:13 PM
+Phase de validation — Question 1 : correcte à 4:33:18 PM
+Phase de validation — Question 2 : correcte à 4:33:23 PM
+Phase de validation — Question 3 : incorrecte à 4:33:39 PM
+Phase de validation — Question 4 : incorrecte à 4:33:50 PM
+Validation échouée à 4:33:50 PM
+📂 Test2 Difficile — chargé à 4:33:53 PM
+Action 379 : Bouton 3 cliqué à 4:33:55 PM
+État après : □ □ ■ □ □ ■ □ □ ■
+Action 380 : Bouton 2 cliqué à 4:33:56 PM
+État après : □ ■ ■ ■ □ □ □ ■ ■
+Action 381 : Bouton 1 cliqué à 4:33:57 PM
+État après : □ ■ ■ ■ □ □ □ ■ ■
+Action 382 : Bouton 5 cliqué à 4:33:58 PM
+État après : □ ■ ■ ■ ■ □ □ ■ ■
+Action 383 : Bouton 6 cliqué à 4:33:59 PM
+État après : □ □ □ □ ■ ■ □ □ □
+Action 384 : Bouton 6 cliqué à 4:34:00 PM
+État après : □ ■ ■ ■ ■ □ □ ■ ■
+Action 385 : Bouton 5 cliqué à 4:34:01 PM
+État après : □ ■ ■ ■ □ □ □ ■ ■
+Action 386 : Bouton 5 cliqué à 4:34:02 PM
+État après : □ ■ ■ ■ ■ □ □ ■ ■
+Action 387 : Bouton 7 cliqué à 4:34:02 PM
+État après : □ ■ ■ ■ ■ □ ■ ■ ■
+Action 388 : Bouton 7 cliqué à 4:34:03 PM
+État après : □ ■ ■ ■ ■ □ □ ■ ■
+Action 389 : Bouton 5 cliqué à 4:34:04 PM
+État après : □ ■ ■ ■ □ □ □ ■ ■
+Action 390 : Bouton 6 cliqué à 4:34:04 PM
+État après : □ □ □ □ □ ■ □ □ □
+Action 391 : Bouton 2 cliqué à 4:34:05 PM
+État après : □ ■ □ ■ □ □ □ ■ □
+Objectif atteint ! à 4:34:05 PM
+Action 393 : Bouton 2 cliqué à 4:34:09 PM
+État après : □ □ □ □ □ ■ □ □ □
+📂 Test2 Difficile — chargé à 4:34:11 PM
+Action 395 : Bouton 2 cliqué à 4:34:11 PM
+État après : □ ■ □ ■ □ ■ □ ■ □
+Action 396 : Bouton 2 cliqué à 4:34:12 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 397 : Bouton 3 cliqué à 4:34:13 PM
+État après : □ □ ■ □ □ ■ □ □ ■
+Action 398 : Bouton 3 cliqué à 4:34:15 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 399 : Bouton 1 cliqué à 4:34:16 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 400 : Bouton 4 cliqué à 4:34:17 PM
+État après : □ ■ □ ■ □ ■ □ ■ □
+Action 401 : Bouton 4 cliqué à 4:34:18 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 402 : Bouton 2 cliqué à 4:34:18 PM
+État après : □ ■ □ ■ □ ■ □ ■ □
+Action 403 : Bouton 9 cliqué à 4:34:19 PM
+État après : □ ■ ■ ■ □ □ □ ■ ■
+Action 404 : Bouton 9 cliqué à 4:34:20 PM
+État après : □ ■ □ ■ □ ■ □ ■ □
+Action 405 : Bouton 6 cliqué à 4:34:20 PM
+État après : □ □ ■ □ □ □ □ □ ■
+Action 406 : Bouton 6 cliqué à 4:34:21 PM
+État après : □ ■ □ ■ □ ■ □ ■ □
+Action 407 : Bouton 5 cliqué à 4:34:22 PM
+État après : □ ■ □ ■ ■ ■ □ ■ □
+Action 408 : Bouton 5 cliqué à 4:34:22 PM
+État après : □ ■ □ ■ □ ■ □ ■ □
+Action 409 : Bouton 7 cliqué à 4:34:23 PM
+État après : □ ■ □ ■ □ ■ ■ ■ □
+Action 410 : Bouton 7 cliqué à 4:34:23 PM
+État après : □ ■ □ ■ □ ■ □ ■ □
+Action 411 : Bouton 1 cliqué à 4:34:24 PM
+État après : □ ■ □ ■ □ ■ □ ■ □
+Action 412 : Bouton 2 cliqué à 4:34:25 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 413 : Bouton 6 cliqué à 4:34:27 PM
+État après : □ ■ ■ ■ □ ■ □ ■ ■
+Action 414 : Bouton 3 cliqué à 4:34:29 PM
+État après : □ ■ □ ■ □ □ □ ■ □
+Objectif atteint ! à 4:34:29 PM
+📂 Test2 Validation Difficile — chargé à 4:34:31 PM
+Phase de validation — Question 1 : correcte à 4:34:34 PM
+Phase de validation — Question 2 : correcte à 4:34:38 PM
+Phase de validation — Question 3 : incorrecte à 4:34:45 PM
+Phase de validation — Question 3 : correcte à 4:34:57 PM
+Phase de validation — Question 4 : correcte à 4:35:11 PM
+Validation réussie ! à 4:35:12 PM
+📂 Test3 Difficile — chargé à 4:35:14 PM
+Action 424 : Bouton 1 cliqué à 4:35:15 PM
+État après : ■ ■ □ □ □ □ □ □ □
+Action 425 : Bouton 3 cliqué à 4:35:16 PM
+État après : ■ □ ■ ■ □ □ □ □ □
+Action 426 : Bouton 5 cliqué à 4:35:18 PM
+État après : ■ □ ■ □ ■ ■ □ □ □
+Action 427 : Bouton 6 cliqué à 4:35:21 PM
+État après : ■ □ ■ □ □ □ ■ □ □
+Action 428 : Bouton 8 cliqué à 4:35:26 PM
+État après : ■ □ ■ □ □ □ □ ■ ■
+Action 429 : Bouton 8 cliqué à 4:35:27 PM
+État après : ■ □ ■ □ □ □ ■ □ □
+📂 Test3 Difficile — chargé à 4:35:29 PM
+Action 431 : Bouton 2 cliqué à 4:35:33 PM
+État après : ■ ■ ■ □ □ □ □ □ □
+Action 432 : Bouton 1 cliqué à 4:35:34 PM
+État après : □ □ ■ □ □ □ □ □ □
+Action 433 : Bouton 2 cliqué à 4:35:37 PM
+État après : ■ ■ □ □ □ □ □ □ □
+Action 434 : Bouton 1 cliqué à 4:35:38 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 435 : Bouton 3 cliqué à 4:35:40 PM
+État après : □ ■ ■ ■ □ □ □ □ □
+Action 436 : Bouton 4 cliqué à 4:35:42 PM
+État après : □ ■ □ □ ■ □ □ □ □
+Action 437 : Bouton 5 cliqué à 4:35:45 PM
+État après : □ ■ □ ■ □ ■ □ □ □
+Action 438 : Bouton 6 cliqué à 4:35:46 PM
+État après : □ ■ □ ■ ■ □ ■ □ □
+Action 439 : Bouton 7 cliqué à 4:35:47 PM
+État après : □ ■ □ ■ ■ ■ □ ■ □
+Objectif atteint ! à 4:35:47 PM
+📂 Test3 Validation Difficile — chargé à 4:35:49 PM
+Phase de validation — Question 1 : correcte à 4:35:51 PM
+Phase de validation — Question 2 : correcte à 4:35:54 PM
+Phase de validation — Question 3 : correcte à 4:36:04 PM
+Phase de validation — Question 4 : correcte à 4:36:10 PM
+Validation réussie ! à 4:36:11 PM
+📂 Test4 Difficile — chargé à 4:36:13 PM
+Action 448 : Bouton 1 cliqué à 4:36:15 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 449 : Bouton 2 cliqué à 4:36:16 PM
+État après : □ □ □ ■ ■ ■ □ □ □
+Action 450 : Bouton 3 cliqué à 4:36:17 PM
+État après : □ □ □ ■ □ ■ □ □ □
+Action 451 : Bouton 8 cliqué à 4:36:19 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 452 : Bouton 7 cliqué à 4:36:21 PM
+État après : □ □ □ □ ■ □ □ □ □
+Action 453 : Bouton 7 cliqué à 4:36:21 PM
+État après : □ □ □ □ □ □ □ □ □
+Action 454 : Bouton 5 cliqué à 4:36:22 PM
+État après : ■ □ ■ □ □ □ ■ □ ■
+Action 455 : Bouton 7 cliqué à 4:36:25 PM
+État après : ■ □ ■ □ ■ □ ■ □ ■
+Action 456 : Bouton 4 cliqué à 4:36:27 PM
+État après : ■ ■ ■ □ ■ □ ■ ■ ■
+Action 457 : Bouton 8 cliqué à 4:36:28 PM
+État après : ■ ■ ■ ■ ■ ■ ■ ■ ■
+Objectif atteint ! à 4:36:28 PM
+📂 Test4 Validation Difficile — chargé à 4:36:29 PM
+Phase de validation — Question 1 : correcte à 4:36:34 PM
+Phase de validation — Question 2 : correcte à 4:36:38 PM
+Validation abandonnée à 4:37:18 PM
