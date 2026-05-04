@@ -76,13 +76,25 @@ class AnalyseurFichier:
         motif  = r'📂 (Test\d+ (?:Facile|Moyen|Difficile))'
         parties = re.split(motif, texte)
 
+        blocs = []
         for i in range(1, len(parties), 2):
             titre   = parties[i]
             contenu = parties[i+1] if i+1 < len(parties) else ""
+            if blocs and blocs[-1][0] == titre:
+                contenu_prec = blocs[-1][1]
+                a_clear      = bool(re.search(r'CLEAR', contenu_prec))
+                est_vide     = not bool(re.search(r'Action \d+', contenu_prec))
+                if a_clear or est_vide:
+                    blocs[-1] = (titre, contenu_prec + contenu)
+                    continue
+
+            blocs.append((titre, contenu))
+
+        for titre, contenu in blocs:
             t = TentativeTest(titre, contenu, self.categorie, self.nom)
             if t.est_valide():
                 self.tentatives.append(t)
-
+                
         return self.tentatives
 
 
