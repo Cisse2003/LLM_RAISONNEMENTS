@@ -1,0 +1,913 @@
+Date : 05/05/2026
+Heure : 13:37:01
+📂 Test1 Facile - chargé à 13:12:02
+📂 Test1 Facile - chargé à 13:12:09
+🤖 Mode automatique démarré à 13:12:09
+🤖 Réponse LLM : ACTION: 9 à 13:12:11
+Action 5 : Bouton 9 cliqué à 13:12:11
+État après : □ □ □ □ □ □ □ □ ■
+💡 Règle identifiée par le LLM à 13:12:12
+Cliquer sur le bouton 9 l'allume directement, et aucun autre bouton n'est affecté.
+Objectif atteint ! à 13:12:12
+📂 Test1 Validation Facile - chargé à 13:12:15
+Phase de validation - Question 1 : correcte à 13:12:19
+Validation réussie ! à 13:12:22
+📂 Test2 Facile - chargé à 13:12:25
+📂 Test2 Facile - chargé à 13:12:26
+🤖 Mode automatique démarré à 13:12:26
+🤖 Réponse LLM : ACTION: 6 à 13:12:27
+Action 15 : Bouton 6 cliqué à 13:12:27
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:12:31
+Action 17 : Bouton 4 cliqué à 13:12:31
+État après : □ □ □ □ □ ■ □ □ □
+💡 Règle identifiée par le LLM à 13:12:33
+Cliquer sur le bouton 6 allume le bouton 4, et cliquer sur le bouton 4 allume le bouton 6 ; la règle semble être une symétrieOu un échange d'état entre les boutons 4 et 6, sans effet sur les autres.
+Objectif atteint ! à 13:12:33
+📂 Test2 Validation Facile - chargé à 13:12:36
+Phase de validation - Question 1 : incorrecte à 13:12:40
+Phase de validation - Question 2 : correcte à 13:12:44
+Phase de validation - Question 3 : incorrecte à 13:12:48
+Validation échouée à 13:12:51
+📂 Test3 Facile - chargé à 13:12:56
+📂 Test3 Facile - chargé à 13:12:58
+🤖 Mode automatique démarré à 13:12:58
+🤖 Réponse LLM : ACTION: 1 à 13:12:59
+Action 29 : Bouton 1 cliqué à 13:12:59
+État après : ■ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:13:03
+Action 31 : Bouton 2 cliqué à 13:13:03
+État après : ■ ■ □ ■ ■ □ □ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:13:08
+Action 33 : Bouton 3 cliqué à 13:13:08
+État après : ■ ■ ■ ■ ■ ■ □ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:13:12
+Action 35 : Bouton 7 cliqué à 13:13:12
+État après : ■ ■ ■ □ ■ ■ ■ □ □
+🤖 Réponse LLM : ACTION: 8 à 13:13:16
+Action 37 : Bouton 8 cliqué à 13:13:16
+État après : ■ ■ ■ □ □ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 9 à 13:13:20
+Action 39 : Bouton 9 cliqué à 13:13:20
+État après : ■ ■ ■ □ □ □ ■ ■ ■
+💡 Règle identifiée par le LLM à 13:13:22
+Cliquer sur un bouton allumeOu éteint ce bouton et les boutons directement adjacents (haut, bas, gauche, droite), mais pas en diagonale.
+Objectif atteint ! à 13:13:22
+📂 Test3 Validation Facile - chargé à 13:13:25
+Phase de validation - Question 1 : incorrecte à 13:13:29
+Phase de validation - Question 2 : incorrecte à 13:13:33
+Phase de validation - Question 3 : incorrecte à 13:13:36
+Validation échouée à 13:13:39
+📂 Test4 Facile - chargé à 13:13:41
+📂 Test4 Facile - chargé à 13:13:43
+🤖 Mode automatique démarré à 13:13:43
+🤖 Réponse LLM : ACTION: 2 à 13:13:43
+Action 51 : Bouton 2 cliqué à 13:13:43
+État après : □ □ □ □ ■ □ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:13:47
+Action 53 : Bouton 5 cliqué à 13:13:47
+État après : □ □ □ □ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 8 à 13:13:53
+Action 55 : Bouton 8 cliqué à 13:13:53
+État après : □ ■ □ □ □ □ □ □ □
+💡 Règle identifiée par le LLM à 13:13:55
+Cliquer sur un bouton allume le bouton situé à sa droite dans la grille (avec bouclage horizontal : 3 → 1, 6 → 4, 9 → 7), et éteint le bouton lui-même.
+Objectif atteint ! à 13:13:55
+📂 Test4 Validation Facile - chargé à 13:13:58
+Phase de validation - Question 1 : incorrecte à 13:14:02
+Phase de validation - Question 2 : incorrecte à 13:14:05
+Phase de validation - Question 3 : incorrecte à 13:14:10
+Validation échouée à 13:14:13
+📂 Test5 Facile - chargé à 13:14:14
+📂 Test5 Facile - chargé à 13:14:16
+🤖 Mode automatique démarré à 13:14:16
+🤖 Réponse LLM : CLEAR à 13:14:16
+📂 Test5 Facile - chargé à 13:14:16
+🤖 Réponse LLM : ACTION: 6 à 13:14:20
+Action 69 : Bouton 6 cliqué à 13:14:20
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : SOLUTION: 6 à 13:14:24
+Action 71 : Bouton 6 cliqué à 13:14:24
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:14:31
+Action 73 : Bouton 5 cliqué à 13:14:31
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:14:36
+Action 75 : Bouton 6 cliqué à 13:14:36
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:14:41
+Action 77 : Bouton 3 cliqué à 13:14:41
+État après : □ ■ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 9 à 13:14:45
+Action 79 : Bouton 9 cliqué à 13:14:45
+État après : □ □ □ □ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 7 à 13:14:49
+Action 81 : Bouton 7 cliqué à 13:14:49
+État après : □ □ □ □ □ ■ □ □ □
+💡 Règle identifiée par le LLM à 13:14:51
+Cliquer sur un bouton allumeOu éteint le bouton lui-même et certains de ses voisins selon une règle de propagation en croix (haut, bas, gauche, droite), mais pas en diagonale.
+Objectif atteint ! à 13:14:51
+📂 Test5 Validation Facile - chargé à 13:14:54
+Phase de validation - Question 1 : incorrecte à 13:14:58
+Phase de validation - Question 2 : incorrecte à 13:15:01
+Phase de validation - Question 3 : incorrecte à 13:15:05
+Validation échouée à 13:15:08
+📂 Test1 Moyen - chargé à 13:15:12
+📂 Test1 Moyen - chargé à 13:15:13
+🤖 Mode automatique démarré à 13:15:13
+🤖 Réponse LLM : CLEAR à 13:15:14
+📂 Test1 Moyen - chargé à 13:15:14
+🤖 Réponse LLM : ACTION: 8 à 13:15:18
+Action 95 : Bouton 8 cliqué à 13:15:18
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:15:22
+Action 97 : Bouton 7 cliqué à 13:15:22
+État après : □ □ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 9 à 13:15:27
+Action 99 : Bouton 9 cliqué à 13:15:27
+État après : □ □ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:15:31
+Action 101 : Bouton 5 cliqué à 13:15:31
+État après : ■ □ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 1 à 13:15:35
+Action 103 : Bouton 1 cliqué à 13:15:35
+État après : ■ ■ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:15:39
+Action 105 : Bouton 2 cliqué à 13:15:39
+État après : ■ ■ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:15:43
+Action 107 : Bouton 4 cliqué à 13:15:43
+État après : ■ ■ □ □ ■ □ ■ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:15:47
+Action 109 : Bouton 6 cliqué à 13:15:47
+État après : ■ ■ ■ □ ■ □ ■ ■ □
+🤖 Réponse LLM : ACTION: 3 à 13:15:51
+Action 111 : Bouton 3 cliqué à 13:15:51
+État après : ■ ■ ■ □ ■ □ ■ ■ □
+🤖 Réponse LLM : ACTION: 8 à 13:15:56
+Action 113 : Bouton 8 cliqué à 13:15:56
+État après : ■ ■ ■ □ ■ □ □ ■ □
+🤖 Réponse LLM : ACTION: 7 à 13:16:00
+Action 115 : Bouton 7 cliqué à 13:16:00
+État après : ■ ■ ■ □ ■ □ □ ■ □
+🤖 Réponse LLM : ACTION: 5 à 13:16:04
+Action 117 : Bouton 5 cliqué à 13:16:04
+État après : □ ■ ■ □ ■ □ □ ■ □
+🤖 Réponse LLM : ACTION: 1 à 13:16:08
+Action 119 : Bouton 1 cliqué à 13:16:08
+État après : □ □ ■ □ ■ □ □ ■ □
+🤖 Réponse LLM : ACTION: 3 à 13:16:12
+Action 121 : Bouton 3 cliqué à 13:16:12
+État après : □ □ ■ □ ■ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:16:16
+Action 123 : Bouton 6 cliqué à 13:16:16
+État après : □ □ ■ □ ■ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 4 à 13:16:20
+Action 125 : Bouton 4 cliqué à 13:16:20
+État après : □ □ ■ □ ■ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 2 à 13:16:25
+Action 127 : Bouton 2 cliqué à 13:16:25
+État après : □ □ ■ □ ■ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 9 à 13:16:29
+Action 129 : Bouton 9 cliqué à 13:16:29
+État après : □ □ ■ □ ■ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 8 à 13:16:33
+Action 131 : Bouton 8 cliqué à 13:16:33
+État après : □ □ ■ □ ■ ■ □ ■ □
+🤖 Réponse LLM : CLEAR à 13:16:38
+📂 Test1 Moyen - chargé à 13:16:38
+🤖 Réponse LLM : ACTION: 8 à 13:16:41
+Action 135 : Bouton 8 cliqué à 13:16:41
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:16:45
+Action 137 : Bouton 7 cliqué à 13:16:45
+État après : □ □ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 9 à 13:16:49
+Action 139 : Bouton 9 cliqué à 13:16:49
+État après : □ □ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:16:54
+Action 141 : Bouton 5 cliqué à 13:16:54
+État après : ■ □ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 1 à 13:16:58
+Action 143 : Bouton 1 cliqué à 13:16:58
+État après : ■ ■ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:17:02
+Action 145 : Bouton 2 cliqué à 13:17:02
+État après : ■ ■ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:17:06
+Action 147 : Bouton 4 cliqué à 13:17:06
+État après : ■ ■ □ □ ■ □ ■ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:17:10
+Action 149 : Bouton 6 cliqué à 13:17:10
+État après : ■ ■ ■ □ ■ □ ■ ■ □
+🤖 Réponse LLM : ACTION: 3 à 13:17:15
+Action 151 : Bouton 3 cliqué à 13:17:15
+État après : ■ ■ ■ □ ■ □ ■ ■ □
+🏳 LLM abandonne : Limite de 30 actions atteinte. à 13:17:18
+📂 Test2 Moyen - chargé à 13:17:26
+📂 Test2 Moyen - chargé à 13:17:27
+🤖 Mode automatique démarré à 13:17:27
+🤖 Réponse LLM : ACTION: 9 à 13:17:28
+Action 157 : Bouton 9 cliqué à 13:17:28
+État après : □ □ □ □ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 8 à 13:17:33
+Action 159 : Bouton 8 cliqué à 13:17:33
+État après : □ □ □ □ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:17:37
+Action 161 : Bouton 6 cliqué à 13:17:37
+État après : □ ■ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:17:41
+Action 163 : Bouton 2 cliqué à 13:17:41
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:17:45
+Action 165 : Bouton 4 cliqué à 13:17:45
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:17:49
+Action 167 : Bouton 7 cliqué à 13:17:49
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:17:54
+Action 169 : Bouton 6 cliqué à 13:17:54
+État après : □ ■ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:17:58
+Action 171 : Bouton 2 cliqué à 13:17:58
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:18:02
+Action 173 : Bouton 4 cliqué à 13:18:02
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:18:06
+Action 175 : Bouton 7 cliqué à 13:18:06
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:18:10
+Action 177 : Bouton 6 cliqué à 13:18:10
+État après : □ ■ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:18:14
+Action 179 : Bouton 2 cliqué à 13:18:14
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:18:18
+Action 181 : Bouton 4 cliqué à 13:18:18
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:18:22
+Action 183 : Bouton 7 cliqué à 13:18:22
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : CLEAR à 13:18:26
+📂 Test2 Moyen - chargé à 13:18:26
+🤖 Réponse LLM : ACTION: 9 à 13:18:31
+Action 187 : Bouton 9 cliqué à 13:18:31
+État après : □ □ □ □ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 8 à 13:18:35
+Action 189 : Bouton 8 cliqué à 13:18:35
+État après : □ □ □ □ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:18:39
+Action 191 : Bouton 6 cliqué à 13:18:39
+État après : □ ■ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:18:44
+Action 193 : Bouton 2 cliqué à 13:18:44
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:18:48
+Action 195 : Bouton 4 cliqué à 13:18:48
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:18:53
+Action 197 : Bouton 7 cliqué à 13:18:53
+État après : □ □ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ABANDON: La règle de propagation est trop complexe et répétitive, sans convergence vers l'état cible après 30 actions. à 13:18:57
+🏳 LLM abandonne : ABANDON: La règle de propagation est trop complexe et répétitive, sans convergence vers l'état cible après 30 actions. à 13:18:57
+📂 Test3 Moyen - chargé à 13:19:18
+📂 Test3 Moyen - chargé à 13:19:20
+🤖 Mode automatique démarré à 13:19:20
+🤖 Réponse LLM : CLEAR à 13:19:21
+📂 Test3 Moyen - chargé à 13:19:21
+🤖 Réponse LLM : ACTION: 5 à 13:19:25
+Action 206 : Bouton 5 cliqué à 13:19:25
+État après : □ □ □ □ ■ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:19:29
+Action 208 : Bouton 6 cliqué à 13:19:29
+État après : □ □ □ ■ ■ □ □ ■ ■
+🤖 Réponse LLM : ACTION: 4 à 13:19:33
+Action 210 : Bouton 4 cliqué à 13:19:33
+État après : □ □ □ □ □ □ ■ ■ ■
+🤖 Réponse LLM : ACTION: 7 à 13:19:38
+Action 212 : Bouton 7 cliqué à 13:19:38
+État après : ■ □ □ □ □ □ □ □ ■
+🤖 Réponse LLM : ACTION: 9 à 13:19:42
+Action 214 : Bouton 9 cliqué à 13:19:42
+État après : ■ □ ■ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:19:47
+Action 216 : Bouton 3 cliqué à 13:19:47
+État après : □ □ □ □ □ ■ ■ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:19:51
+Action 218 : Bouton 6 cliqué à 13:19:51
+État après : □ □ □ ■ □ □ ■ □ ■
+🤖 Réponse LLM : ACTION: 4 à 13:19:55
+Action 220 : Bouton 4 cliqué à 13:19:55
+État après : □ □ □ □ ■ □ □ □ ■
+🤖 Réponse LLM : ACTION: 9 à 13:19:59
+Action 222 : Bouton 9 cliqué à 13:19:59
+État après : □ □ ■ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:20:04
+Action 224 : Bouton 3 cliqué à 13:20:04
+État après : ■ □ □ □ ■ ■ ■ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:20:08
+Action 226 : Bouton 6 cliqué à 13:20:08
+État après : ■ □ □ ■ ■ □ ■ □ ■
+🤖 Réponse LLM : ACTION: 4 à 13:20:12
+Action 228 : Bouton 4 cliqué à 13:20:12
+État après : ■ □ □ □ □ □ □ □ ■
+🤖 Réponse LLM : ACTION: 7 à 13:20:16
+Action 230 : Bouton 7 cliqué à 13:20:16
+État après : □ □ □ □ □ □ ■ ■ ■
+🤖 Réponse LLM : ACTION: 9 à 13:20:21
+Action 232 : Bouton 9 cliqué à 13:20:21
+État après : □ □ ■ □ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 3 à 13:20:25
+Action 234 : Bouton 3 cliqué à 13:20:25
+État après : ■ □ □ □ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:20:29
+Action 236 : Bouton 6 cliqué à 13:20:29
+État après : ■ □ □ ■ □ □ □ ■ ■
+🤖 Réponse LLM : ACTION: 4 à 13:20:33
+Action 238 : Bouton 4 cliqué à 13:20:33
+État après : ■ □ □ □ ■ □ ■ ■ ■
+🤖 Réponse LLM : ACTION: 7 à 13:20:38
+Action 240 : Bouton 7 cliqué à 13:20:38
+État après : □ □ □ □ ■ □ □ □ ■
+🤖 Réponse LLM : ACTION: 9 à 13:20:42
+Action 242 : Bouton 9 cliqué à 13:20:42
+État après : □ □ ■ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:20:46
+Action 244 : Bouton 3 cliqué à 13:20:46
+État après : ■ □ □ □ ■ ■ ■ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:20:50
+Action 246 : Bouton 6 cliqué à 13:20:50
+État après : ■ □ □ ■ ■ □ ■ □ ■
+🤖 Réponse LLM : ACTION: 4 à 13:20:54
+Action 248 : Bouton 4 cliqué à 13:20:54
+État après : ■ □ □ □ □ □ □ □ ■
+🤖 Réponse LLM : ACTION: 7 à 13:20:58
+Action 250 : Bouton 7 cliqué à 13:20:58
+État après : □ □ □ □ □ □ ■ ■ ■
+🤖 Réponse LLM : ACTION: 9 à 13:21:03
+Action 252 : Bouton 9 cliqué à 13:21:03
+État après : □ □ ■ □ □ □ □ ■ □
+🤖 Réponse LLM : ABANDON: trop de combinaisons, règle non identifiée en 30 actions à 13:21:07
+🏳 LLM abandonne : ABANDON: trop de combinaisons, règle non identifiée en 30 actions à 13:21:07
+📂 Test4 Moyen - chargé à 13:21:16
+📂 Test4 Moyen - chargé à 13:21:17
+🤖 Mode automatique démarré à 13:21:17
+🤖 Réponse LLM : ACTION: 5 à 13:21:18
+Action 259 : Bouton 5 cliqué à 13:21:18
+État après : □ □ □ □ ■ □ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:21:23
+Action 261 : Bouton 6 cliqué à 13:21:23
+État après : □ □ □ □ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 8 à 13:21:27
+Action 263 : Bouton 8 cliqué à 13:21:27
+État après : □ □ □ □ □ □ ■ ■ □
+🤖 Réponse LLM : ACTION: 7 à 13:21:31
+Action 265 : Bouton 7 cliqué à 13:21:31
+État après : □ □ □ □ □ □ ■ ■ ■
+🤖 Réponse LLM : SOLUTION: 5 6 8 7 à 13:21:36
+Action 267 : Bouton 5 cliqué à 13:21:36
+État après : ■ □ □ □ ■ □ □ ■ ■
+Action 268 : Bouton 6 cliqué à 13:21:39
+État après : ■ ■ □ □ □ ■ □ □ ■
+Action 269 : Bouton 8 cliqué à 13:21:43
+État après : ■ ■ ■ □ □ □ ■ ■ □
+Action 270 : Bouton 7 cliqué à 13:21:46
+État après : □ ■ ■ ■ □ □ ■ ■ ■
+🤖 Réponse LLM : CLEAR à 13:21:53
+📂 Test4 Moyen - chargé à 13:21:53
+🤖 Réponse LLM : ACTION: 7 à 13:21:57
+Action 274 : Bouton 7 cliqué à 13:21:57
+État après : □ □ □ □ □ □ ■ □ □
+🤖 Réponse LLM : ACTION: 8 à 13:22:01
+Action 276 : Bouton 8 cliqué à 13:22:01
+État après : □ □ □ □ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:22:06
+Action 278 : Bouton 6 cliqué à 13:22:06
+État après : □ □ □ □ □ ■ □ □ ■
+🤖 Réponse LLM : ACTION: 5 à 13:22:11
+Action 280 : Bouton 5 cliqué à 13:22:11
+État après : ■ □ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 1 à 13:22:16
+Action 282 : Bouton 1 cliqué à 13:22:16
+État après : ■ ■ □ □ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 2 à 13:22:20
+Action 284 : Bouton 2 cliqué à 13:22:20
+État après : □ ■ ■ □ □ □ ■ □ ■
+🤖 Réponse LLM : ACTION: 3 à 13:22:24
+Action 286 : Bouton 3 cliqué à 13:22:24
+État après : ■ □ ■ ■ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 4 à 13:22:28
+Action 288 : Bouton 4 cliqué à 13:22:28
+État après : □ ■ □ ■ ■ □ □ □ ■
+🤖 Réponse LLM : ACTION: 9 à 13:22:32
+Action 290 : Bouton 9 cliqué à 13:22:32
+État après : ■ □ ■ □ ■ ■ □ □ ■
+🤖 Réponse LLM : ACTION: 1 à 13:22:36
+Action 292 : Bouton 1 cliqué à 13:22:36
+État après : ■ ■ □ ■ □ ■ ■ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:22:40
+Action 294 : Bouton 4 cliqué à 13:22:40
+État après : □ ■ ■ ■ ■ □ ■ ■ □
+🤖 Réponse LLM : ACTION: 5 à 13:22:45
+Action 296 : Bouton 5 cliqué à 13:22:45
+État après : □ □ ■ ■ ■ ■ □ ■ ■
+🤖 Réponse LLM : ACTION: 2 à 13:22:49
+Action 298 : Bouton 2 cliqué à 13:22:49
+État après : ■ ■ □ ■ ■ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 7 à 13:22:53
+Action 300 : Bouton 7 cliqué à 13:22:53
+État après : ■ ■ ■ □ ■ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 9 à 13:22:57
+Action 302 : Bouton 9 cliqué à 13:22:57
+État après : □ ■ ■ ■ □ ■ ■ ■ ■
+🤖 Réponse LLM : ACTION: 1 à 13:23:02
+Action 304 : Bouton 1 cliqué à 13:23:02
+État après : ■ □ ■ ■ ■ □ ■ ■ ■
+🤖 Réponse LLM : ACTION: 6 à 13:23:06
+Action 306 : Bouton 6 cliqué à 13:23:06
+État après : ■ ■ □ ■ ■ ■ □ ■ ■
+🤖 Réponse LLM : ACTION: 3 à 13:23:10
+Action 308 : Bouton 3 cliqué à 13:23:10
+État après : ■ ■ ■ □ ■ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 8 à 13:23:14
+Action 310 : Bouton 8 cliqué à 13:23:14
+État après : ■ ■ ■ ■ □ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 5 à 13:23:18
+Action 312 : Bouton 5 cliqué à 13:23:18
+État après : □ ■ ■ ■ ■ □ ■ ■ ■
+🤖 Réponse LLM : ACTION: 4 à 13:23:23
+Action 314 : Bouton 4 cliqué à 13:23:23
+État après : ■ □ ■ ■ ■ ■ □ ■ ■
+🤖 Réponse LLM : ACTION: 1 à 13:23:27
+Action 316 : Bouton 1 cliqué à 13:23:27
+État après : ■ ■ □ ■ ■ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 7 à 13:23:33
+Action 318 : Bouton 7 cliqué à 13:23:33
+État après : ■ ■ ■ □ ■ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 9 à 13:23:38
+Action 320 : Bouton 9 cliqué à 13:23:38
+État après : □ ■ ■ ■ □ ■ ■ ■ ■
+🏳 LLM abandonne : Limite de 30 actions atteinte. à 13:23:41
+📂 Test5 Moyen - chargé à 13:23:47
+📂 Test5 Moyen - chargé à 13:23:50
+🤖 Mode automatique démarré à 13:23:50
+🤖 Réponse LLM : ACTION: 5 à 13:23:50
+Action 326 : Bouton 5 cliqué à 13:23:50
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 1 à 13:23:54
+Action 328 : Bouton 1 cliqué à 13:23:54
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:23:59
+Action 330 : Bouton 2 cliqué à 13:23:59
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:24:03
+Action 332 : Bouton 3 cliqué à 13:24:03
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:24:07
+Action 334 : Bouton 4 cliqué à 13:24:07
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:24:12
+Action 336 : Bouton 6 cliqué à 13:24:12
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:24:16
+Action 338 : Bouton 7 cliqué à 13:24:16
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 8 à 13:24:21
+Action 340 : Bouton 8 cliqué à 13:24:21
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 9 à 13:24:25
+Action 342 : Bouton 9 cliqué à 13:24:25
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : CLEAR à 13:24:29
+📂 Test5 Moyen - chargé à 13:24:29
+🤖 Réponse LLM : ACTION: 5 à 13:24:32
+Action 346 : Bouton 5 cliqué à 13:24:32
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 1
+ACTION: 5 à 13:24:37
+Action 348 : Bouton 1 cliqué à 13:24:37
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:24:41
+Action 350 : Bouton 5 cliqué à 13:24:41
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ABANDON: Aucun bouton ne semble modifier l'état de la grille ; la règle est inconnue et aucune interaction ne produit de changementObservable. à 13:24:46
+🏳 LLM abandonne : ABANDON: Aucun bouton ne semble modifier l'état de la grille ; la règle est inconnue et aucune interaction ne produit de changementObservable. à 13:24:46
+📂 Test1 Difficile - chargé à 13:24:48
+📂 Test1 Difficile - chargé à 13:24:49
+🤖 Mode automatique démarré à 13:24:49
+🤖 Réponse LLM : ACTION: 3 à 13:24:50
+Action 357 : Bouton 3 cliqué à 13:24:50
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 1 à 13:24:55
+Action 359 : Bouton 1 cliqué à 13:24:55
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:24:59
+Action 361 : Bouton 2 cliqué à 13:24:59
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:25:05
+Action 363 : Bouton 6 cliqué à 13:25:05
+État après : □ □ □ □ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 9 à 13:25:09
+Action 365 : Bouton 9 cliqué à 13:25:09
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:25:14
+Action 367 : Bouton 3 cliqué à 13:25:14
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:25:18
+Action 369 : Bouton 6 cliqué à 13:25:18
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 1 à 13:25:22
+Action 371 : Bouton 1 cliqué à 13:25:22
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:25:27
+Action 373 : Bouton 5 cliqué à 13:25:27
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:25:31
+Action 375 : Bouton 3 cliqué à 13:25:31
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : CLEAR à 13:25:36
+📂 Test1 Difficile - chargé à 13:25:36
+🤖 Réponse LLM : ACTION: 3 à 13:25:40
+Action 379 : Bouton 3 cliqué à 13:25:40
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:25:45
+Action 381 : Bouton 7 cliqué à 13:25:45
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 9 à 13:25:49
+Action 383 : Bouton 9 cliqué à 13:25:49
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 1 à 13:25:53
+Action 385 : Bouton 1 cliqué à 13:25:53
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:25:58
+Action 387 : Bouton 2 cliqué à 13:25:58
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:26:02
+Action 389 : Bouton 4 cliqué à 13:26:02
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 8 à 13:26:07
+Action 391 : Bouton 8 cliqué à 13:26:07
+État après : □ □ □ □ □ □ □ □ □
+🤖 Réponse LLM : ABANDON: Aucun bouton ne semble avoir d'effetObservable ; la règle du jeu est inconnue et non déductible avec les actions effectuées. à 13:26:11
+🏳 LLM abandonne : ABANDON: Aucun bouton ne semble avoir d'effetObservable ; la règle du jeu est inconnue et non déductible avec les actions effectuées. à 13:26:11
+📂 Test2 Difficile - chargé à 13:26:22
+📂 Test2 Difficile - chargé à 13:26:24
+🤖 Mode automatique démarré à 13:26:24
+🤖 Réponse LLM : ACTION: 2 à 13:26:24
+Action 398 : Bouton 2 cliqué à 13:26:24
+État après : □ ■ □ ■ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:26:29
+Action 400 : Bouton 6 cliqué à 13:26:29
+État après : □ □ ■ □ □ □ □ □ ■
+🤖 Réponse LLM : ACTION: 1 à 13:26:33
+Action 402 : Bouton 1 cliqué à 13:26:33
+État après : □ □ ■ □ □ □ □ □ ■
+🤖 Réponse LLM : ACTION: 3 à 13:26:37
+Action 404 : Bouton 3 cliqué à 13:26:37
+État après : □ □ □ □ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:26:42
+Action 406 : Bouton 4 cliqué à 13:26:42
+État après : □ ■ □ ■ □ □ □ ■ □
+💡 Règle identifiée par le LLM à 13:26:43
+Cliquer sur un bouton inverse l'état de ce bouton et de certains autres boutons de manière non linéaire, mais la règle exacte reste ambiguë sans plus d'observations ; cependant, l'objectif a été atteint par essais successifs.
+Objectif atteint ! à 13:26:43
+📂 Test2 Validation Difficile - chargé à 13:26:46
+Phase de validation - Question 1 : incorrecte à 13:26:50
+Phase de validation - Question 2 : incorrecte à 13:26:54
+Phase de validation - Question 3 : incorrecte à 13:26:58
+Phase de validation - Question 4 : incorrecte à 13:27:02
+Validation échouée à 13:27:05
+📂 Test3 Difficile - chargé à 13:27:12
+📂 Test3 Difficile - chargé à 13:27:13
+🤖 Mode automatique démarré à 13:27:13
+🤖 Réponse LLM : CLEAR à 13:27:14
+📂 Test3 Difficile - chargé à 13:27:14
+🤖 Réponse LLM : ACTION: 1 à 13:27:18
+Action 421 : Bouton 1 cliqué à 13:27:18
+État après : ■ ■ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:27:22
+Action 423 : Bouton 2 cliqué à 13:27:22
+État après : □ □ ■ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:27:27
+Action 425 : Bouton 4 cliqué à 13:27:27
+État après : □ □ □ ■ ■ □ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:27:31
+Action 427 : Bouton 5 cliqué à 13:27:31
+État après : □ □ □ □ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:27:35
+Action 429 : Bouton 6 cliqué à 13:27:35
+État après : □ □ □ □ ■ □ ■ □ □
+🤖 Réponse LLM : ACTION: 8 à 13:27:39
+Action 431 : Bouton 8 cliqué à 13:27:39
+État après : □ □ □ □ ■ □ □ ■ ■
+🤖 Réponse LLM : ACTION: 3 à 13:27:43
+Action 433 : Bouton 3 cliqué à 13:27:43
+État après : □ ■ ■ ■ ■ □ □ ■ ■
+🤖 Réponse LLM : ACTION: 7 à 13:27:48
+Action 435 : Bouton 7 cliqué à 13:27:48
+État après : □ ■ ■ ■ ■ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 9 à 13:27:52
+Action 437 : Bouton 9 cliqué à 13:27:52
+État après : □ ■ ■ ■ ■ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 3 à 13:27:56
+Action 439 : Bouton 3 cliqué à 13:27:56
+État après : □ □ □ □ ■ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 4 à 13:28:01
+Action 441 : Bouton 4 cliqué à 13:28:01
+État après : □ □ ■ ■ □ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 7 à 13:28:05
+Action 443 : Bouton 7 cliqué à 13:28:05
+État après : □ □ ■ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:28:09
+Action 445 : Bouton 6 cliqué à 13:28:09
+État après : □ □ ■ ■ ■ ■ ■ □ □
+🤖 Réponse LLM : ACTION: 8 à 13:28:14
+Action 447 : Bouton 8 cliqué à 13:28:14
+État après : □ □ ■ ■ ■ ■ □ ■ ■
+🤖 Réponse LLM : ACTION: 9 à 13:28:18
+Action 449 : Bouton 9 cliqué à 13:28:18
+État après : □ □ ■ ■ ■ ■ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:28:22
+Action 451 : Bouton 2 cliqué à 13:28:22
+État après : ■ ■ □ ■ ■ ■ □ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:28:27
+Action 453 : Bouton 7 cliqué à 13:28:27
+État après : ■ ■ □ ■ ■ □ ■ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:28:31
+Action 455 : Bouton 6 cliqué à 13:28:31
+État après : ■ ■ □ ■ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 5 à 13:28:35
+Action 457 : Bouton 5 cliqué à 13:28:35
+État après : ■ ■ □ □ ■ □ □ ■ □
+🤖 Réponse LLM : ACTION: 4 à 13:28:39
+Action 459 : Bouton 4 cliqué à 13:28:39
+État après : ■ ■ ■ ■ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 1 à 13:28:43
+Action 461 : Bouton 1 cliqué à 13:28:43
+État après : □ □ ■ ■ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 3 à 13:28:48
+Action 463 : Bouton 3 cliqué à 13:28:48
+État après : □ ■ □ □ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 4 à 13:28:52
+Action 465 : Bouton 4 cliqué à 13:28:52
+État après : □ ■ ■ ■ ■ □ □ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:28:56
+Action 467 : Bouton 6 cliqué à 13:28:56
+État après : □ ■ ■ ■ □ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 7 à 13:29:00
+Action 469 : Bouton 7 cliqué à 13:29:00
+État après : □ ■ ■ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:29:04
+Action 471 : Bouton 5 cliqué à 13:29:04
+État après : □ ■ ■ □ ■ ■ □ □ □
+🤖 Réponse LLM : ACTION: 8 à 13:29:08
+Action 473 : Bouton 8 cliqué à 13:29:08
+État après : □ ■ ■ □ ■ ■ ■ ■ ■
+🤖 Réponse LLM : ACTION: 7 à 13:29:13
+Action 475 : Bouton 7 cliqué à 13:29:13
+État après : □ ■ ■ □ ■ □ □ □ ■
+🤖 Réponse LLM : ACTION: 9 à 13:29:17
+Action 477 : Bouton 9 cliqué à 13:29:17
+État après : □ ■ ■ □ ■ □ □ ■ □
+🏳 LLM abandonne : Limite de 30 actions atteinte. à 13:29:20
+📂 Test4 Difficile - chargé à 13:29:25
+📂 Test4 Difficile - chargé à 13:29:26
+🤖 Mode automatique démarré à 13:29:26
+🤖 Réponse LLM : ACTION: 1 à 13:29:27
+Action 483 : Bouton 1 cliqué à 13:29:27
+État après : □ □ □ □ ■ □ □ □ □
+🤖 Réponse LLM : ACTION: 2 à 13:29:31
+Action 485 : Bouton 2 cliqué à 13:29:31
+État après : □ □ □ ■ ■ ■ □ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:29:36
+Action 487 : Bouton 3 cliqué à 13:29:36
+État après : □ □ □ ■ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:29:40
+Action 489 : Bouton 4 cliqué à 13:29:40
+État après : □ ■ □ ■ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 5 à 13:29:44
+Action 491 : Bouton 5 cliqué à 13:29:44
+État après : ■ ■ ■ ■ □ ■ ■ ■ ■
+🤖 Réponse LLM : ACTION: 6 à 13:29:48
+Action 493 : Bouton 6 cliqué à 13:29:48
+État après : ■ □ ■ ■ □ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 7 à 13:29:52
+Action 495 : Bouton 7 cliqué à 13:29:52
+État après : ■ □ ■ ■ ■ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 8 à 13:29:56
+Action 497 : Bouton 8 cliqué à 13:29:56
+État après : ■ □ ■ □ ■ □ ■ □ ■
+🤖 Réponse LLM : ACTION: 9 à 13:30:00
+Action 499 : Bouton 9 cliqué à 13:30:00
+État après : ■ □ ■ □ □ □ ■ □ ■
+🤖 Réponse LLM : CLEAR à 13:30:05
+📂 Test4 Difficile - chargé à 13:30:05
+🤖 Réponse LLM : ACTION: 5 à 13:30:09
+Action 503 : Bouton 5 cliqué à 13:30:09
+État après : ■ □ ■ □ □ □ ■ □ ■
+🤖 Réponse LLM : ACTION: 1 à 13:30:13
+Action 505 : Bouton 1 cliqué à 13:30:13
+État après : ■ □ ■ □ ■ □ ■ □ ■
+🤖 Réponse LLM : ACTION: 2 à 13:30:18
+Action 507 : Bouton 2 cliqué à 13:30:18
+État après : ■ □ ■ ■ ■ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 4 à 13:30:22
+Action 509 : Bouton 4 cliqué à 13:30:22
+État après : ■ ■ ■ ■ ■ ■ ■ ■ ■
+💡 Règle identifiée par le LLM à 13:30:24
+Cliquer sur un bouton inverse l'état de ce bouton et de certains de ses voisins selon une règle de propagation en croixOu en croix étendue, mais la règle exacte reste incomplètement identifiée après les tests.
+Objectif atteint ! à 13:30:24
+📂 Test4 Validation Difficile - chargé à 13:30:27
+Phase de validation - Question 1 : incorrecte à 13:30:31
+Phase de validation - Question 2 : incorrecte à 13:30:34
+Phase de validation - Question 3 : incorrecte à 13:30:39
+Phase de validation - Question 4 : correcte à 13:30:42
+Validation échouée à 13:30:45
+📂 Test5 Difficile - chargé à 13:30:52
+📂 Test5 Difficile - chargé à 13:30:54
+🤖 Mode automatique démarré à 13:30:54
+🤖 Réponse LLM : ACTION: 2 à 13:30:56
+Action 522 : Bouton 2 cliqué à 13:30:56
+État après : □ ■ □ ■ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:31:00
+Action 524 : Bouton 4 cliqué à 13:31:00
+État après : □ □ □ □ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 5 à 13:31:08
+Action 526 : Bouton 5 cliqué à 13:31:08
+État après : ■ □ ■ □ ■ ■ ■ ■ ■
+🤖 Réponse LLM : CLEAR à 13:31:12
+📂 Test5 Difficile - chargé à 13:31:12
+🤖 Réponse LLM : ACTION: 2 à 13:31:16
+Action 530 : Bouton 2 cliqué à 13:31:16
+État après : □ ■ □ ■ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:31:21
+Action 532 : Bouton 5 cliqué à 13:31:21
+État après : ■ ■ ■ ■ ■ ■ ■ □ ■
+🤖 Réponse LLM : CLEAR à 13:31:25
+📂 Test5 Difficile - chargé à 13:31:25
+🤖 Réponse LLM : ACTION: 4 à 13:31:28
+Action 536 : Bouton 4 cliqué à 13:31:28
+État après : □ ■ □ ■ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 5 à 13:31:32
+Action 538 : Bouton 5 cliqué à 13:31:32
+État après : ■ ■ ■ ■ ■ □ ■ ■ ■
+🤖 Réponse LLM : CLEAR à 13:31:36
+📂 Test5 Difficile - chargé à 13:31:36
+🤖 Réponse LLM : ACTION: 6 à 13:31:40
+Action 542 : Bouton 6 cliqué à 13:31:40
+État après : □ ■ □ □ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 2 à 13:31:45
+Action 544 : Bouton 2 cliqué à 13:31:45
+État après : □ □ □ ■ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 4 à 13:31:51
+Action 546 : Bouton 4 cliqué à 13:31:51
+État après : □ ■ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:31:55
+Action 548 : Bouton 5 cliqué à 13:31:55
+État après : ■ ■ ■ □ ■ □ ■ □ ■
+🤖 Réponse LLM : CLEAR à 13:32:00
+📂 Test5 Difficile - chargé à 13:32:00
+🤖 Réponse LLM : ACTION: 2 à 13:32:05
+Action 552 : Bouton 2 cliqué à 13:32:05
+État après : □ ■ □ ■ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 6 à 13:32:10
+Action 554 : Bouton 6 cliqué à 13:32:10
+État après : □ □ □ ■ □ □ □ ■ □
+🤖 Réponse LLM : ACTION: 4 à 13:32:16
+Action 556 : Bouton 4 cliqué à 13:32:16
+État après : □ ■ □ □ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:32:22
+Action 558 : Bouton 5 cliqué à 13:32:22
+État après : ■ ■ ■ □ ■ □ ■ □ ■
+🤖 Réponse LLM : CLEAR à 13:32:28
+📂 Test5 Difficile - chargé à 13:32:28
+🤖 Réponse LLM : ACTION: 5 à 13:32:34
+Action 562 : Bouton 5 cliqué à 13:32:34
+État après : ■ □ ■ □ ■ □ ■ □ ■
+🤖 Réponse LLM : CLEAR à 13:32:42
+📂 Test5 Difficile - chargé à 13:32:42
+🤖 Réponse LLM : ACTION: 2
+ACTION: 4
+ACTION: 5
+ACTION: 6 à 13:32:46
+Action 566 : Bouton 2 cliqué à 13:32:46
+État après : □ ■ □ ■ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 4 à 13:32:52
+Action 568 : Bouton 4 cliqué à 13:32:52
+État après : □ □ □ □ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 5 à 13:32:57
+Action 570 : Bouton 5 cliqué à 13:32:57
+État après : ■ □ ■ □ ■ ■ ■ ■ ■
+🤖 Réponse LLM : CLEAR à 13:33:04
+📂 Test5 Difficile - chargé à 13:33:04
+🤖 Réponse LLM : ACTION: 2
+ACTION: 5
+ACTION: 6 à 13:33:08
+Action 574 : Bouton 2 cliqué à 13:33:08
+État après : □ ■ □ ■ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:33:14
+Action 576 : Bouton 5 cliqué à 13:33:14
+État après : ■ ■ ■ ■ ■ ■ ■ □ ■
+🤖 Réponse LLM : CLEAR à 13:33:19
+📂 Test5 Difficile - chargé à 13:33:19
+🤖 Réponse LLM : ACTION: 2
+ACTION: 4
+ACTION: 6 à 13:33:24
+Action 580 : Bouton 2 cliqué à 13:33:24
+État après : □ ■ □ ■ □ ■ □ □ □
+🏳 LLM abandonne : Limite de 30 actions atteinte. à 13:33:29
+📂 Test6 Difficile - chargé à 13:33:36
+📂 Test6 Difficile - chargé à 13:33:37
+🤖 Mode automatique démarré à 13:33:37
+🤖 Réponse LLM : CLEAR à 13:33:38
+📂 Test6 Difficile - chargé à 13:33:38
+🤖 Réponse LLM : ACTION: 1 à 13:33:42
+Action 588 : Bouton 1 cliqué à 13:33:42
+État après : ■ ■ □ ■ □ □ □ □ □
+🤖 Réponse LLM : ACTION: 3 à 13:33:46
+Action 590 : Bouton 3 cliqué à 13:33:46
+État après : ■ □ ■ ■ □ ■ □ □ □
+🤖 Réponse LLM : ACTION: 7 à 13:33:51
+Action 592 : Bouton 7 cliqué à 13:33:51
+État après : ■ □ ■ □ □ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:33:56
+Action 594 : Bouton 6 cliqué à 13:33:56
+État après : ■ □ □ □ ■ □ ■ ■ ■
+🤖 Réponse LLM : ACTION: 5 à 13:34:00
+Action 596 : Bouton 5 cliqué à 13:34:00
+État après : ■ ■ □ ■ □ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 2 à 13:34:04
+Action 598 : Bouton 2 cliqué à 13:34:04
+État après : □ □ ■ ■ ■ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 4 à 13:34:09
+Action 600 : Bouton 4 cliqué à 13:34:09
+État après : ■ □ ■ □ □ ■ □ □ ■
+🤖 Réponse LLM : ACTION: 6 à 13:34:13
+Action 602 : Bouton 6 cliqué à 13:34:13
+État après : ■ □ □ □ ■ □ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:34:17
+Action 604 : Bouton 5 cliqué à 13:34:17
+État après : ■ ■ □ ■ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 8 à 13:34:22
+Action 606 : Bouton 8 cliqué à 13:34:22
+État après : ■ ■ □ ■ ■ ■ ■ □ ■
+🤖 Réponse LLM : ACTION: 9 à 13:34:26
+Action 608 : Bouton 9 cliqué à 13:34:26
+État après : ■ ■ □ ■ ■ □ ■ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:34:30
+Action 610 : Bouton 6 cliqué à 13:34:30
+État après : ■ ■ ■ ■ □ ■ ■ ■ ■
+🤖 Réponse LLM : ACTION: 3 à 13:34:35
+Action 612 : Bouton 3 cliqué à 13:34:35
+État après : ■ □ □ ■ □ □ ■ ■ ■
+🤖 Réponse LLM : ACTION: 8 à 13:34:39
+Action 614 : Bouton 8 cliqué à 13:34:39
+État après : ■ □ □ ■ ■ □ □ □ □
+🤖 Réponse LLM : ACTION: 5 à 13:34:43
+Action 616 : Bouton 5 cliqué à 13:34:43
+État après : ■ ■ □ □ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 2 à 13:34:48
+Action 618 : Bouton 2 cliqué à 13:34:48
+État après : □ □ ■ □ ■ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 4 à 13:34:52
+Action 620 : Bouton 4 cliqué à 13:34:52
+État après : ■ □ ■ ■ □ ■ ■ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:34:56
+Action 622 : Bouton 6 cliqué à 13:34:56
+État après : ■ □ □ ■ ■ □ ■ ■ ■
+🤖 Réponse LLM : ACTION: 9 à 13:35:00
+Action 624 : Bouton 9 cliqué à 13:35:00
+État après : ■ □ □ ■ ■ ■ ■ □ □
+🤖 Réponse LLM : ACTION: 8 à 13:35:05
+Action 626 : Bouton 8 cliqué à 13:35:05
+État après : ■ □ □ ■ □ ■ □ ■ ■
+🤖 Réponse LLM : ACTION: 5 à 13:35:09
+Action 628 : Bouton 5 cliqué à 13:35:09
+État après : ■ ■ □ □ ■ □ □ □ ■
+🤖 Réponse LLM : ACTION: 2 à 13:35:14
+Action 630 : Bouton 2 cliqué à 13:35:14
+État après : □ □ ■ □ □ □ □ □ ■
+🤖 Réponse LLM : ACTION: 9 à 13:35:18
+Action 632 : Bouton 9 cliqué à 13:35:18
+État après : □ □ ■ □ □ ■ □ ■ □
+🤖 Réponse LLM : ACTION: 6 à 13:35:22
+Action 634 : Bouton 6 cliqué à 13:35:22
+État après : □ □ □ □ ■ □ □ ■ ■
+🤖 Réponse LLM : ACTION: 5 à 13:35:27
+Action 636 : Bouton 5 cliqué à 13:35:27
+État après : □ ■ □ ■ □ ■ □ □ ■
+🤖 Réponse LLM : ACTION: 1 à 13:35:31
+Action 638 : Bouton 1 cliqué à 13:35:31
+État après : ■ □ □ □ □ ■ □ □ ■
+🤖 Réponse LLM : ACTION: 7 à 13:35:35
+Action 640 : Bouton 7 cliqué à 13:35:35
+État après : ■ □ □ ■ □ ■ ■ ■ ■
+🤖 Réponse LLM : ACTION: 4 à 13:35:40
+Action 642 : Bouton 4 cliqué à 13:35:40
+État après : □ □ □ □ ■ ■ □ ■ ■
+🤖 Réponse LLM : ACTION: 6 à 13:35:44
+Action 644 : Bouton 6 cliqué à 13:35:44
+État après : □ □ ■ □ □ □ □ ■ □
+🏳 LLM abandonne : Limite de 30 actions atteinte. à 13:35:47
+
