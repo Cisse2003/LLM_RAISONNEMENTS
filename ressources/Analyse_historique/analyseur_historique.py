@@ -23,7 +23,7 @@ class TentativeTest:
         self._parse()
 
     def _parse(self):
-        self.nb_actions = len(re.findall(r"Action \d+", self.contenu))
+        self.nb_actions = len(re.findall(r"^Action \d+\s*:", self.contenu, flags=re.MULTILINE))
         self.reussi     = "Objectif atteint !" in self.contenu
         self.abandonne  = any(x in self.contenu for x in ["LLM abandonne", "Abandon"])
         self.nb_clears  = len(re.findall(r"CLEAR", self.contenu))

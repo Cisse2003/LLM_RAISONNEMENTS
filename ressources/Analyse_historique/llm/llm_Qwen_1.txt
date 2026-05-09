@@ -51,7 +51,9 @@ Action 37 : Bouton 8 cliqué à 13:13:16
 Action 39 : Bouton 9 cliqué à 13:13:20
 État après : ■ ■ ■ □ □ □ ■ ■ ■
 💡 Règle identifiée par le LLM à 13:13:22
-Cliquer sur un bouton allumeOu éteint ce bouton et les boutons directement adjacents (haut, bas, gauche, droite), mais pas en diagonale.
+Cliquer sur un bouton allumeOu éteint ce bouton et
+les boutons directement adjacents (haut, bas, gauche, droite),
+mais pas en diagonale.
 Objectif atteint ! à 13:13:22
 📂 Test3 Validation Facile - chargé à 13:13:25
 Phase de validation - Question 1 : incorrecte à 13:13:29
